@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://beu2g4dlsc8si"]
+
+[ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://Scenes/Player/player.tscn" id="1_que2s"]
+[ext_resource type="Script" path="res://Resources/stats.gd" id="2_j62xj"]
+[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://Scenes/Mobs/FlyingEye/flying_eye.tscn" id="3_egces"]
+
+[sub_resource type="Resource" id="Resource_xbid7"]
+script = ExtResource("2_j62xj")
+attack = 100
+health = 100
+defense = 0
+
+[sub_resource type="Resource" id="Resource_4llyu"]
+script = ExtResource("2_j62xj")
+attack = 100
+health = 100
+defense = 0
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_que2s")]
+stats = SubResource("Resource_xbid7")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+
+[node name="FlyingEye" parent="." instance=ExtResource("3_egces")]
+position = Vector2(232, 0)
+stats = SubResource("Resource_4llyu")

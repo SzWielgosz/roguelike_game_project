@@ -1,0 +1,91 @@
+[gd_scene load_steps=18 format=3 uid="uid://d06uia2xoesnx"]
+
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_7suhb"]
+[ext_resource type="Script" path="res://Scripts/health.gd" id="2_lsht1"]
+[ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="3_pvpgv"]
+[ext_resource type="Texture2D" uid="uid://dcpb73rlyb4b1" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f1.png" id="4_h2i5w"]
+[ext_resource type="Texture2D" uid="uid://dxgrhf2w8iw0b" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f2.png" id="5_mrlye"]
+[ext_resource type="Texture2D" uid="uid://bn83nhiiwwtfw" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f3.png" id="6_ohuyy"]
+[ext_resource type="Texture2D" uid="uid://btofb6oby0j3q" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f4.png" id="7_3ffxb"]
+[ext_resource type="Texture2D" uid="uid://d1mghnwc0bv5j" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f5.png" id="8_j5g5w"]
+[ext_resource type="Texture2D" uid="uid://k1no8byx8rlm" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f6.png" id="9_e4itu"]
+[ext_resource type="Texture2D" uid="uid://b86cg6073olii" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f0.png" id="10_pjcqi"]
+[ext_resource type="Texture2D" uid="uid://dyb7ao3yg3el1" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f1.png" id="11_c7jpl"]
+[ext_resource type="Texture2D" uid="uid://036mdwa2h5y8" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/arm.png" id="11_dq512"]
+[ext_resource type="Texture2D" uid="uid://bvm178tcsytmf" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f2.png" id="12_c12ss"]
+[ext_resource type="Texture2D" uid="uid://d00immhql2km8" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f4.png" id="14_r2ylf"]
+[ext_resource type="Script" path="res://Scenes/Player/arm.gd" id="14_rlg4q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35mxl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pvpgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h2i5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mrlye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ohuyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3ffxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j5g5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e4itu")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_pjcqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_c7jpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c12ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_r2ylf")
+}],
+"loop": true,
+"name": &"movement",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysplj"]
+size = Vector2(10, 14)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7suhb")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_lsht1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_35mxl")
+animation = &"movement"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ysplj")
+
+[node name="Arm" type="Node2D" parent="."]
+script = ExtResource("14_rlg4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arm"]
+position = Vector2(7, 0)
+rotation = 1.5708
+texture = ExtResource("11_dq512")
+
+[node name="Marker2D" type="Marker2D" parent="Arm"]
+position = Vector2(10, 0)
+gizmo_extents = 5.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://baqqlh0a4yuhh"]
+[gd_scene load_steps=8 format=3 uid="uid://baqqlh0a4yuhh"]
 
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Art/Tilemaps/new_general.tres" id="1_r2ase"]
 [ext_resource type="PackedScene" uid="uid://b71sd43j74lrh" path="res://Scenes/RoomArea/room_area.tscn" id="2_k8pup"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dcfk0ccwqqebu" path="res://Scenes/Door/door.tscn" id="4_2mqog"]
 [ext_resource type="Script" path="res://Scripts/door_counter.gd" id="5_phrmc"]
 [ext_resource type="Script" path="res://Scenes/Rooms/14x14/mob_spawner.gd" id="6_60dwc"]
+[ext_resource type="Script" path="res://Scripts/room_manager.gd" id="7_133b7"]
 
 [node name="RoomLeftRight" type="Node2D"]
 
@@ -75,5 +76,13 @@ position = Vector2(-61, 56)
 [node name="Marker2D4" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(60, -57)
 
+[node name="RoomManager" type="Node" parent="."]
+script = ExtResource("7_133b7")
+
+[node name="CheckTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D" to="MobSpawner" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="spawn_mobs" from="Area2D" to="MobSpawner" method="_on_area_2d_spawn_mobs"]
+[connection signal="timeout" from="CheckTimer" to="Area2D" method="_on_spawn_timer_timeout"]

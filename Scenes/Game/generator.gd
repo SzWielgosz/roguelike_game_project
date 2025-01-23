@@ -150,7 +150,7 @@ func create_map():
 	generate_rooms()
 	find_start_room()
 	find_end_room()
-	Player.position = start_room.position
+	Player.global_position = start_room.global_position
 	
 
 

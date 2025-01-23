@@ -1,24 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmj1nwyiwev3j"]
+[gd_scene load_steps=6 format=3 uid="uid://cmj1nwyiwev3j"]
 
-[ext_resource type="Texture2D" uid="uid://cjak2ox2wov8l" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/potion_red.png" id="1_movvl"]
+[ext_resource type="Texture2D" uid="uid://ddutlh8h5t3a" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/spell_frame.png" id="1_7ardd"]
+[ext_resource type="Texture2D" uid="uid://ciglj55r6hfe7" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/key_one.png" id="1_eavf6"]
+[ext_resource type="Texture2D" uid="uid://43n6bphc4lpw" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/key_two.png" id="2_i6mrf"]
+[ext_resource type="Texture2D" uid="uid://c6uqd6g7hrqig" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/key_three.png" id="3_7enst"]
+[ext_resource type="Texture2D" uid="uid://cav6343qponyg" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/coin.png" id="6_vgt6j"]
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 56.0
+offset_bottom = 83.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_movvl")
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("1_movvl")
+size_flags_horizontal = 0
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_movvl")
+texture = ExtResource("1_eavf6")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_i6mrf")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_7enst")
+
+[node name="MagicSlots" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MagicSlots"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/MagicSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_7ardd")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/MagicSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_7ardd")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/MagicSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_7ardd")
+
+[node name="Health" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Health"]
+layout_mode = 2
+
+[node name="CoinCounter" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/CoinCounter"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/CoinCounter/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_vgt6j")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/CoinCounter/HBoxContainer"]
+layout_mode = 2
+text = "00"

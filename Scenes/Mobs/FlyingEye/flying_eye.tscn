@@ -1,17 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cyb8oxg7okohu"]
 
 [ext_resource type="Script" path="res://Scenes/Mobs/FlyingEye/flying_eye.gd" id="1_8imbd"]
-[ext_resource type="Script" path="res://Resources/stats.gd" id="2_31vmb"]
 [ext_resource type="Texture2D" uid="uid://phjh83ntvkpg" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f0.png" id="2_copjb"]
 [ext_resource type="Texture2D" uid="uid://dm380yaeddt0q" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f1.png" id="3_qu21t"]
 [ext_resource type="Texture2D" uid="uid://3sux545yp6ha" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f2.png" id="4_5e7nw"]
 [ext_resource type="Texture2D" uid="uid://bwnedxpm4bvwm" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f3.png" id="5_fvrd6"]
-
-[sub_resource type="Resource" id="Resource_p2xa3"]
-script = ExtResource("2_31vmb")
-attack = 100
-health = 100
-defense = 0
+[ext_resource type="Script" path="res://Scripts/health.gd" id="7_33sut"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i14yq"]
 animations = [{
@@ -34,14 +28,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_30fcm"]
-radius = 126.016
+radius = 155.003
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwq7y"]
 size = Vector2(10, 9)
 
-[node name="FlyingEye" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4ts6"]
+size = Vector2(8, 7)
+
+[node name="FlyingEye" type="CharacterBody2D" groups=["mobs"]]
+collision_layer = 2
+collision_mask = 6
+motion_mode = 1
 script = ExtResource("1_8imbd")
-stats = SubResource("Resource_p2xa3")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("7_33sut")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i14yq")
@@ -53,9 +55,16 @@ frame_progress = 0.556438
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_30fcm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_fwq7y")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_t4ts6")
+
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

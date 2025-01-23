@@ -1,21 +1,26 @@
 extends CharacterBody2D
 
 @export var speed: int = 75
-@export var stats: Stats
+@export var knockback_resistance: float = 1
+@export var knockback := 200
 var is_dead: bool = false
 var chase_player: bool = false
 var player = null
+var damage_value = 0.5
 
 
 func _ready():
-	stats = stats.duplicate(true)
 	$"AnimatedSprite2D".play("default")
 
 
 func _physics_process(delta):
 	if chase_player:
+		if player and player.is_dead:
+			chase_player = false
+			velocity = Vector2.ZERO
+			return
+
 		var direction = (player.position-position).normalized()
-		
 		velocity= direction * speed
 		move_and_slide()
 
@@ -25,32 +30,23 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = false
 
 
-func _process(delta):
-	if stats.health <= 0 and not is_dead:
-		die()
-
-
 func _on_detection_range_body_entered(body):
-	if body.name == "Player":
+	if body.is_in_group("player"):
 		player = body
 		chase_player = true
 
 
 func _on_detection_range_body_exited(body):
-	if body.name == "Player":
+	if body.is_in_group("player"):
 		player = null
 		chase_player = false
 
 
-func take_damage(damage: int) -> int:
-	if stats:
-		var actual_damage = stats.take_damage(damage)
-		print("Mob took", actual_damage, "damage! HP left:", stats.health)
-		return actual_damage
-	return 0
-
-
-func die():
-	is_dead = true
-	stats.emit_signal("died")
-	queue_free()
+func _on_hit_box_body_entered(body):
+	if body.is_in_group("player"):
+		var player_health = body.get_node("PlayerHealth")
+		if body.is_dead == false:
+			player_health.take_damage(damage_value, position.direction_to(body.position) * knockback)
+		else:
+			body.knockback = Vector2.ZERO
+			body.velocity = Vector2.ZERO

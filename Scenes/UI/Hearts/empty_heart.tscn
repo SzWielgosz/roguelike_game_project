@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt45eb5kxcar5"]
+
+[ext_resource type="Texture2D" uid="uid://c301yyyfwwlwy" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/empty_heart.png" id="1_3o80h"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3o80h")

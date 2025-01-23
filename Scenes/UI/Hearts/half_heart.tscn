@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6sw0w14y7ew"]
+
+[ext_resource type="Texture2D" uid="uid://c58yyijtwegev" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/half_heart.png" id="1_hem68"]
+
+[node name="HalfHeart" type="TextureRect"]
+texture = ExtResource("1_hem68")

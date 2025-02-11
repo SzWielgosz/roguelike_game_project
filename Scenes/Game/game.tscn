@@ -1,39 +1,43 @@
 [gd_scene load_steps=8 format=3 uid="uid://c3y046xyuhqju"]
 
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_3tt7q"]
-[ext_resource type="Script" path="res://Scenes/Game/generator.gd" id="2_8rxvy"]
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Art/Tilemaps/new_general.tres" id="3_0yfcb"]
+[ext_resource type="Script" path="res://Scenes/Game/NewGenerator.gd" id="3_x16t2"]
 [ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://Scenes/Player/player.tscn" id="4_0oeh4"]
 [ext_resource type="PackedScene" uid="uid://cmj1nwyiwev3j" path="res://Scenes/UI/ui.tscn" id="5_5u36q"]
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="6_bahod"]
 
 [sub_resource type="GDScript" id="GDScript_vp85x"]
 script/source = "extends Camera2D
-var speed = 10
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
-
-
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#if Input.is_action_pressed(\"ui_left\"):
-		#position -= Vector2(1, 0) * speed
-	#if Input.is_action_pressed(\"ui_right\"):
-		#position += Vector2(1, 0) * speed
-	#if Input.is_action_pressed(\"ui_up\"):
-		#position -= Vector2(0, 1) * speed
-	#if Input.is_action_pressed(\"ui_down\"):
-		#position -= Vector2(0, -1) * speed
-		
+	Events.room_entered.connect(func(room):
+		global_position = room.global_position
+		)
 "
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3tt7q")
 
-[node name="Generator" type="Node2D" parent="."]
-script = ExtResource("2_8rxvy")
+[node name="UI" parent="." instance=ExtResource("5_5u36q")]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+script = ExtResource("6_bahod")
+
+[node name="Player" parent="." instance=ExtResource("4_0oeh4")]
+collision_mask = 147
+speed = 100
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = SubResource("GDScript_vp85x")
+
+[node name="RoomGenerator" type="Node2D" parent="."]
+script = ExtResource("3_x16t2")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_0yfcb")
@@ -48,25 +52,6 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Rooms" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("4_0oeh4")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.5, 2.5)
-script = SubResource("GDScript_vp85x")
-
-[node name="UI" parent="." instance=ExtResource("5_5u36q")]
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
-script = ExtResource("6_bahod")
-
 [node name="Timer" type="Timer" parent="."]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-size = Vector2i(100, 100)
-render_target_update_mode = 4
 
 [connection signal="hearts_changed" from="Player" to="UI" method="_on_player_hearts_changed"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=14 format=3 uid="uid://caxaod6aftium"]
+
+[ext_resource type="Script" path="res://Scenes/Magic/Tier0/FlameSpray/flamespray.gd" id="1_hfbgd"]
+[ext_resource type="Texture2D" uid="uid://c6qnhy3ferxks" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect1.png" id="1_n10wg"]
+[ext_resource type="Texture2D" uid="uid://cl06p018ywyn3" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect2.png" id="2_wwcsg"]
+[ext_resource type="Texture2D" uid="uid://c77tbmcjm61dk" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect3.png" id="3_md5bg"]
+[ext_resource type="Texture2D" uid="uid://bluda2ktuamm4" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect4.png" id="4_h8ee2"]
+[ext_resource type="Texture2D" uid="uid://j4c1xu53iios" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect5.png" id="5_sn24d"]
+[ext_resource type="Texture2D" uid="uid://dpacsvwvxf6o0" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect6.png" id="6_7uagj"]
+[ext_resource type="Texture2D" uid="uid://ddwxy0podo8qb" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect7.png" id="7_qnxwf"]
+[ext_resource type="Texture2D" uid="uid://pgji6on641au" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/flame_effect8.png" id="8_bdt1h"]
+
+[sub_resource type="Gradient" id="Gradient_patw8"]
+offsets = PackedFloat32Array(0, 0.385246, 0.786885, 0.967213)
+colors = PackedColorArray(1, 0, 0, 1, 0.886275, 0.345098, 0.133333, 1, 1, 0.686275, 0.0117647, 1, 1, 0.7195, 0.00999999, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5a1n"]
+gradient = SubResource("Gradient_patw8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thmy5"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+gravity = Vector3(1200, 0, 0)
+color_ramp = SubResource("GradientTexture1D_c5a1n")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ylqni"]
+frames = 8
+frame_0/texture = ExtResource("1_n10wg")
+frame_1/texture = ExtResource("2_wwcsg")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_md5bg")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_h8ee2")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_sn24d")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_7uagj")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_qnxwf")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("8_bdt1h")
+frame_7/duration = 1.0
+
+[node name="FlameSpray" type="Node2D"]
+script = ExtResource("1_hfbgd")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_thmy5")
+texture = SubResource("AnimatedTexture_ylqni")
+lifetime = 0.4

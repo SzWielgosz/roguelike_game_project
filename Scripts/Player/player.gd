@@ -1,5 +1,6 @@
 extends CharacterBody2D
-@export var speed: int = 150
+var bomb_scene = preload("res://Scenes/Items/Bomb/bomb.tscn")
+@export var speed := 150
 @export var min_knockback := 100
 @export var slow_knockback := 1.1
 var hearts
@@ -14,13 +15,6 @@ signal hearts_changed(value)
 func _ready():
 	hearts = $PlayerHealth.health
 	max_hearts = $PlayerHealth.max_health
-
-
-func get_input():
-	if is_dead:
-		return
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = input_direction * speed
 
 
 func update_animation():
@@ -48,19 +42,28 @@ func update_direction():
 			$AnimatedSprite2D.flip_h = false
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if knockback.length() > min_knockback:
 		knockback /= slow_knockback
 		velocity = knockback
 		move_and_slide()
 		return
 	
-	get_input()
+	if !is_dead:
+		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		velocity = input_direction * speed
+	
 	move_and_slide()
 	update_direction()
 
+func place_bomb():
+	var bomb_instance = bomb_scene.instantiate()
+	bomb_instance.global_position = global_position
+	get_parent().add_child(bomb_instance)
 
 func _process(_delta):
+	if Input.is_action_just_pressed("use_bomb"):
+		place_bomb()
 	update_animation()
 
 

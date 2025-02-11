@@ -3,7 +3,7 @@ class_name PlayerHealth
 
 @export var knockback_strength: Vector2 = Vector2(0, 0)
 @export var immortality: bool = false
-@onready var health: float = 2.0
+@onready var health: float = 3.0
 @onready var max_health: float = 3.0
 @onready var player = get_parent()
 var velocity = Vector2.ZERO
@@ -11,7 +11,7 @@ signal health_changed(health_value: float)
 signal player_died
 
 
-func take_damage(value, knockback) -> float:
+func take_damage(value, knockback = Vector2(0, 0)) -> float:
 	if immortality:
 		print("Player is immortal")
 		return health
@@ -62,7 +62,6 @@ func _on_health_changed(health_value):
 		$"../Arm".set_process(false)
 		$"../Arm".set_process_input(false)
 		player_died.emit()
-
 
 
 func _on_immortality_blink_timer_timeout():

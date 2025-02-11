@@ -1,59 +1,72 @@
 extends Area2D
+class_name RoomArea
 
+enum RoomType { REGULAR, TREASURE, START, END }
 var doors_opened: bool = true
 var room_cleared: bool = false
 var mobs_spawned: bool = false
 var player_inside: bool = false
 var mobs_left = []
-@onready var timer = $"../CheckTimer"
+@onready var timer = Timer.new()
+@export var type: RoomType
 var spawning: bool = false
 signal spawn_mobs
 
+
 func _ready():
-	# Ustaw timer na określony czas (np. 1 sekunda)
+	timer = Timer.new()
+	add_child(timer)
 	timer.wait_time = 1.0
+	timer.one_shot = true
+	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 
+
 func _on_timer_timeout():
-	# Sprawdź, czy pokój został wyczyszczony, tylko jeśli gracz jest w pokoju
 	if player_inside and not spawning and mobs_left.is_empty() and not room_cleared:
 		room_cleared = true
-		if not doors_opened:  # Zapobiegaj wielokrotnemu otwieraniu
+		if not doors_opened:
 			open_all_doors()
 
+
 func _on_body_entered(body):
-	if body.is_in_group("player"):
-		player_inside = true  # Gracz jest w pokoju
-		if not room_cleared:
-			if doors_opened:
-				close_all_doors()
-			spawn_mobs.emit()
-			mobs_spawned = true
-		else:
-			if not doors_opened:
-				open_all_doors()
+	if type == RoomType.REGULAR:
+		if body.is_in_group("player"):
+			player_inside = true
+			if not room_cleared:
+				if doors_opened:
+					close_all_doors()
+				if not mobs_spawned:
+					spawn_mobs.emit()
+					mobs_spawned = true
+			else:
+				if not doors_opened:
+					open_all_doors()
 
 	if body.is_in_group("mobs"):
 		mobs_left.append(body)
 
+
 func open_all_doors():
-	for door in $"../Doors".get_children():
+	for door in get_parent().get_node("Doors").get_children():
 		door.open_door()
 	doors_opened = true
 
+
 func close_all_doors():
-	for door in $"../Doors".get_children():
+	for door in get_parent().get_node("Doors").get_children():
 		door.close_door()
 	doors_opened = false
+
 
 func _on_body_exited(body):
 	if body.is_in_group("mobs"):
 		mobs_left.erase(body)
-		# Sprawdź, czy wszystkie moby zostały usunięte
 		if player_inside and mobs_left.is_empty() and not room_cleared:
 			room_cleared = true
-			if not doors_opened:  # Zapobiegaj wielokrotnemu otwieraniu
+			if not doors_opened:
 				open_all_doors()
+
 
 func _on_spawn_timer_timeout():
 	spawning = false

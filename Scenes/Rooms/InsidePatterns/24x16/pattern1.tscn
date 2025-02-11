@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbeeqwkcuqvw3"]
+
+[ext_resource type="PackedScene" uid="uid://dbt7xdj2fr5u0" path="res://Scenes/Destroyables/barrel.tscn" id="2_qsgf5"]
+
+[node name="Pattern1" type="Node2D"]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(60, 56)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-58, -59)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-61, 56)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(60, -57)
+
+[node name="Barrels" type="Node2D" parent="."]
+
+[node name="Barrel9" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -70)
+
+[node name="Barrel8" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -14)
+
+[node name="Barrel" parent="Barrels" instance=ExtResource("2_qsgf5")]
+
+[node name="Barrel2" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 14)
+
+[node name="Barrel3" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 28)
+
+[node name="Barrel4" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 42)
+
+[node name="Barrel5" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 56)
+
+[node name="Barrel6" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 70)
+
+[node name="Barrel7" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 84)
+
+[node name="Barrel10" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -56)
+
+[node name="Barrel11" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -42)
+
+[node name="Barrel12" parent="Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -28)

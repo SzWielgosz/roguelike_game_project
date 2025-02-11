@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd5ocgigkgb5o"]
+
+[ext_resource type="Texture2D" uid="uid://b3aai0dok23o8" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_3.png" id="1_ceqi7"]
+
+[node name="FireballSpell" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ceqi7")

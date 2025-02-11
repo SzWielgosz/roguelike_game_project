@@ -38,7 +38,7 @@ size = Vector2(8, 7)
 
 [node name="FlyingEye" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_8imbd")
 
@@ -51,11 +51,13 @@ frame = 2
 frame_progress = 0.556438
 
 [node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_30fcm")
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, 0.5)

@@ -94,9 +94,9 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch804"]
+size = Vector2(20, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rm3ph"]
-size = Vector2(20, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72j2r"]
 size = Vector2(6, 24)
@@ -117,15 +117,16 @@ libraries = {
 }
 
 [node name="DoorArea" type="Area2D" parent="."]
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2(0, 6)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ch804")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_rm3ph")
 
 [node name="Timer" type="Timer" parent="."]
@@ -144,4 +145,8 @@ shape = SubResource("RectangleShape2D_72j2r")
 position = Vector2(-13, 4)
 shape = SubResource("RectangleShape2D_mlvxg")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -39)
+
+[connection signal="body_entered" from="DoorArea" to="." method="_on_door_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,124 @@
+[gd_scene load_steps=19 format=3 uid="uid://bhstgryexd1qw"]
+
+[ext_resource type="Script" path="res://Scenes/Magic/Tier0/RockThrow/rock_throw.gd" id="1_qk4pr"]
+[ext_resource type="Texture2D" uid="uid://ol537itfmpmt" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation1.png" id="2_pjul7"]
+[ext_resource type="Texture2D" uid="uid://cq2tq1hnaayri" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation2.png" id="3_2t6ry"]
+[ext_resource type="Texture2D" uid="uid://dkcs0x7wmxk4h" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation3.png" id="4_nf2kp"]
+[ext_resource type="Texture2D" uid="uid://cuded5peekssx" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation4.png" id="5_uuwwy"]
+[ext_resource type="Texture2D" uid="uid://c1ig51s65le60" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation5.png" id="6_kqivd"]
+[ext_resource type="Texture2D" uid="uid://dhxup1gi66gy7" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_idle.png" id="7_pawbh"]
+[ext_resource type="Texture2D" uid="uid://x7x28i06fu18" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation1.png" id="8_icbib"]
+[ext_resource type="Texture2D" uid="uid://cphs07782vlas" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation2.png" id="9_2cfei"]
+[ext_resource type="Texture2D" uid="uid://s3uubjaxkr7m" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation3.png" id="10_cntwu"]
+[ext_resource type="Texture2D" uid="uid://dwnqdw36dswe1" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation4.png" id="11_lpm7e"]
+[ext_resource type="Texture2D" uid="uid://cuuq3rrkxfrvm" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation5.png" id="12_a5vi1"]
+[ext_resource type="Texture2D" uid="uid://cl1ba6cnkmjp1" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation6.png" id="13_3i32p"]
+[ext_resource type="Texture2D" uid="uid://d3gcq3xoqtfyt" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation7.png" id="14_t5anq"]
+[ext_resource type="Texture2D" uid="uid://bhhufsi522o8w" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/test_rock_fragment.png" id="15_d6eug"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dcd33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_icbib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2cfei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cntwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lpm7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_a5vi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3i32p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t5anq")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pjul7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2t6ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nf2kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uuwwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kqivd")
+}],
+"loop": true,
+"name": &"destroy",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pawbh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rgkg"]
+height = 20.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0lwdt"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.0
+spread = 180.0
+gravity = Vector3(50, 0, 0)
+radial_accel_min = 30.0
+radial_accel_max = 50.0
+
+[node name="RockThrow" type="Area2D" groups=["spell"]]
+collision_layer = 64
+collision_mask = 3
+script = ExtResource("1_qk4pr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dcd33")
+animation = &"idle"
+frame_progress = 0.169282
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7rgkg")
+disabled = true
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="ChargeTimer" type="Timer" parent="."]
+wait_time = 0.45
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_0lwdt")
+texture = ExtResource("15_d6eug")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_summon_timer_timeout"]

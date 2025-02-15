@@ -151,8 +151,6 @@ wait_time = 2.0
 [node name="ImmortalityBlinkTimer" type="Timer" parent="."]
 wait_time = 0.25
 
-[connection signal="health_changed" from="PlayerHealth" to="." method="_on_player_health_health_changed"]
-[connection signal="health_changed" from="PlayerHealth" to="PlayerHealth" method="_on_health_changed"]
 [connection signal="player_died" from="PlayerHealth" to="." method="_on_player_health_player_died"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="ImmortalityTimer" to="PlayerHealth" method="_on_immortality_timer_timeout"]

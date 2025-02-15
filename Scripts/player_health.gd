@@ -3,26 +3,28 @@ class_name PlayerHealth
 
 @export var knockback_strength: Vector2 = Vector2(0, 0)
 @export var immortality: bool = false
-@onready var health: float = 3.0
-@onready var max_health: float = 3.0
 @onready var player = get_parent()
 var velocity = Vector2.ZERO
-signal health_changed(health_value: float)
+
+
 signal player_died
+
+func _ready():
+	PlayerStats.health_changed.connect(_on_health_changed)
 
 
 func take_damage(value, knockback = Vector2(0, 0)) -> float:
 	if immortality:
 		print("Player is immortal")
-		return health
+		return PlayerStats.player_health
 		
-	health -= value
-	print("Player took damage! HP left:", health)
+	PlayerStats.set_health(PlayerStats.player_health - value)
+	print("Player took damage! HP left:", PlayerStats.player_health)
 	apply_knockback(knockback)
-	health_changed.emit(health)
+
 	
 	set_immortality(true)
-	return health
+	return PlayerStats.player_health
 
 
 func apply_knockback(force: Vector2):
@@ -49,8 +51,7 @@ func _on_immortality_timer_timeout():
 
 
 func _on_health_changed(health_value):
-	health = health_value
-	if health <= 0:
+	if health_value <= 0:
 		print("Player died")
 		player.velocity = Vector2.ZERO
 		player.knockback = Vector2.ZERO
@@ -65,7 +66,7 @@ func _on_health_changed(health_value):
 
 
 func _on_immortality_blink_timer_timeout():
-	if health <= 0:
+	if PlayerStats.player_health <= 0:
 		$"../ImmortalityBlinkTimer".stop()
 		return
 	$"../AnimatedSprite2D".visible = not $"../AnimatedSprite2D".visible

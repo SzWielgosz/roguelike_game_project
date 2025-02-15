@@ -16,21 +16,17 @@ func _process(delta):
 
 func set_direction(dir):
 	direction = dir.normalized()
+	rotation = direction.angle() + deg_to_rad(90)
 
 
 func _on_body_entered(body):
-	if body.name == "TileMap" or body.name == "StaticBody2D":
-		speed = 0
-		$CollisionShape2D.queue_free()
-		$AnimatedSprite2D.play("hit")
-	
 	if body.is_in_group("mobs"):
 		if body.get_node("Health") != null:
 			var damage = body.get_node("Health").take_damage(attack_power)
 			print("Fireball hit! Damage:", damage)
-			speed = 0
-			$CollisionShape2D.queue_free()
-			$AnimatedSprite2D.play("hit")
+	speed = 0
+	$CollisionShape2D.queue_free()
+	$AnimatedSprite2D.play("hit")
 
 
 func _on_animated_sprite_2d_animation_changed():

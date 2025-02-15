@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl4pdyefwkq70"]
+
+[ext_resource type="Texture2D" uid="uid://dhxup1gi66gy7" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_idle.png" id="1_fge0j"]
+[ext_resource type="Script" path="res://Scenes/Magic/Tier0/RockThrow/rock_throw_spell.gd" id="1_pmsow"]
+
+[node name="RockThrowSpell" type="Node2D"]
+script = ExtResource("1_pmsow")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fge0j")

@@ -129,10 +129,6 @@ shape = SubResource("RectangleShape2D_ch804")
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_rm3ph")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.6
-one_shot = true
-
 [node name="DoorFrame" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="DoorFrame"]
@@ -148,5 +144,7 @@ shape = SubResource("RectangleShape2D_mlvxg")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -39)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.6
+
 [connection signal="body_entered" from="DoorArea" to="." method="_on_door_area_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -52,6 +52,8 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Rooms" type="Node2D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ResetTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="hearts_changed" from="Player" to="UI" method="_on_player_hearts_changed"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

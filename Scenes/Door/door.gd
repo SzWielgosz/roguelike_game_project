@@ -8,16 +8,21 @@ var opened: bool = true
 func _ready():
 	$StaticBody2D/CollisionShape2D.disabled = true
 
+
 func open_door():
 	animation_player.play("door_opening")
 	z_index = 1
-	timer.start()
-	
+	if timer.is_inside_tree():
+		timer.start()
+
+
 func close_door():
 	animation_player.play("door_closing")
 	z_index = 0
-	timer.start()
-	
+	if timer.is_inside_tree():
+		timer.start()
+
+
 func _on_timer_timeout():
 	if opened:
 		opened = false
@@ -25,7 +30,6 @@ func _on_timer_timeout():
 	else:
 		opened = true
 		$".".frame = 6
-		
 
 
 func _on_door_area_body_entered(body):

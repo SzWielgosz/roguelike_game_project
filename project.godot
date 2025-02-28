@@ -23,7 +23,12 @@ PlayerStats="*res://Scripts/Player/player_stats.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/crosshair_3.png"
+window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/crosshair_3.png"
+
+[gui]
+
+theme/screen_space_roughness_limiter/enabled=true
 
 [importer_defaults]
 
@@ -97,13 +102,22 @@ reset={
 [layer_names]
 
 2d_physics/layer_1="walls"
+2d_navigation/layer_1="ground_navigation"
 2d_physics/layer_2="mobs"
+2d_navigation/layer_2="air_navigation"
 2d_physics/layer_3="player_body"
 2d_physics/layer_4="player"
 2d_physics/layer_5="short_object"
 2d_physics/layer_6="long_object"
 2d_physics/layer_7="spell"
 2d_physics/layer_8="collectible"
+2d_physics/layer_9="explosives"
+avoidance/layer_1="ground_objects"
+avoidance/layer_2="tall_objects"
+
+[physics]
+
+common/physics_jitter_fix=0.1
 
 [rendering]
 

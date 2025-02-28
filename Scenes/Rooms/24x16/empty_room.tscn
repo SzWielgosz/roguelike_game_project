@@ -1,19 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxuh2nfknhvt3"]
+[gd_scene load_steps=7 format=3 uid="uid://dxuh2nfknhvt3"]
 
 [ext_resource type="Script" path="res://Scenes/Rooms/24x16/empty_room.gd" id="1_o2rbt"]
-[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Art/Tilemaps/new_general.tres" id="2_1ysag"]
+[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Assets/Art/Tilemaps/new_general.tres" id="2_1ysag"]
 [ext_resource type="Script" path="res://Scenes/RoomArea/room_area.gd" id="3_roum5"]
 [ext_resource type="Script" path="res://Scenes/Rooms/24x16/mob_spawner.gd" id="4_rjvqk"]
 [ext_resource type="Script" path="res://Scripts/room_manager.gd" id="5_6np7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rasot"]
 size = Vector2(352, 224)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gq72u"]
-polygon = PackedVector2Array(192, -135, 192, 127, 177, 127, 177, -135)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_he7wn"]
-polygon = PackedVector2Array(178, 170, 193, 170, 193, -184, 178, -184)
 
 [node name="EmptyRoom" type="Node2D"]
 script = ExtResource("1_o2rbt")
@@ -39,7 +33,7 @@ shape = SubResource("RectangleShape2D_rasot")
 
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="MobSpawner" type="Node2D" parent="."]
+[node name="MobSpawnManager" type="Node2D" parent="."]
 script = ExtResource("4_rjvqk")
 
 [node name="RoomManager" type="Node" parent="."]
@@ -49,26 +43,8 @@ script = ExtResource("5_6np7r")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_gq72u")
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
-position = Vector2(-6, -66)
-rotation = 1.5708
-occluder = SubResource("OccluderPolygon2D_he7wn")
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
-position = Vector2(1, -7)
-rotation = -3.14159
-occluder = SubResource("OccluderPolygon2D_gq72u")
-
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="."]
-position = Vector2(8, 65)
-rotation = -1.5708
-occluder = SubResource("OccluderPolygon2D_he7wn")
-
 [connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
 [connection signal="body_entered" from="RoomArea" to="RoomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="RoomArea" to="RoomArea" method="_on_body_exited"]
-[connection signal="spawn_mobs" from="RoomArea" to="MobSpawner" method="_on_room_area_spawn_mobs"]
+[connection signal="spawn_mobs" from="RoomArea" to="MobSpawnManager" method="_on_room_area_spawn_mobs"]
 [connection signal="timeout" from="SpawnTimer" to="RoomArea" method="_on_spawn_timer_timeout"]

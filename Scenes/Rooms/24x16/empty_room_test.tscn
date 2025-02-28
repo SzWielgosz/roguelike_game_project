@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd8v10e6mbud4"]
 
 [ext_resource type="Script" path="res://Scenes/Rooms/24x16/empty_room_test.gd" id="1_2datb"]
-[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Art/Tilemaps/new_general.tres" id="1_hoyac"]
+[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Assets/Art/Tilemaps/new_general.tres" id="1_hoyac"]
 
 [node name="EmptyRoomTest" type="Node2D"]
 script = ExtResource("1_2datb")

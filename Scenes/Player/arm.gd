@@ -1,10 +1,12 @@
 extends Node2D
 
 @onready var marker = $Marker2D
+@onready var ui = $"../UI"
 var current_spell = null
 var spell_requires_charging = false
 var spell_done_charging = false
 var spell_cooldown = 0
+signal spell_casted
 
 
 func _process(delta):
@@ -23,11 +25,12 @@ func _input(event):
 			spell_requires_charging = selected_spell.requires_charge
 			current_spell = selected_spell.cast_spell()
 			if current_spell:
+				ui.start_spell_cooldown()
 				get_tree().root.add_child(current_spell)
 				current_spell.global_position = marker.global_position
 				var direction = (get_global_mouse_position() - current_spell.global_position).normalized()
 				current_spell.set_direction(direction)
-				
+
 	if event.is_action_released("use_spell"):
 		current_spell = null
 		spell_requires_charging = false

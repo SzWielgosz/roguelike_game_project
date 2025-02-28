@@ -1,6 +1,6 @@
 extends Node
-var fireball_spell_scene = preload("res://Scenes/Magic/Tier0/Fireball/fireball_spell.tscn")
-var rock_throw_spell_scene = preload("res://Scenes/Magic/Tier0/RockThrow/rock_throw_spell.tscn")
+var fireball_spell_scene = preload("res://Scenes/Magic/Fireball/fireball_spell.tscn")
+var rock_throw_spell_scene = preload("res://Scenes/Magic/RockThrow/rock_throw_spell.tscn")
 var player_health: float = 3.0
 var player_max_health: float = 3.0
 var player_max_hearts: int = 10
@@ -13,6 +13,7 @@ signal health_changed(value)
 signal gold_changed(value)
 signal bombs_changed(value)
 signal slot_changed(value)
+signal cooldown_started(spell_name, slot)
 
 
 func _ready():
@@ -30,7 +31,6 @@ func get_selected_spell():
 func switch_slot(slot_index: int):
 	if slot_index >= 0 and slot_index < slots.size():
 		selected_slot = slot_index
-		print("Przełączono na slot:", selected_slot, "Spell:", slots[selected_slot])
 
 
 func _input(event):

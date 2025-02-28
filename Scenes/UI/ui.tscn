@@ -1,91 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmj1nwyiwev3j"]
+[gd_scene load_steps=5 format=3 uid="uid://cmj1nwyiwev3j"]
 
-[ext_resource type="Texture2D" uid="uid://ddutlh8h5t3a" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/spell_frame.png" id="1_7ardd"]
-[ext_resource type="Texture2D" uid="uid://ciglj55r6hfe7" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/key_one.png" id="1_eavf6"]
-[ext_resource type="Texture2D" uid="uid://43n6bphc4lpw" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/key_two.png" id="2_i6mrf"]
-[ext_resource type="Texture2D" uid="uid://c6uqd6g7hrqig" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/key_three.png" id="3_7enst"]
-[ext_resource type="Texture2D" uid="uid://c42aqdr8h13mc" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bomb_anim_f0.png" id="5_i3bm3"]
-[ext_resource type="Texture2D" uid="uid://cav6343qponyg" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/coin.png" id="6_vgt6j"]
+[ext_resource type="PackedScene" uid="uid://mxc4ef8itkqb" path="res://Scenes/UI/SpellSlot/spell_frame.tscn" id="1_yjqjq"]
+[ext_resource type="Texture2D" uid="uid://c42aqdr8h13mc" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bomb_anim_f0.png" id="5_xcbac"]
+[ext_resource type="Texture2D" uid="uid://cav6343qponyg" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/coin.png" id="6_1ialg"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://Assets/Fonts/EditUndo/editundo.ttf" id="6_4jbyx"]
 
 [node name="UI" type="CanvasLayer"]
+scale = Vector2(5, 5)
+transform = Transform2D(5, 0, 0, 5, 0, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 56.0
-offset_bottom = 83.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 63.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_eavf6")
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_i6mrf")
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("3_7enst")
-
 [node name="SpellSlots" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/SpellSlots"]
 layout_mode = 2
 
-[node name="Slot1" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer"]
+[node name="SpellFrame1" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer" instance=ExtResource("1_yjqjq")]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_7ardd")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer/Slot1"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch_mode = 3
-
-[node name="Slot2" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer"]
+[node name="SpellFrame2" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer" instance=ExtResource("1_yjqjq")]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_7ardd")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer/Slot2"]
-layout_mode = 1
-offset_right = 16.0
-offset_bottom = 16.0
-scale = Vector2(0.5, 0.5)
-stretch_mode = 3
-
-[node name="Slot3" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer"]
+[node name="SpellFrame3" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer" instance=ExtResource("1_yjqjq")]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_7ardd")
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer/Slot3"]
-layout_mode = 1
-offset_right = 16.0
-offset_bottom = 16.0
-stretch_mode = 3
 
 [node name="Health" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -102,10 +52,12 @@ size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/BombCounter/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_i3bm3")
+texture = ExtResource("5_xcbac")
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/BombCounter/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_4jbyx")
+theme_override_font_sizes/font_size = 14
 text = "0"
 
 [node name="CoinCounter" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
@@ -118,8 +70,10 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/CoinCounter/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_vgt6j")
+texture = ExtResource("6_1ialg")
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/CoinCounter/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_4jbyx")
+theme_override_font_sizes/font_size = 14
 text = "0"

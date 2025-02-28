@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dcfk0ccwqqebu"]
 
-[ext_resource type="Texture2D" uid="uid://dpcpw8eltbo78" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_spritesheet_no_key.png" id="1_tuvn2"]
+[ext_resource type="Texture2D" uid="uid://dpcpw8eltbo78" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_spritesheet_no_key.png" id="1_tuvn2"]
 [ext_resource type="Script" path="res://Scenes/Door/door.gd" id="2_6jd53"]
 
 [sub_resource type="Animation" id="Animation_l5rlj"]

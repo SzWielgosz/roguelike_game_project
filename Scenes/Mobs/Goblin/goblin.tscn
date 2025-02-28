@@ -1,0 +1,164 @@
+[gd_scene load_steps=25 format=3 uid="uid://bxf8y8e8qe12p"]
+
+[ext_resource type="Script" path="res://Scenes/Mobs/Goblin/goblin.gd" id="1_alu10"]
+[ext_resource type="Script" path="res://Scripts/health.gd" id="2_fc8pp"]
+[ext_resource type="Texture2D" uid="uid://wqr5yqw6ioo5" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f0.png" id="3_4gse4"]
+[ext_resource type="Texture2D" uid="uid://cu14ytb5m7pp8" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f1.png" id="4_x66di"]
+[ext_resource type="Texture2D" uid="uid://buyccfdlaek8j" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f2.png" id="5_n7tyh"]
+[ext_resource type="Texture2D" uid="uid://c0poyivh1xio5" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f3.png" id="6_mbq2f"]
+[ext_resource type="Texture2D" uid="uid://bgmo8makuk5s6" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f4.png" id="7_pcup8"]
+[ext_resource type="Texture2D" uid="uid://3e03li7enmun" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f5.png" id="8_s20pm"]
+[ext_resource type="Texture2D" uid="uid://wiaed8r6d7sk" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f0.png" id="9_d8skb"]
+[ext_resource type="Texture2D" uid="uid://607ul12tir4a" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f1.png" id="10_8gyvf"]
+[ext_resource type="Texture2D" uid="uid://cyna13yl4sil" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f2.png" id="11_cn2yi"]
+[ext_resource type="Texture2D" uid="uid://d3l4vx4deglj0" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f3.png" id="12_35bxe"]
+[ext_resource type="Script" path="res://Scenes/Mobs/Goblin/state_machine.gd" id="13_0y45a"]
+[ext_resource type="Texture2D" uid="uid://bo8o61slmdfgs" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f4.png" id="13_j3e6x"]
+[ext_resource type="Texture2D" uid="uid://lcyitoqn7bvc" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f5.png" id="14_6r7i4"]
+[ext_resource type="Script" path="res://Scenes/Mobs/Goblin/Idle.gd" id="14_hcl38"]
+[ext_resource type="Script" path="res://Scenes/Mobs/Goblin/Wander.gd" id="15_vvbef"]
+[ext_resource type="Script" path="res://Scenes/Mobs/Goblin/Follow.gd" id="16_boeul"]
+[ext_resource type="Script" path="res://Scenes/Mobs/Goblin/Death.gd" id="18_3ku6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y88jy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4gse4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x66di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n7tyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mbq2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pcup8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s20pm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_d8skb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8gyvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cn2yi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_35bxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j3e6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6r7i4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q8oa4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ykbv5"]
+radius = 155.003
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_matrb"]
+size = Vector2(11, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5unc"]
+size = Vector2(7, 7)
+
+[node name="Goblin" type="CharacterBody2D" groups=["mobs"]]
+z_index = 1
+position = Vector2(50, 0)
+collision_layer = 2
+collision_mask = 55
+motion_mode = 1
+script = ExtResource("1_alu10")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_fc8pp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y88jy")
+animation = &"run"
+
+[node name="debug" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -31.0
+offset_right = 26.0
+offset_bottom = -8.0
+text = "debug"
+label_settings = SubResource("LabelSettings_q8oa4")
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_ykbv5")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_matrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_l5unc")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 500.0
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("13_0y45a")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("14_hcl38")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Follow" type="Node2D" parent="StateMachine"]
+script = ExtResource("16_boeul")
+
+[node name="FollowTimer" type="Timer" parent="StateMachine/Follow"]
+wait_time = 0.2
+
+[node name="Wander" type="Node2D" parent="StateMachine"]
+script = ExtResource("15_vvbef")
+
+[node name="WanderTimer" type="Timer" parent="StateMachine/Wander"]
+one_shot = true
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("18_3ku6j")
+
+[connection signal="area_entered" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_entered"]
+[connection signal="area_entered" from="DetectionRange" to="StateMachine/Follow" method="_on_detection_range_area_entered"]
+[connection signal="area_entered" from="DetectionRange" to="StateMachine/Wander" method="_on_detection_range_area_entered"]
+[connection signal="area_exited" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_exited"]
+[connection signal="area_exited" from="DetectionRange" to="StateMachine/Follow" method="_on_detection_range_area_exited"]
+[connection signal="area_exited" from="DetectionRange" to="StateMachine/Wander" method="_on_detection_range_area_exited"]
+[connection signal="body_entered" from="HitBox" to="StateMachine/Wander" method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="StateMachine/Wander" method="_on_hit_box_body_exited"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Follow/FollowTimer" to="StateMachine/Follow" method="_on_follow_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Wander/WanderTimer" to="StateMachine/Wander" method="_on_timer_timeout"]

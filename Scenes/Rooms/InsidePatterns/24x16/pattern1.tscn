@@ -1,57 +1,79 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbeeqwkcuqvw3"]
+[gd_scene load_steps=7 format=3 uid="uid://cbeeqwkcuqvw3"]
 
+[ext_resource type="Script" path="res://Scenes/Rooms/InsidePatterns/24x16/NavigationRegion2D.gd" id="2_qhy2b"]
 [ext_resource type="PackedScene" uid="uid://dbt7xdj2fr5u0" path="res://Scenes/Destroyables/barrel.tscn" id="2_qsgf5"]
+[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://Scenes/Mobs/mob_spawner.tscn" id="3_3kvow"]
+[ext_resource type="PackedScene" uid="uid://bxf8y8e8qe12p" path="res://Scenes/Mobs/Goblin/goblin.tscn" id="4_i0ssy"]
+[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://Scenes/Mobs/FlyingEye/flying_eye.tscn" id="5_fm8nr"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_31a2y"]
+vertices = PackedVector2Array(15, 102, 176, 113, -176, 113, -16, 102, -176, -111, -16, -87, 176, -111, 15, -87)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 1, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(186, -121, 186, 123, -186, 123, -186, -121)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Pattern1" type="Node2D"]
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -1)
+navigation_polygon = SubResource("NavigationPolygon_31a2y")
+script = ExtResource("2_qhy2b")
 
-[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(60, 56)
-
-[node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-58, -59)
-
-[node name="Marker2D3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-61, 56)
-
-[node name="Marker2D4" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(60, -57)
-
-[node name="Barrels" type="Node2D" parent="."]
-
-[node name="Barrel" parent="Barrels" instance=ExtResource("2_qsgf5")]
-position = Vector2(0, -70)
-
-[node name="Barrel2" parent="Barrels" instance=ExtResource("2_qsgf5")]
-position = Vector2(0, -56)
-
-[node name="Barrel3" parent="Barrels" instance=ExtResource("2_qsgf5")]
-position = Vector2(0, -42)
-
-[node name="Barrel4" parent="Barrels" instance=ExtResource("2_qsgf5")]
-position = Vector2(0, -28)
-
-[node name="Barrel5" parent="Barrels" instance=ExtResource("2_qsgf5")]
-position = Vector2(0, -14)
-
-[node name="Barrel6" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrels" type="Node2D" parent="NavigationRegion2D"]
 position = Vector2(0, 1)
 
-[node name="Barrel7" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrel" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -70)
+
+[node name="Barrel2" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -56)
+
+[node name="Barrel3" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -42)
+
+[node name="Barrel4" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -28)
+
+[node name="Barrel5" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, -14)
+
+[node name="Barrel6" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
+position = Vector2(0, 1)
+
+[node name="Barrel7" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
 position = Vector2(0, 15)
 
-[node name="Barrel8" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrel8" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
 position = Vector2(0, 29)
 
-[node name="Barrel9" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrel9" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
 position = Vector2(0, 43)
 
-[node name="Barrel10" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrel10" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
 position = Vector2(0, 57)
 
-[node name="Barrel11" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrel11" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
 position = Vector2(0, 71)
 
-[node name="Barrel12" parent="Barrels" instance=ExtResource("2_qsgf5")]
+[node name="Barrel12" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_qsgf5")]
 position = Vector2(0, 85)
+
+[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D/Barrels"]
+
+[node name="MobSpawner" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_3kvow")]
+position = Vector2(-130, -70)
+mob = ExtResource("4_i0ssy")
+
+[node name="MobSpawner2" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_3kvow")]
+position = Vector2(130, -70)
+mob = ExtResource("5_fm8nr")
+
+[node name="MobSpawner3" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_3kvow")]
+position = Vector2(-130, 70)
+mob = ExtResource("5_fm8nr")
+
+[node name="MobSpawner4" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_3kvow")]
+position = Vector2(130, 70)
+mob = ExtResource("5_fm8nr")
+
+[connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]

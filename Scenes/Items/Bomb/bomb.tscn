@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://1bolwv7ymgtx"]
 
 [ext_resource type="Script" path="res://Scenes/Items/Bomb/bomb.gd" id="1_gtkpd"]
-[ext_resource type="Texture2D" uid="uid://d6ks7p5bicvr" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bomb_anim_spritesheet.png" id="2_3rrvg"]
-[ext_resource type="Texture2D" uid="uid://brs70ul6ff8hn" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/explosion_anim_spritesheet.png" id="3_whka0"]
+[ext_resource type="Texture2D" uid="uid://d6ks7p5bicvr" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bomb_anim_spritesheet.png" id="2_2todv"]
+[ext_resource type="Texture2D" uid="uid://brs70ul6ff8hn" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/explosion_anim_spritesheet.png" id="3_l5vpx"]
 
 [sub_resource type="Animation" id="Animation_ndiov"]
 length = 0.001
@@ -143,16 +143,17 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
-texture = ExtResource("2_3rrvg")
+texture = ExtResource("2_2todv")
 hframes = 10
 
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_whka0")
+texture = ExtResource("3_l5vpx")
 hframes = 7
 
-[node name="ExplosionRadius" type="Area2D" parent="."]
-collision_mask = 14
+[node name="ExplosionRadius" type="Area2D" parent="." groups=["bomb"]]
+collision_layer = 256
+collision_mask = 62
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
 shape = SubResource("CircleShape2D_83ro5")

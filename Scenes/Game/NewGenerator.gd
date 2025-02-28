@@ -105,8 +105,14 @@ func add_room_patterns():
 	for room in $"../Rooms".get_children():
 		if room.get_node("RoomArea").type == RoomType.REGULAR:
 			var room_pattern = room_patterns.instantiate()
+			
+			var original_nav = room_pattern.get_node("NavigationRegion2D")
+			if original_nav:
+				var new_nav = original_nav.duplicate() 
+				room_pattern.remove_child(original_nav)
+				room_pattern.add_child(new_nav)
+				new_nav.owner = room_pattern
 			room.get_node("RoomPattern").add_child(room_pattern)
-
 
 func connect_rooms():
 	var created_rooms = $"../Rooms".get_children()
@@ -120,10 +126,8 @@ func connect_rooms():
 				connect_door.global_position = room.global_position + spawn_door_directions[direction]
 				connect_door.rotation_degrees = directions[direction]
 
-				# Obliczamy główną pozycję w TileMap
 				var tilemap_position = Map.local_to_map(room.global_position + spawn_door_directions[direction])
 
-				# Przesunięcia dla dodatkowych kafelków zależnie od kierunku
 				var offsets = {
 					"top": [Vector2i(-1, 0), Vector2i(-1, -1), Vector2i(0, -1)],
 					"down": [Vector2i(-1, 0), Vector2i(-1, -1), Vector2i(0, -1)],
@@ -131,12 +135,12 @@ func connect_rooms():
 					"right": [Vector2i(0, -1), Vector2i(-1, -1), Vector2i(-1, 0)]
 				}
 
-				# Ustawiamy kafelki na podłogę
-				Map.set_cell(0, tilemap_position, 0, Vector2i(5, 3)) # Główna pozycja
-				Map.erase_cell(1, tilemap_position) # Dodatkowe kafelki
+
+				Map.set_cell(0, tilemap_position, 0, Vector2i(5, 3))
+				Map.erase_cell(1, tilemap_position)
 				for offset in offsets.get(direction, []): 
-					Map.set_cell(0, tilemap_position + offset, 0, Vector2i(5, 3)) # Dodatkowe kafelki
-					Map.erase_cell(1, tilemap_position + offset) # Dodatkowe kafelki
+					Map.set_cell(0, tilemap_position + offset, 0, Vector2i(5, 3))
+					Map.erase_cell(1, tilemap_position + offset)
 
 
 func find_start_room():

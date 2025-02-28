@@ -71,3 +71,8 @@ func _on_immortality_blink_timer_timeout():
 		return
 	$"../AnimatedSprite2D".visible = not $"../AnimatedSprite2D".visible
 	$"../Arm/Sprite2D".visible = not $"../Arm/Sprite2D".visible
+
+
+func _on_hit_box_body_entered(body):
+	if body.is_in_group("mobs"):
+		take_damage(body.get_node("Health").damage)

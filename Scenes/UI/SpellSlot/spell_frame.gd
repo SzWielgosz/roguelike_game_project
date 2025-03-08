@@ -4,7 +4,7 @@ extends Control
 var cooldown_started: bool = false
 var cooldown_value: float = 0.0
 
-func _process(delta):
+func _process(_delta):
 	if cooldown_started:
 		label.text = str(round_to_dec(cooldown_timer.time_left, 2))
 	

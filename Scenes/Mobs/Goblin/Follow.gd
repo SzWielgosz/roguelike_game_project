@@ -35,11 +35,11 @@ func transition():
 	owner.direction = current_agent_position.direction_to(next_path_position)
 
 
-func _on_detection_range_area_exited(area):
+func _on_detection_range_area_exited(_area):
 	player_exited = true
 
 
-func _on_detection_range_area_entered(area):
+func _on_detection_range_area_entered(_area):
 	player_exited = false
 
 

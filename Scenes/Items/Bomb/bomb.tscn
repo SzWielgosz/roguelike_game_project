@@ -167,7 +167,6 @@ one_shot = true
 wait_time = 0.65
 one_shot = true
 
-[connection signal="area_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_area_entered"]
 [connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
 [connection signal="timeout" from="PlacedTimer" to="." method="_on_placed_timer_timeout"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

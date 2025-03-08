@@ -11,6 +11,7 @@ signal hearts_changed(value)
 
 
 func _ready():
+	$UI.visible = true
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.set_health(PlayerStats.player_health)
 
@@ -40,7 +41,7 @@ func update_direction():
 			$AnimatedSprite2D.flip_h = false
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if knockback.length() > min_knockback:
 		knockback /= slow_knockback
 		velocity = knockback

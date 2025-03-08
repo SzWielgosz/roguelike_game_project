@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dhuatdpid0sb2" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_anim_opening_f8.png" id="7_th1xw"]
 [ext_resource type="Texture2D" uid="uid://cdfnpx7tqth73" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_anim_opening_f7.png" id="8_8penm"]
 [ext_resource type="Texture2D" uid="uid://b4ciewupft8gt" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_anim_opening_f6.png" id="9_55y7c"]
-[ext_resource type="Script" path="res://Scripts/door_counter.gd" id="10_rxn1s"]
+[ext_resource type="Script" path="res://Scripts/Room/door_counter.gd" id="10_rxn1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a84qa"]
 size = Vector2(226, 224)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://cyb8oxg7okohu"]
 
 [ext_resource type="Script" path="res://Scenes/Mobs/FlyingEye/flying_eye.gd" id="1_8imbd"]
+[ext_resource type="Script" path="res://Scripts/Mobs/health.gd" id="2_g0s14"]
 [ext_resource type="Texture2D" uid="uid://phjh83ntvkpg" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f0.png" id="3_nn3pd"]
 [ext_resource type="Texture2D" uid="uid://dm380yaeddt0q" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f1.png" id="4_x57q6"]
 [ext_resource type="Texture2D" uid="uid://3sux545yp6ha" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f2.png" id="5_2fiub"]
 [ext_resource type="Texture2D" uid="uid://bwnedxpm4bvwm" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f3.png" id="6_uoc1o"]
-[ext_resource type="Script" path="res://Scripts/health.gd" id="7_33sut"]
 [ext_resource type="Script" path="res://Scenes/Mobs/Goblin/state_machine.gd" id="7_egkgm"]
 [ext_resource type="Script" path="res://Scenes/Mobs/FlyingEye/Idle.gd" id="8_uei1k"]
 [ext_resource type="Script" path="res://Scenes/Mobs/FlyingEye/Follow.gd" id="9_w2cmm"]
@@ -50,7 +50,7 @@ motion_mode = 1
 script = ExtResource("1_8imbd")
 
 [node name="Health" type="Node" parent="."]
-script = ExtResource("7_33sut")
+script = ExtResource("2_g0s14")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i14yq")

@@ -13,6 +13,6 @@ func _process(_delta):
 	else:
 		animated_sprite.flip_h = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = direction.normalized() * speed
 	move_and_slide()

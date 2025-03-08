@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Assets/Art/Tilemaps/new_general.tres" id="2_1ysag"]
 [ext_resource type="Script" path="res://Scenes/RoomArea/room_area.gd" id="3_roum5"]
 [ext_resource type="Script" path="res://Scenes/Rooms/24x16/mob_spawner.gd" id="4_rjvqk"]
-[ext_resource type="Script" path="res://Scripts/room_manager.gd" id="5_6np7r"]
+[ext_resource type="Script" path="res://Scripts/Room/room_manager.gd" id="5_kh0bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rasot"]
 size = Vector2(352, 224)
@@ -37,7 +37,7 @@ shape = SubResource("RectangleShape2D_rasot")
 script = ExtResource("4_rjvqk")
 
 [node name="RoomManager" type="Node" parent="."]
-script = ExtResource("5_6np7r")
+script = ExtResource("5_kh0bl")
 
 [node name="RoomPattern" type="Node2D" parent="."]
 

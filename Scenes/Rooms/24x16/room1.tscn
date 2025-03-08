@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://Assets/Art/Tilemaps/new_general.tres" id="1_nvu2x"]
 [ext_resource type="Script" path="res://Scenes/RoomArea/room_area.gd" id="2_axpfc"]
 [ext_resource type="Script" path="res://Scenes/Rooms/24x16/mob_spawner.gd" id="3_flsob"]
-[ext_resource type="Script" path="res://Scripts/room_manager.gd" id="4_c88uk"]
+[ext_resource type="Script" path="res://Scripts/Room/room_manager.gd" id="4_c88uk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1xyy"]
 size = Vector2(352, 224)

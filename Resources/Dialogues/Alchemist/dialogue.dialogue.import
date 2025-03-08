@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cgv5amtfksp5g"
+path="res://.godot/imported/dialogue.dialogue-7176d0a7d56fb5a1044a2c9a8bae52b3.tres"
+
+[deps]
+
+source_file="res://Resources/Dialogues/Alchemist/dialogue.dialogue"
+dest_files=["res://.godot/imported/dialogue.dialogue-7176d0a7d56fb5a1044a2c9a8bae52b3.tres"]
+
+[params]
+
+defaults=true

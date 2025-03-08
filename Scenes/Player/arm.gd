@@ -9,7 +9,7 @@ var spell_cooldown = 0
 signal spell_casted
 
 
-func _process(delta):
+func _process(_delta):
 	look_at(get_global_mouse_position())
 	if current_spell != null:
 		if spell_requires_charging and !spell_done_charging:

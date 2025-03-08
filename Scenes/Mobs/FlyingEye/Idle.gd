@@ -24,11 +24,11 @@ func transition():
 		get_parent().change_state("Wander")
 
 
-func _on_detection_range_area_entered(area):
+func _on_detection_range_area_entered(_area):
 	player_entered = true
 
 
-func _on_detection_range_area_exited(area):
+func _on_detection_range_area_exited(_area):
 	player_entered = false
 
 

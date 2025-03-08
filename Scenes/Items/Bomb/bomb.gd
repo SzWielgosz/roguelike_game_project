@@ -11,10 +11,6 @@ func _ready():
 	placed_timer.start()
 
 
-func _on_explosion_radius_area_entered(area):
-	pass
-
-
 func _on_explosion_radius_body_entered(body):
 	if body.is_in_group("player"):
 		var health = body.get_node("PlayerHealth")

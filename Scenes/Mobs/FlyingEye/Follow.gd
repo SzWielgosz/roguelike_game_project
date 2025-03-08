@@ -25,11 +25,11 @@ func transition():
 
 
 
-func _on_detection_range_area_exited(area):
+func _on_detection_range_area_exited(_area):
 	player_exited = true
 
 
-func _on_detection_range_area_entered(area):
+func _on_detection_range_area_entered(_area):
 	player_exited = false
 
 

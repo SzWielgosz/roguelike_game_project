@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://cyuu1n1siygd0"]
+
+[ext_resource type="Script" path="res://Scenes/Npcs/Alchemist/alchemist.gd" id="1_wpbq3"]
+[ext_resource type="Texture2D" uid="uid://ceuspbur0erj5" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation1.png" id="1_ylp4w"]
+[ext_resource type="Texture2D" uid="uid://d4g8m6hb3yk0o" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation2.png" id="2_dtlk4"]
+[ext_resource type="Resource" uid="uid://cgv5amtfksp5g" path="res://Resources/Dialogues/Alchemist/dialogue.dialogue" id="2_e287i"]
+[ext_resource type="Texture2D" uid="uid://b0k7p243a5oa0" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation3.png" id="3_uj1sa"]
+[ext_resource type="Texture2D" uid="uid://cnwo4f2wbsycu" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation4.png" id="4_kcp2g"]
+[ext_resource type="Texture2D" uid="uid://be0ruo71rt5p8" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation5.png" id="5_yksvh"]
+[ext_resource type="Texture2D" uid="uid://blfo7m6airbmm" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation6.png" id="6_6icc6"]
+[ext_resource type="Texture2D" uid="uid://be16xn58ihqvr" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation7.png" id="7_fpjmm"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://Assets/Fonts/EditUndo/editundo.ttf" id="9_a3s54"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jagg6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ylp4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dtlk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uj1sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kcp2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yksvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6icc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fpjmm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wk04e"]
+radius = 54.037
+
+[node name="Alchemist" type="Node2D"]
+script = ExtResource("1_wpbq3")
+dialogue = ExtResource("2_e287i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jagg6")
+animation = &"idle"
+frame = 3
+frame_progress = 0.513479
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wk04e")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -14.0
+offset_right = 950.0
+offset_bottom = 99.0
+scale = Vector2(0.05, 0.05)
+theme_override_fonts/font = ExtResource("9_a3s54")
+theme_override_font_sizes/font_size = 128
+text = "Press e to talk"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

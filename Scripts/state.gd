@@ -22,6 +22,6 @@ func transition():
 	pass
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	transition()
 	debug.text = name

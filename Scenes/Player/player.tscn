@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_7suhb"]
 [ext_resource type="PackedScene" uid="uid://cmj1nwyiwev3j" path="res://Scenes/UI/ui.tscn" id="2_4fwle"]
-[ext_resource type="Script" path="res://Scripts/player_health.gd" id="2_rx38t"]
 [ext_resource type="Texture2D" uid="uid://dhg310lohdi8f" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f0.png" id="3_5iw7n"]
 [ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="3_pvpgv"]
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="3_wp66w"]
+[ext_resource type="Script" path="res://Scripts/Player/player_health.gd" id="4_1323j"]
 [ext_resource type="Texture2D" uid="uid://dcpb73rlyb4b1" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f1.png" id="4_h2i5w"]
 [ext_resource type="Texture2D" uid="uid://c1ul1uwsni25y" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f1.png" id="4_u03d1"]
 [ext_resource type="Texture2D" uid="uid://dnuxw8v0pot88" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f2.png" id="5_1ugpk"]
@@ -115,16 +115,19 @@ motion_mode = 1
 script = ExtResource("1_7suhb")
 
 [node name="UI" parent="." instance=ExtResource("2_4fwle")]
+visible = false
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("3_wp66w")
 
 [node name="PlayerHealth" type="Node" parent="."]
-script = ExtResource("2_rx38t")
+script = ExtResource("4_1323j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_35mxl")
-animation = &"dead"
+animation = &"idle"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

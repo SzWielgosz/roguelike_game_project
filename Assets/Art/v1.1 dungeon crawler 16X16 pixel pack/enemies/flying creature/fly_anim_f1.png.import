@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dm380yaeddt0q"
-path="res://.godot/imported/fly_anim_f1.png-2188ccc3f4e12127b415b4bbd2c0cd04.ctex"
+path="res://.godot/imported/fly_anim_f1.png-339d49f5cc86a63346e932b8e0723270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f1.png"
-dest_files=["res://.godot/imported/fly_anim_f1.png-2188ccc3f4e12127b415b4bbd2c0cd04.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/flying creature/fly_anim_f1.png"
+dest_files=["res://.godot/imported/fly_anim_f1.png-339d49f5cc86a63346e932b8e0723270.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddukt26qq44o0"
-path="res://.godot/imported/chest_spritesheet.png-59b37c74e13400ace5cb41ae2148c193.ctex"
+path="res://.godot/imported/chest_spritesheet.png-309a44d1a8f378ca64b84fd7591a67b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_spritesheet.png"
-dest_files=["res://.godot/imported/chest_spritesheet.png-59b37c74e13400ace5cb41ae2148c193.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_spritesheet.png"
+dest_files=["res://.godot/imported/chest_spritesheet.png-309a44d1a8f378ca64b84fd7591a67b5.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sjlc3gbar38x"
-path="res://.godot/imported/potion_green.png-991bfaee16197a5557183a27c50670ac.ctex"
+path="res://.godot/imported/potion_green.png-f1a4073a76b40f515be6d5c6b60e755d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/potion_green.png"
-dest_files=["res://.godot/imported/potion_green.png-991bfaee16197a5557183a27c50670ac.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/potion_green.png"
+dest_files=["res://.godot/imported/potion_green.png-f1a4073a76b40f515be6d5c6b60e755d.ctex"]
 
 [params]
 

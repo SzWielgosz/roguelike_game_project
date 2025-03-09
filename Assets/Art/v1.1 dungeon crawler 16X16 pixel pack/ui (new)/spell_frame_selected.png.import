@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcy1kexh11odu"
-path="res://.godot/imported/spell_frame_selected.png-600769beac0ee777553af40733a5f0dc.ctex"
+path="res://.godot/imported/spell_frame_selected.png-ee0d73116c188e5ba914a055dc407eae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/spell_frame_selected.png"
-dest_files=["res://.godot/imported/spell_frame_selected.png-600769beac0ee777553af40733a5f0dc.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/spell_frame_selected.png"
+dest_files=["res://.godot/imported/spell_frame_selected.png-ee0d73116c188e5ba914a055dc407eae.ctex"]
 
 [params]
 

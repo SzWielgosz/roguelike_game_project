@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cingqs0yakokk"
-path="res://.godot/imported/chest_closed_anim_f5.png-e83ccf4ca41bef664ef4b9c639ea2f66.ctex"
+path="res://.godot/imported/chest_closed_anim_f5.png-318673478dd17ab18fc5203ce5c64972.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f5.png"
-dest_files=["res://.godot/imported/chest_closed_anim_f5.png-e83ccf4ca41bef664ef4b9c639ea2f66.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f5.png"
+dest_files=["res://.godot/imported/chest_closed_anim_f5.png-318673478dd17ab18fc5203ce5c64972.ctex"]
 
 [params]
 

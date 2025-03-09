@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccoup6wgninyg"
-path="res://.godot/imported/health_hearts.png-8efbad9dc5b73cb77eb242d6fe8adf7c.ctex"
+path="res://.godot/imported/health_hearts.png-b85a7711afd20c7bcee5c4fb3b97afad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/health_hearts.png"
-dest_files=["res://.godot/imported/health_hearts.png-8efbad9dc5b73cb77eb242d6fe8adf7c.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/health_hearts.png"
+dest_files=["res://.godot/imported/health_hearts.png-b85a7711afd20c7bcee5c4fb3b97afad.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgpheat38yxp"
-path="res://.godot/imported/key_silver.png-d021117b487859e22a31f0e5a3cb88aa.ctex"
+path="res://.godot/imported/key_silver.png-3a9fb96cb5d74744b88039d6fd6cb01e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/key_silver.png"
-dest_files=["res://.godot/imported/key_silver.png-d021117b487859e22a31f0e5a3cb88aa.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/key_silver.png"
+dest_files=["res://.godot/imported/key_silver.png-3a9fb96cb5d74744b88039d6fd6cb01e.ctex"]
 
 [params]
 

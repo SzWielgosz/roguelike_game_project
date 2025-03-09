@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c707vaiw34tg2"
-path="res://.godot/imported/wall_arch_left.png-435fcd8fe2d2c57d3d6dda55f3c1342e.ctex"
+path="res://.godot/imported/wall_arch_left.png-6f0298d241e4fae83170b818db31693d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/wall_arch_left.png"
-dest_files=["res://.godot/imported/wall_arch_left.png-435fcd8fe2d2c57d3d6dda55f3c1342e.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/wall_arch_left.png"
+dest_files=["res://.godot/imported/wall_arch_left.png-6f0298d241e4fae83170b818db31693d.ctex"]
 
 [params]
 

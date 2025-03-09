@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dl4uxw0r8j571"
-path="res://.godot/imported/edundot.ttf-762e5e4c0d1c0d26fc8bc5e15944fcad.fontdata"
+path="res://.godot/imported/edundot.ttf-85cd212000d4de46ab97ba61cc04f7ae.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/EditUndo/edundot.ttf"
-dest_files=["res://.godot/imported/edundot.ttf-762e5e4c0d1c0d26fc8bc5e15944fcad.fontdata"]
+source_file="res://assets/fonts/EditUndo/edundot.ttf"
+dest_files=["res://.godot/imported/edundot.ttf-85cd212000d4de46ab97ba61cc04f7ae.fontdata"]
 
 [params]
 

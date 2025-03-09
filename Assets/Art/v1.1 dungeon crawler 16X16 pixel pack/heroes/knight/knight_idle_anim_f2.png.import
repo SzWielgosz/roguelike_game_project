@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://carv0cgu2dfu"
-path="res://.godot/imported/knight_idle_anim_f2.png-d89018ac297c529777e3624c57a7b14d.ctex"
+path="res://.godot/imported/knight_idle_anim_f2.png-f2ecbc9675fa618aabced0949f98f465.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f2.png"
-dest_files=["res://.godot/imported/knight_idle_anim_f2.png-d89018ac297c529777e3624c57a7b14d.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_anim_f2.png"
+dest_files=["res://.godot/imported/knight_idle_anim_f2.png-f2ecbc9675fa618aabced0949f98f465.ctex"]
 
 [params]
 

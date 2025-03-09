@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c301yyyfwwlwy"
-path="res://.godot/imported/empty_heart.png-483f6e5259459ca2eb204e983675fbe8.ctex"
+path="res://.godot/imported/empty_heart.png-8f14aa0d855d49e4b51c81d3d2c4b4a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/empty_heart.png"
-dest_files=["res://.godot/imported/empty_heart.png-483f6e5259459ca2eb204e983675fbe8.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/empty_heart.png"
+dest_files=["res://.godot/imported/empty_heart.png-8f14aa0d855d49e4b51c81d3d2c4b4a6.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhg310lohdi8f"
-path="res://.godot/imported/mage_dying_anim_f0.png-a1f2e3d55aa1f3a0b13a3d93f780b480.ctex"
+path="res://.godot/imported/mage_dying_anim_f0.png-d0b2cc60c53cff9db59f4a99bd5697ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f0.png"
-dest_files=["res://.godot/imported/mage_dying_anim_f0.png-a1f2e3d55aa1f3a0b13a3d93f780b480.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f0.png"
+dest_files=["res://.godot/imported/mage_dying_anim_f0.png-d0b2cc60c53cff9db59f4a99bd5697ef.ctex"]
 
 [params]
 

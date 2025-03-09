@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdsf71m4jmt04"
-path="res://.godot/imported/slime_idle_anim_f1.png-c0f24b7ad7265352b2d6183d6d1ee1e6.ctex"
+path="res://.godot/imported/slime_idle_anim_f1.png-8a57251df12f60bb0eb73ca764ce8f46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f1.png"
-dest_files=["res://.godot/imported/slime_idle_anim_f1.png-c0f24b7ad7265352b2d6183d6d1ee1e6.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f1.png"
+dest_files=["res://.godot/imported/slime_idle_anim_f1.png-8a57251df12f60bb0eb73ca764ce8f46.ctex"]
 
 [params]
 

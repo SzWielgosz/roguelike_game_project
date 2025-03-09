@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://batifbu4f6rfd"
-path="res://.godot/imported/torch_anim_f2.png-2c4ef4a7c3df0c7cc031b11418cc1a6b.ctex"
+path="res://.godot/imported/torch_anim_f2.png-3669fbb63b77bd5cd9b2a30fa23f7726.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f2.png"
-dest_files=["res://.godot/imported/torch_anim_f2.png-2c4ef4a7c3df0c7cc031b11418cc1a6b.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f2.png"
+dest_files=["res://.godot/imported/torch_anim_f2.png-3669fbb63b77bd5cd9b2a30fa23f7726.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@ extends Resource
 @export var cooldown: float = 1.0
 
 func cast(user: Node, marker: Node, position: Vector2):
-	var fireball_scene = preload("res://Scenes/Magic/Tier0/Fireball/fireball.tscn")
+	var fireball_scene = preload("res://scenes/spells/fireball/fireball.tscn")
 	var fireball_instance = fireball_scene.instance()
 
 	fireball_instance.global_position = marker.global_position

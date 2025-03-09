@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl5fyu1v4a327"
-path="res://.godot/imported/enemy_afterdead_explosion_anim_f0.png-16dc3260c63b6d34c5e095958ba61acc.ctex"
+path="res://.godot/imported/enemy_afterdead_explosion_anim_f0.png-a20eb606a13c2a1aa4a3343bd12bcf46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png"
-dest_files=["res://.godot/imported/enemy_afterdead_explosion_anim_f0.png-16dc3260c63b6d34c5e095958ba61acc.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png"
+dest_files=["res://.godot/imported/enemy_afterdead_explosion_anim_f0.png-a20eb606a13c2a1aa4a3343bd12bcf46.ctex"]
 
 [params]
 

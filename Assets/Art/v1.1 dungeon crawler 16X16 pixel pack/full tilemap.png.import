@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqvba6uu2rnag"
-path="res://.godot/imported/full tilemap.png-2479d85f2465774bc9626f34f6527066.ctex"
+path="res://.godot/imported/full tilemap.png-a8ee6aed1498e18fe80f6c66fd30b8bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/full tilemap.png"
-dest_files=["res://.godot/imported/full tilemap.png-2479d85f2465774bc9626f34f6527066.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/full tilemap.png"
+dest_files=["res://.godot/imported/full tilemap.png-a8ee6aed1498e18fe80f6c66fd30b8bb.ctex"]
 
 [params]
 

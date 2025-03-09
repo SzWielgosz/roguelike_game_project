@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ol537itfmpmt"
-path="res://.godot/imported/rock_throw_destroy_animation1.png-5da53c68052a2ac99456a1d0a6bfcb95.ctex"
+path="res://.godot/imported/rock_throw_destroy_animation1.png-b6770282a3ff2b319549399d11ece93c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation1.png"
-dest_files=["res://.godot/imported/rock_throw_destroy_animation1.png-5da53c68052a2ac99456a1d0a6bfcb95.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_destroy_animation1.png"
+dest_files=["res://.godot/imported/rock_throw_destroy_animation1.png-b6770282a3ff2b319549399d11ece93c.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmc8p13crwjac"
-path="res://.godot/imported/bookshelf.png-45fd95036e7b44aa2c808eb9a9fd91bf.ctex"
+path="res://.godot/imported/bookshelf.png-c51abf14ed44cf53b6c523e6e1ad0114.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bookshelf.png"
-dest_files=["res://.godot/imported/bookshelf.png-45fd95036e7b44aa2c808eb9a9fd91bf.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bookshelf.png"
+dest_files=["res://.godot/imported/bookshelf.png-c51abf14ed44cf53b6c523e6e1ad0114.ctex"]
 
 [params]
 

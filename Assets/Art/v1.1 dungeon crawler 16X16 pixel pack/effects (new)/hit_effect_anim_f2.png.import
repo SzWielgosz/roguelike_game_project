@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcdoivctlv2w2"
-path="res://.godot/imported/hit_effect_anim_f2.png-ff4f67a6d8c284c86ac38ed9d2dfdb17.ctex"
+path="res://.godot/imported/hit_effect_anim_f2.png-ccd5ccf1bf182c8b5eaa6a875a91685c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f2.png"
-dest_files=["res://.godot/imported/hit_effect_anim_f2.png-ff4f67a6d8c284c86ac38ed9d2dfdb17.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f2.png"
+dest_files=["res://.godot/imported/hit_effect_anim_f2.png-ccd5ccf1bf182c8b5eaa6a875a91685c.ctex"]
 
 [params]
 

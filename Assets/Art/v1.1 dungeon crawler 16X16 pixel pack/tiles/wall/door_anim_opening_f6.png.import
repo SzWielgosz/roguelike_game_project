@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4ciewupft8gt"
-path="res://.godot/imported/door_anim_opening_f6.png-68093ec2cee8578bf3a69b1a2c4fb4bf.ctex"
+path="res://.godot/imported/door_anim_opening_f6.png-911e2c6fa9d1438b3777d963b9aaef66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_anim_opening_f6.png"
-dest_files=["res://.godot/imported/door_anim_opening_f6.png-68093ec2cee8578bf3a69b1a2c4fb4bf.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_anim_opening_f6.png"
+dest_files=["res://.godot/imported/door_anim_opening_f6.png-911e2c6fa9d1438b3777d963b9aaef66.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpcpw8eltbo78"
-path="res://.godot/imported/door_spritesheet_no_key.png-fd78d2bfe16a4e1df065890b2d72bed6.ctex"
+path="res://.godot/imported/door_spritesheet_no_key.png-86e5422fcac8e2ff7143a8b527f40c27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_spritesheet_no_key.png"
-dest_files=["res://.godot/imported/door_spritesheet_no_key.png-fd78d2bfe16a4e1df065890b2d72bed6.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_spritesheet_no_key.png"
+dest_files=["res://.godot/imported/door_spritesheet_no_key.png-86e5422fcac8e2ff7143a8b527f40c27.ctex"]
 
 [params]
 

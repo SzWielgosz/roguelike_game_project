@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwd5fya1gdvw"
-path="res://.godot/imported/spikes_anim_f2.png-4dce49128c00815b64c97e0ae9397021.ctex"
+path="res://.godot/imported/spikes_anim_f2.png-1f056cf8bf22b47d2ce60823d4b56e7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f2.png"
-dest_files=["res://.godot/imported/spikes_anim_f2.png-4dce49128c00815b64c97e0ae9397021.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f2.png"
+dest_files=["res://.godot/imported/spikes_anim_f2.png-1f056cf8bf22b47d2ce60823d4b56e7c.ctex"]
 
 [params]
 

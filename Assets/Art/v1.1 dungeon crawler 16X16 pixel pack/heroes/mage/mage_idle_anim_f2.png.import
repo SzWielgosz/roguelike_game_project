@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxgrhf2w8iw0b"
-path="res://.godot/imported/mage_idle_anim_f2.png-6dd14c802e1ac57d444042bd87466644.ctex"
+path="res://.godot/imported/mage_idle_anim_f2.png-0dc4223871fde36d4679c6cd64adac45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f2.png"
-dest_files=["res://.godot/imported/mage_idle_anim_f2.png-6dd14c802e1ac57d444042bd87466644.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f2.png"
+dest_files=["res://.godot/imported/mage_idle_anim_f2.png-0dc4223871fde36d4679c6cd64adac45.ctex"]
 
 [params]
 

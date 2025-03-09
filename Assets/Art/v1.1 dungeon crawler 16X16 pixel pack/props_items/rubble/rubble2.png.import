@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckcr1pgfun785"
-path="res://.godot/imported/rubble2.png-4c7a2f258feb9285ad76e23492484376.ctex"
+path="res://.godot/imported/rubble2.png-c9c9fd39f690d56791c6b5b8abdcd697.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubble/rubble2.png"
-dest_files=["res://.godot/imported/rubble2.png-4c7a2f258feb9285ad76e23492484376.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubble/rubble2.png"
+dest_files=["res://.godot/imported/rubble2.png-c9c9fd39f690d56791c6b5b8abdcd697.ctex"]
 
 [params]
 

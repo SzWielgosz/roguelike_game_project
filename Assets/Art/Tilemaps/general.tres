@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://caccnnr3ncjlf"]
 
-[ext_resource type="Texture2D" uid="uid://cqvba6uu2rnag" path="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/full tilemap.png" id="1_ha1r3"]
+[ext_resource type="Texture2D" uid="uid://cqvba6uu2rnag" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/full tilemap.png" id="1_ha1r3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6vmfs"]
 texture = ExtResource("1_ha1r3")

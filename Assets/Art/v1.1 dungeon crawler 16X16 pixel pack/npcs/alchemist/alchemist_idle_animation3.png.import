@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0k7p243a5oa0"
-path="res://.godot/imported/alchemist_idle_animation3.png-bf68b022015baba347b0df37b5e90ab6.ctex"
+path="res://.godot/imported/alchemist_idle_animation3.png-ed889c29df292d5a9da6041a3f2272a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation3.png"
-dest_files=["res://.godot/imported/alchemist_idle_animation3.png-bf68b022015baba347b0df37b5e90ab6.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/alchemist/alchemist_idle_animation3.png"
+dest_files=["res://.godot/imported/alchemist_idle_animation3.png-ed889c29df292d5a9da6041a3f2272a0.ctex"]
 
 [params]
 

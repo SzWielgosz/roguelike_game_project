@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqpteqa8unb1p"
-path="res://.godot/imported/barrel_destroyed.png-4d601987cb24069432dad465ced22079.ctex"
+path="res://.godot/imported/barrel_destroyed.png-6eb1626cd8addb9c181639a74cd76c7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/props_items/barrel/barrel_destroyed.png"
-dest_files=["res://.godot/imported/barrel_destroyed.png-4d601987cb24069432dad465ced22079.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/barrel/barrel_destroyed.png"
+dest_files=["res://.godot/imported/barrel_destroyed.png-6eb1626cd8addb9c181639a74cd76c7c.ctex"]
 
 [params]
 

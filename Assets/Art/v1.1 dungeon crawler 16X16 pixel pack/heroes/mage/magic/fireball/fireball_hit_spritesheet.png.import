@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buhkdqi5x6k3k"
-path="res://.godot/imported/fireball_hit_spritesheet.png-da32889848fa91180b94802569e763ff.ctex"
+path="res://.godot/imported/fireball_hit_spritesheet.png-65b48081a1f4b9e8c73f1c97b9f362d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_hit_spritesheet.png"
-dest_files=["res://.godot/imported/fireball_hit_spritesheet.png-da32889848fa91180b94802569e763ff.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_hit_spritesheet.png"
+dest_files=["res://.godot/imported/fireball_hit_spritesheet.png-65b48081a1f4b9e8c73f1c97b9f362d3.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d00immhql2km8"
-path="res://.godot/imported/mage_run_anim_f4.png-9a065ecfd09a0c45dc92cb896a462c43.ctex"
+path="res://.godot/imported/mage_run_anim_f4.png-b8093f2cddd518ff368e21f53e9be638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f4.png"
-dest_files=["res://.godot/imported/mage_run_anim_f4.png-9a065ecfd09a0c45dc92cb896a462c43.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f4.png"
+dest_files=["res://.godot/imported/mage_run_anim_f4.png-b8093f2cddd518ff368e21f53e9be638.ctex"]
 
 [params]
 

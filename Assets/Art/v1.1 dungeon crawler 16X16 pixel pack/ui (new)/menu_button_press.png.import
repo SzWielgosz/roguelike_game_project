@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://deq7si5iix2sd"
-path="res://.godot/imported/menu_button_press.png-398264247366d925758ebeed12cd2ba2.ctex"
+path="res://.godot/imported/menu_button_press.png-e57fe1014fab64d72b06e523b6078a79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/menu_button_press.png"
-dest_files=["res://.godot/imported/menu_button_press.png-398264247366d925758ebeed12cd2ba2.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/menu_button_press.png"
+dest_files=["res://.godot/imported/menu_button_press.png-e57fe1014fab64d72b06e523b6078a79.ctex"]
 
 [params]
 

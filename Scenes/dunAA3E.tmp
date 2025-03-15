@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3fevp3ts8hnq"]
-
-[ext_resource type="Script" path="res://Scenes/dungeon_generator.gd" id="1_0bo1y"]
-
-[node name="DungeonGenerator" type="Node2D"]
-script = ExtResource("1_0bo1y")

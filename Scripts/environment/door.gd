@@ -11,14 +11,12 @@ func _ready():
 
 func open_door():
 	animation_player.play("door_opening")
-	z_index = 1
 	if timer.is_inside_tree():
 		timer.start()
 
 
 func close_door():
 	animation_player.play("door_closing")
-	z_index = 0
 	if timer.is_inside_tree():
 		timer.start()
 

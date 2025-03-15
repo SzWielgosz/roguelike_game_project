@@ -6,9 +6,11 @@ var room_patterns = preload("res://scenes/main/rooms/24x16/pattern1.tscn")
 enum RoomType { REGULAR, TREASURE, START, END }
 @onready var Map: TileMap = $"../TileMap"
 @onready var Player = $"../Player"
+@onready var minimap = $"../Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"
 var tile_size: int = 16
 var rooms_to_generate: int = 8
 var room_dict: Dictionary = {}
+var create_minimap_dict: Dictionary = {}
 var queue: Array = []
 var spawn_directions = {
 	"top": Vector2(0, -272),
@@ -29,15 +31,25 @@ var directions = {
 	"left": 270
 }
 var length: int = 16
+var width: int = 24
+var height: int = 16
 var start_room = null
 var end_room = null
 
 
 func does_overlap(new_room_rect: Rect2) -> bool:
-	for existing_room_rect in room_dict.values():
+	for existing_room_rect in room_dict.keys():
 		if existing_room_rect.intersects(new_room_rect):
 			return true
 	return false
+	
+
+func get_overlaping_rect(new_room_rect: Rect2):
+	for existing_room_rect in room_dict.keys():
+		if existing_room_rect.intersects(new_room_rect):
+			return existing_room_rect
+	return null
+	
 
 
 func generate_rooms():
@@ -45,10 +57,11 @@ func generate_rooms():
 	var start_position = Vector2(0, 0)
 	var first_room = empty_room.instantiate()
 	first_room.name = "Room_0"
-	var room_rect = Rect2(start_position, Vector2(length, length) * tile_size)
-	room_dict[first_room.name] = room_rect
-	first_room.global_position = room_rect.position + (Vector2(length, length) * tile_size) / 2
-	start_position -= Vector2(0, (length * tile_size) + 16)
+	var room_rect = Rect2(start_position, Vector2(width, height) * tile_size)
+	room_dict[room_rect] = first_room
+	create_minimap_dict[room_rect] = first_room
+	first_room.global_position = room_rect.position + (Vector2(width, height) * tile_size) / 2
+	start_position -= Vector2(0, (width * tile_size) + 16)
 	$"../Rooms".add_child(first_room)
 	queue.append(first_room)
 	remaining_rooms -= 1
@@ -72,14 +85,15 @@ func generate_rooms():
 			var new_room_position = picked_room_position + spawn_directions[picked_direction]
 
 			var generated_room_rect = Rect2(
-				new_room_position - picked_room.get_node("RoomArea").get_child(0).shape.extents - Vector2(length, length),
-				Vector2(length, length) * tile_size
+				new_room_position - picked_room.get_node("RoomArea").get_child(0).shape.extents - Vector2(width, height),
+				Vector2(width, height) * tile_size
 			)
 			
 			if not does_overlap(generated_room_rect):
 				new_room.get_node("RoomArea").type = RoomType.REGULAR
 				$"../Rooms".add_child(new_room)
-				room_dict[new_room.name] = generated_room_rect
+				room_dict[generated_room_rect] = new_room
+				create_minimap_dict[generated_room_rect] = new_room
 				new_room.global_position = new_room_position
 				queue.append(new_room)
 				remaining_rooms -= 1
@@ -99,7 +113,17 @@ func generate_rooms():
 
 		current_tilemap.queue_free()
 	print("End of generation")
-	
+
+
+func generate_minimap():
+	for minimap_room_rect in room_dict.keys():
+		for spawn_direction in spawn_directions.keys():
+			var spawn_direction_position = spawn_directions[spawn_direction]
+			var test_rect = Rect2(minimap_room_rect.position + spawn_direction_position, minimap_room_rect.size)
+			if does_overlap(test_rect):
+				var overlaping_rect = get_overlaping_rect(test_rect)
+				room_dict[minimap_room_rect].neighbours[spawn_direction] = create_minimap_dict[overlaping_rect]
+	minimap.create_minimap(room_dict)
 
 func add_room_patterns():
 	for room in $"../Rooms".get_children():
@@ -114,11 +138,12 @@ func add_room_patterns():
 				new_nav.owner = room_pattern
 			room.get_node("RoomPattern").add_child(room_pattern)
 
+
 func connect_rooms():
 	var created_rooms = $"../Rooms".get_children()
 	for room in created_rooms:
 		for direction in directions.keys():
-			var check_rect = Rect2(room.global_position, Vector2(length, length))
+			var check_rect = Rect2(room.global_position, Vector2(width, height))
 			check_rect.position += spawn_directions[direction]
 			if does_overlap(check_rect):
 				var connect_door = door.instantiate()
@@ -166,15 +191,16 @@ func spawn_player():
 	return
 
 
-func create_map():	
+func create_dungeon():	
 	generate_rooms()
 	connect_rooms()
 	find_start_room()
 	find_end_room()
+	generate_minimap()
 	add_room_patterns()
 	spawn_player()
+	
 
-
-func _draw():
-	for room_rect in room_dict.values():
-		draw_rect(room_rect, Color(0, 1, 0), false)
+#func _draw():
+	#for room_rect in room_dict.values():
+		#draw_rect(room_rect, Color(0, 1, 0), false)

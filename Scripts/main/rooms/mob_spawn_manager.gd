@@ -20,7 +20,7 @@ func _on_timer_timeout():
 
 func spawn_mobs():
 	print("Spawning mobs")
-	for spawn_point in get_parent().get_node("RoomPattern").get_child(0).get_child(0).get_child(0).get_node("SpawnPoints").get_children():
+	for spawn_point in get_parent().get_node("RoomPattern").get_child(0).get_child(0).get_node("SpawnPoints").get_children():
 		spawn_point.spawn_mob()
 		#var goblin = goblin_scene.instantiate()
 		#goblin.global_position = spawn_point.global_position

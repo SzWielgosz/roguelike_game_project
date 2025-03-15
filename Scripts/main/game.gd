@@ -1,10 +1,10 @@
 extends Node2D
-@onready var generator = $RoomGenerator
+@onready var generator = $DungeonGenerator
 @onready var reset_timer: Timer = $ResetTimer
 var holding_reset = false
 
 func _ready():
-	generator.create_map()
+	generator.create_dungeon()
 
 
 func _input(event):

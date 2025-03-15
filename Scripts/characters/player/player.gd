@@ -11,7 +11,7 @@ signal hearts_changed(value)
 
 
 func _ready():
-	$UI.visible = true
+	$HUD.visible = true
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.set_health(PlayerStats.player_health)
 

@@ -58,21 +58,22 @@ position = Vector2(0, 71)
 [node name="Barrel12" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_fwo8p")]
 position = Vector2(0, 85)
 
-[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D/Barrels"]
+[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
+position = Vector2(0, 1)
 
-[node name="MobSpawner" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_qxncg")]
+[node name="MobSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_qxncg")]
 position = Vector2(-130, -70)
 mob = ExtResource("4_aq7uo")
 
-[node name="MobSpawner2" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_qxncg")]
+[node name="MobSpawner2" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_qxncg")]
 position = Vector2(130, -70)
 mob = ExtResource("5_nk3yk")
 
-[node name="MobSpawner3" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_qxncg")]
+[node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_qxncg")]
 position = Vector2(-130, 70)
 mob = ExtResource("5_nk3yk")
 
-[node name="MobSpawner4" parent="NavigationRegion2D/Barrels/SpawnPoints" instance=ExtResource("3_qxncg")]
+[node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_qxncg")]
 position = Vector2(130, 70)
 mob = ExtResource("5_nk3yk")
 

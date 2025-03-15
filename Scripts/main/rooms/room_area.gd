@@ -2,6 +2,7 @@ extends Area2D
 class_name RoomArea
 
 enum RoomType { REGULAR, TREASURE, START, END }
+var room_visited: bool = false
 var doors_opened: bool = true
 var room_cleared: bool = false
 var mobs_spawned: bool = false
@@ -30,8 +31,11 @@ func _on_timer_timeout():
 
 
 func _on_body_entered(body):
-	if type == RoomType.REGULAR:
-		if body.is_in_group("player"):
+	if body.is_in_group("player"):
+		$"../Icon".visible = true
+		if type == RoomType.REGULAR:
+			if not room_visited:
+				room_visited = true
 			player_inside = true
 			if not room_cleared:
 				if doors_opened:

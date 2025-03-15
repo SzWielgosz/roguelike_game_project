@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6hcihkmdvp5x"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_i5uid"]
+[ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://Scenes/player.tscn" id="1_t0u2s"]
+[ext_resource type="Texture2D" uid="uid://kuarw51pe6e1" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/wall_1.png" id="2_1ju0n"]
+[ext_resource type="Texture2D" uid="uid://df64wuvfn1ok8" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/floor_1.png" id="3_36lso"]
+[ext_resource type="Script" path="res://Scenes/dungeon_generator.gd" id="4_tc81e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8x4y"]
+texture = ExtResource("2_1ju0n")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qw6i"]
+texture = ExtResource("3_36lso")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_s8bo7"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_o8x4y")
+sources/1 = SubResource("TileSetAtlasSource_8qw6i")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_i5uid")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_s8bo7")
+format = 2
+
+[node name="Player" parent="." instance=ExtResource("1_t0u2s")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="DungeonGenerator" type="Node2D" parent="."]
+script = ExtResource("4_tc81e")
+
+[node name="Rooms" type="Node" parent="."]

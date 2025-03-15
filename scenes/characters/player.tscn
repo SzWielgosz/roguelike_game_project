@@ -1,0 +1,168 @@
+[gd_scene load_steps=27 format=3 uid="uid://d06uia2xoesnx"]
+
+[ext_resource type="Script" path="res://scripts/characters/player/player.gd" id="1_54bo7"]
+[ext_resource type="PackedScene" uid="uid://cmj1nwyiwev3j" path="res://scenes/ui/hud.tscn" id="2_dlh8r"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="3_njjw6"]
+[ext_resource type="Script" path="res://scripts/characters/player/player_health.gd" id="4_o5525"]
+[ext_resource type="Texture2D" uid="uid://siahb6l7l857" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f4.png" id="5_su3yo"]
+[ext_resource type="Texture2D" uid="uid://dhg310lohdi8f" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f0.png" id="6_t3nm7"]
+[ext_resource type="Texture2D" uid="uid://c1ul1uwsni25y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f1.png" id="7_8c0og"]
+[ext_resource type="Texture2D" uid="uid://dnuxw8v0pot88" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f2.png" id="8_7b4gc"]
+[ext_resource type="Texture2D" uid="uid://c7q3mw8w5awxq" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f3.png" id="9_cy3gr"]
+[ext_resource type="Texture2D" uid="uid://cvesfr2ohy4jt" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f5.png" id="10_crsan"]
+[ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="11_q3pm1"]
+[ext_resource type="Texture2D" uid="uid://dcpb73rlyb4b1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f1.png" id="12_yjyeh"]
+[ext_resource type="Texture2D" uid="uid://dxgrhf2w8iw0b" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f2.png" id="13_db7ny"]
+[ext_resource type="Texture2D" uid="uid://bn83nhiiwwtfw" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f3.png" id="14_li7lj"]
+[ext_resource type="Texture2D" uid="uid://btofb6oby0j3q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f4.png" id="15_dbdfr"]
+[ext_resource type="Texture2D" uid="uid://d1mghnwc0bv5j" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f5.png" id="16_djx3j"]
+[ext_resource type="Texture2D" uid="uid://k1no8byx8rlm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f6.png" id="17_ox3pu"]
+[ext_resource type="Texture2D" uid="uid://b86cg6073olii" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f0.png" id="18_atjxq"]
+[ext_resource type="Texture2D" uid="uid://dyb7ao3yg3el1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f1.png" id="19_qx2ty"]
+[ext_resource type="Texture2D" uid="uid://bvm178tcsytmf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f2.png" id="20_62rha"]
+[ext_resource type="Texture2D" uid="uid://d00immhql2km8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_run_anim_f4.png" id="21_soil5"]
+[ext_resource type="Script" path="res://scripts/characters/player/arm.gd" id="22_jbbbd"]
+[ext_resource type="Texture2D" uid="uid://036mdwa2h5y8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/arm.png" id="23_kyn27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35mxl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_su3yo")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_t3nm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8c0og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7b4gc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cy3gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_su3yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_crsan")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_q3pm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yjyeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_db7ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_li7lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dbdfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_djx3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ox3pu")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_atjxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qx2ty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_62rha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_soil5")
+}],
+"loop": true,
+"name": &"movement",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysplj"]
+size = Vector2(6, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hupyk"]
+size = Vector2(10, 12)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+collision_layer = 12
+collision_mask = 19
+motion_mode = 1
+script = ExtResource("1_54bo7")
+
+[node name="HUD" parent="." instance=ExtResource("2_dlh8r")]
+visible = false
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+script = ExtResource("3_njjw6")
+
+[node name="PlayerHealth" type="Node" parent="."]
+script = ExtResource("4_o5525")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_35mxl")
+animation = &"idle"
+frame = 6
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ysplj")
+
+[node name="Arm" type="Node2D" parent="."]
+script = ExtResource("22_jbbbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arm"]
+position = Vector2(7, 0)
+rotation = 1.5708
+texture = ExtResource("23_kyn27")
+
+[node name="Marker2D" type="Marker2D" parent="Arm"]
+position = Vector2(10, 0)
+gizmo_extents = 5.0
+
+[node name="HitBox" type="Area2D" parent="." groups=["player"]]
+collision_layer = 12
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_hupyk")
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ImmortalityTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="ImmortalityBlinkTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="player_died" from="PlayerHealth" to="." method="_on_player_health_player_died"]
+[connection signal="body_entered" from="HitBox" to="PlayerHealth" method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="ImmortalityTimer" to="PlayerHealth" method="_on_immortality_timer_timeout"]
+[connection signal="timeout" from="ImmortalityBlinkTimer" to="PlayerHealth" method="_on_immortality_blink_timer_timeout"]

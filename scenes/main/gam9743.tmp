@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3y046xyuhqju"]
+
+[ext_resource type="Script" path="res://scripts/main/game.gd" id="1_3devl"]
+[ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="2_xyws0"]
+[ext_resource type="Script" path="res://scripts/main/dungeon_generator.gd" id="3_pi1ky"]
+[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="4_2kxes"]
+[ext_resource type="Script" path="res://scenes/main/draw_minimap.gd" id="5_ulq6r"]
+[ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="6_3wwrj"]
+[ext_resource type="Script" path="res://scenes/main/minimap_camera_2d.gd" id="6_pb4he"]
+[ext_resource type="Texture2D" uid="uid://brusmq32ks58x" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/minimap_frame.png" id="8_3adma"]
+
+[sub_resource type="GDScript" id="GDScript_vp85x"]
+script/source = "extends Camera2D
+
+
+func _ready():
+	Events.room_entered.connect(func(room):
+		global_position = room.global_position
+		)
+"
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_3devl")
+
+[node name="Player" parent="." instance=ExtResource("2_xyws0")]
+collision_mask = 147
+speed = 100
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+position_smoothing_enabled = true
+script = SubResource("GDScript_vp85x")
+
+[node name="DungeonGenerator" type="Node2D" parent="."]
+script = ExtResource("3_pi1ky")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_2kxes")
+format = 2
+layer_0/name = "floor"
+layer_1/name = "wall"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "furniture"
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "items"
+layer_3/tile_data = PackedInt32Array()
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Minimap" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Minimap"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_bottom = 92.0
+grow_horizontal = 0
+
+[node name="SubViewportCointainer" type="SubViewportContainer" parent="Minimap/MarginContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Minimap/MarginContainer/SubViewportCointainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(150, 100)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport"]
+layer = -1
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport"]
+script = ExtResource("5_ulq6r")
+
+[node name="PlayerIcon" type="Sprite2D" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"]
+z_index = 1
+texture = ExtResource("6_3wwrj")
+
+[node name="Camera2D" type="Camera2D" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D/PlayerIcon"]
+position_smoothing_enabled = true
+script = ExtResource("6_pb4he")
+
+[node name="Rooms" type="Node2D" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Minimap/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("8_3adma")
+
+[node name="ResetTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgm1hc5eeb3mj"]
+
+[ext_resource type="Script" path="res://scripts/ui/small_room_icon.gd" id="1_y4tj8"]
+[ext_resource type="Texture2D" uid="uid://bt8gfd2kxqtc8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/small_room_icon.png" id="2_hue1c"]
+[ext_resource type="Texture2D" uid="uid://d03xk86v06sry" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/small_room_icon_hidden.png" id="3_mkg8h"]
+
+[node name="SmallRoomIcon" type="Node2D"]
+script = ExtResource("1_y4tj8")
+
+[node name="Entered" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_hue1c")
+
+[node name="Hidden" type="Sprite2D" parent="."]
+texture = ExtResource("3_mkg8h")

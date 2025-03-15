@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://d048wjcw6oyni"]
+
+[ext_resource type="Texture2D" uid="uid://mcncwwjbj6ax" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_spritesheet.png" id="1_0bva7"]
+[ext_resource type="Script" path="res://Scenes/Magic/Tier0/Fireball/Fireball.gd" id="1_8dxyw"]
+[ext_resource type="Texture2D" uid="uid://buhkdqi5x6k3k" path="res://Art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_hit_spritesheet.png" id="2_7df23"]
+
+[sub_resource type="Animation" id="Animation_cphxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flying:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hit:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wi4tq"]
+resource_name = "flying"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flying:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_b7y2y"]
+resource_name = "hit"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ps8s4"]
+_data = {
+"RESET": SubResource("Animation_cphxq"),
+"flying": SubResource("Animation_wi4tq"),
+"hit": SubResource("Animation_b7y2y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tt21"]
+size = Vector2(8, 11)
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_8dxyw")
+
+[node name="Flying" type="Sprite2D" parent="."]
+texture = ExtResource("1_0bva7")
+hframes = 5
+
+[node name="Hit" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_7df23")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ps8s4")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8tt21")
+
+[node name="Timer" type="Timer" parent="."]

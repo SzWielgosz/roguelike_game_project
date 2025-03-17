@@ -3,11 +3,16 @@ var bomb_scene = preload("res://scenes/items/bomb.tscn")
 @export var speed := 150
 @export var min_knockback := 100
 @export var slow_knockback := 1.1
+@export var dash_speed = 1000
 var is_dead = false
+var can_dash = true
+var is_dashing = false
 var dying_animation_playing = false
 var dying_animation_completed = false
 var knockback: Vector2
+var dash_direction: Vector2
 signal hearts_changed(value)
+signal dash_active
 
 
 func _ready():
@@ -27,7 +32,10 @@ func update_animation():
 		return
 
 	if velocity != Vector2.ZERO:
-		$AnimatedSprite2D.play("movement")
+		if is_dashing:
+			$AnimatedSprite2D.play("dash")
+		else:
+			$AnimatedSprite2D.play("movement")
 	else:
 		$AnimatedSprite2D.play("idle")
 
@@ -45,16 +53,31 @@ func _physics_process(_delta):
 	if knockback.length() > min_knockback:
 		knockback /= slow_knockback
 		velocity = knockback
-		move_and_slide()
 		return
 	
 	if !is_dead:
-		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		velocity = input_direction * speed
+		if is_dashing:
+			velocity = dash_direction * dash_speed
+		else:	
+			var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+			velocity = input_direction * speed
+			
+			if Input.is_action_just_pressed("dash") and can_dash and input_direction != Vector2.ZERO:
+				start_dash(input_direction)
 	
 	move_and_slide()
 	update_direction()
 
+
+func start_dash(direction):
+	dash_active.emit()
+	is_dashing = true
+	can_dash = false
+	dash_direction = direction.normalized()
+	velocity = dash_direction * dash_speed
+	$DashParticles.emitting = true
+	$DashTimer.start()
+	$HUD.start_dash_cooldown($DashCooldownTimer.wait_time)
 
 func place_bomb():
 	var bomb_instance = bomb_scene.instantiate()
@@ -80,3 +103,14 @@ func _on_health_changed(health_value):
 
 func _on_player_health_player_died():
 	is_dead = true
+
+
+func _on_dash_timer_timeout():
+	is_dashing = false
+	velocity = Vector2.ZERO
+	$DashParticles.emitting = false
+	$DashCooldownTimer.start()
+
+
+func _on_dash_cooldown_timer_timeout():
+	can_dash = true

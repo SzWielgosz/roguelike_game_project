@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://d06uia2xoesnx"]
+[gd_scene load_steps=29 format=3 uid="uid://d06uia2xoesnx"]
 
 [ext_resource type="Script" path="res://scripts/characters/player/player.gd" id="1_54bo7"]
 [ext_resource type="PackedScene" uid="uid://cmj1nwyiwev3j" path="res://scenes/ui/hud.tscn" id="2_dlh8r"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="3_njjw6"]
 [ext_resource type="Script" path="res://scripts/characters/player/player_health.gd" id="4_o5525"]
+[ext_resource type="Texture2D" uid="uid://bj1wc60xa3yxt" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dash.png" id="5_jgu06"]
 [ext_resource type="Texture2D" uid="uid://siahb6l7l857" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f4.png" id="5_su3yo"]
 [ext_resource type="Texture2D" uid="uid://dhg310lohdi8f" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f0.png" id="6_t3nm7"]
 [ext_resource type="Texture2D" uid="uid://c1ul1uwsni25y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_dying_anim_f1.png" id="7_8c0og"]
@@ -26,6 +27,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_35mxl"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jgu06")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_su3yo")
@@ -107,15 +116,23 @@ size = Vector2(6, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hupyk"]
 size = Vector2(10, 12)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fyyfh"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.5
+angular_velocity_min = 45.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 0, 0)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 12
 collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_54bo7")
+dash_speed = 450
 
 [node name="HUD" parent="." instance=ExtResource("2_dlh8r")]
-visible = false
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("3_njjw6")
@@ -125,9 +142,7 @@ script = ExtResource("4_o5525")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_35mxl")
-animation = &"idle"
-frame = 6
-frame_progress = 1.0
+animation = &"movement"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -152,17 +167,37 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_hupyk")
 
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_fyyfh")
+lifetime = 0.3
+explosiveness = 0.5
+randomness = 1.0
+
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="ImmortalityTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [node name="ImmortalityBlinkTimer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="dash_active" from="." to="PlayerHealth" method="_on_player_dash_active"]
 [connection signal="player_died" from="PlayerHealth" to="." method="_on_player_health_player_died"]
 [connection signal="body_entered" from="HitBox" to="PlayerHealth" method="_on_hit_box_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="ImmortalityTimer" to="PlayerHealth" method="_on_immortality_timer_timeout"]
 [connection signal="timeout" from="ImmortalityBlinkTimer" to="PlayerHealth" method="_on_immortality_blink_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="PlayerHealth" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

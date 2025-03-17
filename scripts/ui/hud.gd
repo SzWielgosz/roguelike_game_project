@@ -69,6 +69,10 @@ func select_spell():
 	previous_selected_spell = current_selected_spell
 
 
+func start_dash_cooldown(value):
+	$HBoxContainer/VBoxContainer/Dash/HBoxContainer/DashIcon.set_cooldown(value)
+	$HBoxContainer/VBoxContainer/Dash/HBoxContainer/DashIcon.start_cooldown()
+
 
 func _ready():
 	set_hearts(health)

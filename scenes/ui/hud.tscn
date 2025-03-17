@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmj1nwyiwev3j"]
+[gd_scene load_steps=6 format=3 uid="uid://cmj1nwyiwev3j"]
 
 [ext_resource type="PackedScene" uid="uid://mxc4ef8itkqb" path="res://scenes/ui/spell_frame.tscn" id="1_7x2mb"]
+[ext_resource type="PackedScene" uid="uid://b8slqfigwuoag" path="res://scenes/ui/dash_icon.tscn" id="2_8rcc7"]
 [ext_resource type="Texture2D" uid="uid://c42aqdr8h13mc" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bomb_anim_f0.png" id="2_xxll7"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="3_0qpdx"]
 [ext_resource type="Texture2D" uid="uid://cav6343qponyg" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/coin.png" id="4_6wj36"]
@@ -20,7 +21,6 @@ layout_mode = 2
 
 [node name="SpellSlots" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/SpellSlots"]
 layout_mode = 2
@@ -41,6 +41,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Health"]
+layout_mode = 2
+
+[node name="Dash" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Dash"]
+layout_mode = 2
+
+[node name="DashIcon" parent="HBoxContainer/VBoxContainer/Dash/HBoxContainer" instance=ExtResource("2_8rcc7")]
 layout_mode = 2
 
 [node name="BombCounter" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]

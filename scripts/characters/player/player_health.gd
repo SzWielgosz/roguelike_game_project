@@ -5,6 +5,7 @@ class_name PlayerHealth
 @export var immortality: bool = false
 @onready var player = get_parent()
 var velocity = Vector2.ZERO
+var dash_immortal = false
 
 
 signal player_died
@@ -22,8 +23,9 @@ func take_damage(value, knockback = Vector2(0, 0)) -> float:
 	print("Player took damage! HP left:", PlayerStats.player_health)
 	apply_knockback(knockback)
 
-	
-	set_immortality(true)
+	if !dash_immortal:
+		set_immortality(true)
+		
 	return PlayerStats.player_health
 
 
@@ -36,8 +38,9 @@ func set_immortality(value: bool):
 	if immortality:
 		player.set_collision_layer_value(3, false)
 		player.set_collision_mask_value(2, false)
-		$"../ImmortalityTimer".start()
-		$"../ImmortalityBlinkTimer".start()
+		if !dash_immortal:
+			$"../ImmortalityTimer".start()
+			$"../ImmortalityBlinkTimer".start()
 	else:
 		player.set_collision_layer_value(3, true)
 		player.set_collision_mask_value(2, true)
@@ -47,7 +50,8 @@ func set_immortality(value: bool):
 
 
 func _on_immortality_timer_timeout():
-	set_immortality(false)
+	if not dash_immortal:
+		set_immortality(false)
 
 
 func _on_health_changed(health_value):
@@ -56,6 +60,9 @@ func _on_health_changed(health_value):
 		player.velocity = Vector2.ZERO
 		player.knockback = Vector2.ZERO
 		player.set_collision_layer_value(3, false)
+		player.set_collision_layer_value(4, false)
+		$"../HitBox".set_collision_layer_value(3, false)
+		$"../HitBox".set_collision_layer_value(4, false)
 		player.set_collision_mask_value(2, false)
 		$"../ImmortalityBlinkTimer".stop()
 		$"../AnimatedSprite2D".visible = true
@@ -76,3 +83,13 @@ func _on_immortality_blink_timer_timeout():
 func _on_hit_box_body_entered(body):
 	if body.is_in_group("mobs"):
 		take_damage(body.get_node("Health").damage)
+
+
+func _on_dash_timer_timeout():
+	dash_immortal = false
+	set_immortality(false)
+
+
+func _on_player_dash_active():
+	dash_immortal = true
+	set_immortality(true)

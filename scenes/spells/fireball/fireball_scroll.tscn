@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dagcau3qmcq5n"]
+
+[ext_resource type="Script" path="res://scripts/base/spells/spell_scroll.gd" id="1_m57yh"]
+[ext_resource type="Texture2D" uid="uid://b4gkabuq4ur5q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_animation1.png" id="2_18cxe"]
+[ext_resource type="PackedScene" uid="uid://fg1br5u3cpyf" path="res://scenes/spells/fireball/fireball.tscn" id="2_huv0n"]
+
+[node name="FireballScroll" type="Node2D" node_paths=PackedStringArray("cooldown_timer")]
+script = ExtResource("1_m57yh")
+spell_scene = ExtResource("2_huv0n")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_18cxe")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

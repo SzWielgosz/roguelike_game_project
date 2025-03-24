@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddhae5uhw7ffs"]
+
+[ext_resource type="Script" path="res://scripts/base/spells/fire_boomerang.gd" id="1_dfq70"]
+[ext_resource type="Texture2D" uid="uid://bcj6sp7i3hvpy" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fire_boomerang/fire_boomerang_animation1.png" id="2_xhy4x"]
+[ext_resource type="Texture2D" uid="uid://bg8y13ok402b4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fire_boomerang/fire_boomerang_animation2.png" id="3_ijsm8"]
+[ext_resource type="Texture2D" uid="uid://bn67ow2bydmvw" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fire_boomerang/fire_boomerang_animation3.png" id="4_a8efx"]
+[ext_resource type="Texture2D" uid="uid://b3ucembpg5j17" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fire_boomerang/fire_boomerang_animation4.png" id="5_ji58w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hlu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xhy4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ijsm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a8efx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ji58w")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xo8i3"]
+radius = 7.0
+
+[node name="FireBoomerang" type="Node2D" groups=["spell"]]
+script = ExtResource("1_dfq70")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2hlu3")
+animation = &"flying"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xo8i3")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

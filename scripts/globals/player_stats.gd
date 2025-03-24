@@ -1,6 +1,7 @@
 extends Node
-var fireball_spell_scene = preload("res://scenes/spells/fireball/fireball_spell.tscn")
-var rock_throw_spell_scene = preload("res://scenes/spells/rock_throw/rock_throw_spell.tscn")
+var lesser_fireball_scroll_scene = preload("res://scenes/spells/lesser_fireball/lesser_fireball_scroll.tscn")
+var fireball_scroll_scene = preload("res://scenes/spells/fireball/fireball_scroll.tscn")
+var fire_boomerang_scroll_scene = preload("res://scenes/spells/fire_boomerang/fire_boomerang_scroll.tscn")
 var player_health: float = 3.0
 var player_max_health: float = 3.0
 var player_max_hearts: int = 10
@@ -17,11 +18,13 @@ signal cooldown_started(spell_name, slot)
 
 
 func _ready():
-	var fireball = fireball_spell_scene.instantiate()
-	var rock_throw = rock_throw_spell_scene.instantiate()
+	var lesser_fireball = lesser_fireball_scroll_scene.instantiate()
+	var fireball = fireball_scroll_scene.instantiate()
+	var fire_boomerang = fire_boomerang_scroll_scene.instantiate()
+	add_child(lesser_fireball)
 	add_child(fireball)
-	add_child(rock_throw)
-	slots = [fireball, rock_throw, null]
+	add_child(fire_boomerang)
+	slots = [lesser_fireball, fireball, fire_boomerang]
 
 
 func get_selected_spell():

@@ -14,7 +14,8 @@ func _on_timer_timeout():
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("spell") or area.is_in_group("bomb"):
+	var parent = area.get_parent()
+	if parent.is_in_group("spell") or parent.is_in_group("bomb"):
 		$Area2D.queue_free()
 		$StaticBody2D.queue_free()
 		$NavigationObstacle2D.queue_free()

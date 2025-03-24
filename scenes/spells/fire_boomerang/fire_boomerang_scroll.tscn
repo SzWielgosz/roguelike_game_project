@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://tp77n5207hgr"]
+
+[ext_resource type="Script" path="res://scripts/base/spells/spell_scroll.gd" id="1_hmfrt"]
+[ext_resource type="Texture2D" uid="uid://bcj6sp7i3hvpy" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fire_boomerang/fire_boomerang_animation1.png" id="2_buk0j"]
+[ext_resource type="PackedScene" uid="uid://ddhae5uhw7ffs" path="res://scenes/spells/fire_boomerang/fire_boomerang.tscn" id="2_q4bug"]
+
+[node name="FireBoomerangScroll" type="Node2D" node_paths=PackedStringArray("cooldown_timer")]
+script = ExtResource("1_hmfrt")
+spell_scene = ExtResource("2_q4bug")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_buk0j")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

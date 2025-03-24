@@ -160,6 +160,8 @@ texture = ExtResource("23_kyn27")
 position = Vector2(10, 0)
 gizmo_extents = 5.0
 
+[node name="CastedSpells" type="Node" parent="Arm"]
+
 [node name="HitBox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 12
 collision_mask = 2

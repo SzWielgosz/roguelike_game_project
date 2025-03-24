@@ -1,11 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxf8y8e8qe12p"]
+[gd_scene load_steps=30 format=3 uid="uid://bxf8y8e8qe12p"]
 
 [ext_resource type="Script" path="res://scripts/characters/mobs/goblin/goblin.gd" id="1_e3qgb"]
 [ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="2_fh7qx"]
+[ext_resource type="Texture2D" uid="uid://1arysl2m311p" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f0.png" id="3_1wirc"]
 [ext_resource type="Texture2D" uid="uid://wqr5yqw6ioo5" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f0.png" id="3_7d518"]
 [ext_resource type="Texture2D" uid="uid://cu14ytb5m7pp8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f1.png" id="4_hojda"]
+[ext_resource type="Texture2D" uid="uid://dbp5fp1rc7e07" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f1.png" id="4_x6qf2"]
 [ext_resource type="Texture2D" uid="uid://buyccfdlaek8j" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f2.png" id="5_4ckmo"]
+[ext_resource type="Texture2D" uid="uid://bcdoivctlv2w2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f2.png" id="5_ngdmi"]
 [ext_resource type="Texture2D" uid="uid://c0poyivh1xio5" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f3.png" id="6_erfug"]
+[ext_resource type="Texture2D" uid="uid://c37cmrbubm4hf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/hit_anim.png" id="6_nwyni"]
 [ext_resource type="Texture2D" uid="uid://bgmo8makuk5s6" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f4.png" id="7_kkfv8"]
 [ext_resource type="Texture2D" uid="uid://3e03li7enmun" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f5.png" id="8_f1g04"]
 [ext_resource type="Texture2D" uid="uid://wiaed8r6d7sk" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_run_anim_f0.png" id="9_o75k2"]
@@ -19,9 +23,32 @@
 [ext_resource type="Script" path="res://scripts/characters/mobs/goblin/follow.gd" id="17_pavl7"]
 [ext_resource type="Script" path="res://scripts/characters/mobs/goblin/wander.gd" id="18_m7vbj"]
 [ext_resource type="Script" path="res://scripts/characters/mobs/goblin/death.gd" id="19_uv6mf"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin/hit.gd" id="23_e02on"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y88jy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1wirc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x6qf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ngdmi")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_nwyni")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_7d518")
@@ -93,7 +120,7 @@ script = ExtResource("2_fh7qx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y88jy")
-animation = &"run"
+animation = &"death"
 
 [node name="debug" type="Label" parent="."]
 offset_left = -23.0
@@ -148,9 +175,22 @@ script = ExtResource("18_m7vbj")
 [node name="WanderTimer" type="Timer" parent="StateMachine/Wander"]
 one_shot = true
 
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("23_e02on")
+
+[node name="HitTimer" type="Timer" parent="StateMachine/Hit"]
+wait_time = 0.15
+one_shot = true
+
 [node name="Death" type="Node2D" parent="StateMachine"]
 script = ExtResource("19_uv6mf")
 
+[node name="DeathTimer" type="Timer" parent="StateMachine/Death"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
 [connection signal="area_entered" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_entered"]
 [connection signal="area_entered" from="DetectionRange" to="StateMachine/Follow" method="_on_detection_range_area_entered"]
 [connection signal="area_entered" from="DetectionRange" to="StateMachine/Wander" method="_on_detection_range_area_entered"]
@@ -162,3 +202,5 @@ script = ExtResource("19_uv6mf")
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Follow/FollowTimer" to="StateMachine/Follow" method="_on_follow_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Wander/WanderTimer" to="StateMachine/Wander" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Hit/HitTimer" to="StateMachine/Hit" method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Death/DeathTimer" to="StateMachine/Death" method="_on_death_timer_timeout"]

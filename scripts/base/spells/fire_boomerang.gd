@@ -48,4 +48,3 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("mobs"):
 		if body.get_node("Health") != null:
 			var damage = body.get_node("Health").take_damage(attack_power)
-

@@ -16,3 +16,5 @@ func change_state(state):
 	current_state = find_child(state) as State
 	current_state.enter()
 
+func _on_health_dead():
+	change_state("Death")

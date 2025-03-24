@@ -22,6 +22,9 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("mobs"):
 		if body.get_node("Health") != null:
 			var damage = body.get_node("Health").take_damage(attack_power)
+			var knockback_direction = global_position.direction_to(body.global_position) * knockback
+			print(knockback_direction)
+			body.knockback = knockback_direction
 			print("Fireball hit! Damage:", damage)
 	speed = 0
 	$Area2D/CollisionShape2D.queue_free()

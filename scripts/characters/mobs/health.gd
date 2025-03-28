@@ -3,8 +3,6 @@ class_name Health
 
 @export var max_health: int = 100
 @export var defense = 10
-@export var knockback_strength: Vector2 = Vector2(0, 0)
-@export var immortality: bool = false
 @export var damage = 0.5
 @onready var health: int = max_health
 @onready var character_velocity = get_parent().velocity

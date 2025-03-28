@@ -124,11 +124,11 @@ theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
 text = "PLAY"
 
-[node name="OptionsButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+[node name="SettingsButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
-text = "OPTIONS"
+text = "SETTINGS"
 
 [node name="CreditsButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
 layout_mode = 2
@@ -142,7 +142,7 @@ theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
 text = "QUIT"
 
-[node name="Options" type="Control" parent="NinePatchRect"]
+[node name="Settings" type="Control" parent="NinePatchRect"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -157,7 +157,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Settings"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,41 +171,53 @@ offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Options/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MasterVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Master"
 
-[node name="Label2" type="Label" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MusicVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Music"
 
-[node name="Label3" type="Label" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="SFXVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "SFX"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MasterVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="HSlider2" type="HSlider" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MusicVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="HSlider3" type="HSlider" parent="NinePatchRect/Options/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="SFXVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="OptionsBack" type="Button" parent="NinePatchRect/Options/VBoxContainer"]
+[node name="FullscreenSetting" type="CheckButton" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Fullscreen"
+
+[node name="VSyncSetting" type="CheckButton" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "v-sync"
+
+[node name="SettingsBack" type="Button" parent="NinePatchRect/Settings/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
@@ -221,9 +233,9 @@ anchor_bottom = 1.0
 [node name="ColorRect" type="ColorRect" parent="NinePatchRect/Credits"]
 layout_mode = 2
 offset_left = 204.0
-offset_top = 225.0
+offset_top = 237.0
 offset_right = 437.0
-offset_bottom = 432.0
+offset_bottom = 447.0
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Credits"]
@@ -233,25 +245,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -116.5
-offset_top = -95.0
-offset_right = 116.5
-offset_bottom = 153.0
+offset_left = -116.0
+offset_top = -78.0
+offset_right = 117.0
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="NinePatchRect/Credits/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Credits/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreditsLabel" type="Label" parent="NinePatchRect/Credits/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
-text = "programming: myself
+text = "programming: 
+myself
 
 art:
 O_LOBSTER
+blackdragon1727
 myself
 
 Music:
 null
+
 
 "
 horizontal_alignment = 1
@@ -264,8 +288,13 @@ theme_override_font_sizes/font_size = 21
 text = "Back"
 
 [connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/Options/VBoxContainer/OptionsBack" to="." method="_on_options_back_pressed"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/MasterVolumeSlider" to="." method="_on_master_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
+[connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/FullscreenSetting" to="." method="_on_fullscreen_setting_toggled"]
+[connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/VSyncSetting" to="." method="_on_v_sync_setting_toggled"]
+[connection signal="pressed" from="NinePatchRect/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
 [connection signal="pressed" from="NinePatchRect/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]

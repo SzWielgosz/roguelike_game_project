@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3y046xyuhqju"]
+[gd_scene load_steps=10 format=3 uid="uid://c3y046xyuhqju"]
 
 [ext_resource type="Script" path="res://scripts/main/game.gd" id="1_3devl"]
 [ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="2_xyws0"]
 [ext_resource type="Script" path="res://scripts/main/dungeon_generator.gd" id="3_pi1ky"]
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="4_2kxes"]
+[ext_resource type="PackedScene" uid="uid://clui5w1y5f5cb" path="res://scenes/ui/pause_menu.tscn" id="5_bs1wn"]
 [ext_resource type="Script" path="res://scripts/ui/draw_minimap.gd" id="5_ulq6r"]
 [ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="6_3wwrj"]
 [ext_resource type="Texture2D" uid="uid://brusmq32ks58x" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/minimap_frame.png" id="8_3adma"]
@@ -46,6 +47,10 @@ layer_3/name = "items"
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Rooms" type="Node2D" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_bs1wn")]
+process_mode = 3
+visible = false
 
 [node name="Minimap" type="CanvasLayer" parent="."]
 

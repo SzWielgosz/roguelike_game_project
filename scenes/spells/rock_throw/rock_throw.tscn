@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bhstgryexd1qw"]
 
-[ext_resource type="Script" path="res://scenes/spells/rock_throw/rock_throw.gd" id="1_mppd0"]
+[ext_resource type="Script" path="res://scripts/base/spells/rock_throw.gd" id="1_axjct"]
 [ext_resource type="Texture2D" uid="uid://x7x28i06fu18" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation1.png" id="2_w6neq"]
 [ext_resource type="Texture2D" uid="uid://cphs07782vlas" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation2.png" id="3_6dqvv"]
 [ext_resource type="Texture2D" uid="uid://s3uubjaxkr7m" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_summon_animation3.png" id="4_534nr"]
@@ -75,29 +75,32 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7rgkg"]
 height = 20.0
 
-[node name="RockProjectile" type="Area2D" groups=["spell"]]
-collision_layer = 64
-collision_mask = 3
-script = ExtResource("1_mppd0")
+[node name="RockProjectile" type="Node2D" node_paths=PackedStringArray("channel_timer") groups=["spell"]]
+script = ExtResource("1_axjct")
+channel_timer = NodePath("ChannelTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dcd33")
 animation = &"channel"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_7rgkg")
 disabled = true
+
+[node name="ChannelTimer" type="Timer" parent="."]
+wait_time = 0.45
+one_shot = true
+autostart = true
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
 
-[node name="ChannelTimer" type="Timer" parent="."]
-wait_time = 0.45
-one_shot = true
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
-[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
-[connection signal="timeout" from="ChannelTimer" to="." method="_on_summon_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8slqfigwuoag"]
 
-[ext_resource type="Script" path="res://scenes/ui/dash_icon.gd" id="1_jrnlv"]
+[ext_resource type="Script" path="res://scripts/ui/dash_icon.gd" id="1_jrnlv"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="1_pl8e2"]
 [ext_resource type="Texture2D" uid="uid://bpljbdrov18kc" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/dash_icon.png" id="2_7tmoq"]
 

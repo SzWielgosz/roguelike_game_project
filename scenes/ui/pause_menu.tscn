@@ -1,0 +1,349 @@
+[gd_scene load_steps=4 format=3 uid="uid://clui5w1y5f5cb"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_sqcrd"]
+[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="2_1ymev"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="3_7lgxr"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_sqcrd")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -175.0
+offset_right = 175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ymev")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Game paused"
+
+[node name="Resume" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Resume"
+
+[node name="Settings" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Settings"
+
+[node name="BackToLobby" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Back to lobby"
+
+[node name="MainMenu" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Quit"
+
+[node name="AreYouSureLobby" type="NinePatchRect" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -53.5
+offset_right = 75.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ymev")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/AreYouSureLobby"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -29.0
+offset_right = 63.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/AreYouSureLobby/VBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 15
+text = "Are you sure you want to go back to the lobby?"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/AreYouSureLobby/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="YesLobby" type="Button" parent="NinePatchRect/AreYouSureLobby/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(33, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "Yes"
+
+[node name="NoLobby" type="Button" parent="NinePatchRect/AreYouSureLobby/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(33, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "No"
+
+[node name="AreYouSureMainMenu" type="NinePatchRect" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -52.0
+offset_right = 75.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ymev")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/AreYouSureMainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -29.0
+offset_right = 63.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/AreYouSureMainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 15
+text = "Are you sure you want to go back to main menu?"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/AreYouSureMainMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="YesMainMenu" type="Button" parent="NinePatchRect/AreYouSureMainMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(33, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "Yes"
+
+[node name="NoMainMenu" type="Button" parent="NinePatchRect/AreYouSureMainMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(33, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "No"
+
+[node name="AreYouSureQuit" type="NinePatchRect" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -50.0
+offset_right = 75.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ymev")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/AreYouSureQuit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -29.0
+offset_right = 63.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/AreYouSureQuit/VBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "Are you sure you want to quit?"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/AreYouSureQuit/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="YesQuit" type="Button" parent="NinePatchRect/AreYouSureQuit/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(33, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "Yes"
+
+[node name="NoQuit" type="Button" parent="NinePatchRect/AreYouSureQuit/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(33, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 16
+text = "No"
+
+[node name="Settings" type="NinePatchRect" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -149.0
+offset_right = 148.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ymev")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -124.0
+offset_right = 124.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Settings
+"
+
+[node name="MasterVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "SFX
+"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenSetting" type="CheckButton" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Fullscreen"
+
+[node name="VSyncSetting" type="CheckButton" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "v-sync"
+
+[node name="BackSettings" type="Button" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_7lgxr")
+theme_override_font_sizes/font_size = 21
+text = "Back"
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/BackToLobby" to="." method="_on_back_to_lobby_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="NinePatchRect/AreYouSureLobby/VBoxContainer/HBoxContainer/YesLobby" to="." method="_on_yes_lobby_pressed"]
+[connection signal="pressed" from="NinePatchRect/AreYouSureLobby/VBoxContainer/HBoxContainer/NoLobby" to="." method="_on_no_lobby_pressed"]
+[connection signal="pressed" from="NinePatchRect/AreYouSureMainMenu/VBoxContainer/HBoxContainer/YesMainMenu" to="." method="_on_yes_main_menu_pressed"]
+[connection signal="pressed" from="NinePatchRect/AreYouSureMainMenu/VBoxContainer/HBoxContainer/NoMainMenu" to="." method="_on_no_main_menu_pressed"]
+[connection signal="pressed" from="NinePatchRect/AreYouSureQuit/VBoxContainer/HBoxContainer/YesQuit" to="." method="_on_yes_quit_pressed"]
+[connection signal="pressed" from="NinePatchRect/AreYouSureQuit/VBoxContainer/HBoxContainer/NoQuit" to="." method="_on_no_quit_pressed"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
+[connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/FullscreenSetting" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/VSyncSetting" to="." method="_on_v_sync_setting_toggled"]
+[connection signal="pressed" from="NinePatchRect/Settings/VBoxContainer/BackSettings" to="." method="_on_back_settings_pressed"]

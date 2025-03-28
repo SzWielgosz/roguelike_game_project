@@ -1,14 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://bxf8y8e8qe12p"]
+[gd_scene load_steps=31 format=3 uid="uid://bxf8y8e8qe12p"]
 
 [ext_resource type="Script" path="res://scripts/characters/mobs/goblin/goblin.gd" id="1_e3qgb"]
 [ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="2_fh7qx"]
-[ext_resource type="Texture2D" uid="uid://1arysl2m311p" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f0.png" id="3_1wirc"]
 [ext_resource type="Texture2D" uid="uid://wqr5yqw6ioo5" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f0.png" id="3_7d518"]
+[ext_resource type="Texture2D" uid="uid://bl5fyu1v4a327" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png" id="3_p3fqc"]
+[ext_resource type="Texture2D" uid="uid://b2066ud5kg54" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f1.png" id="4_7ar4i"]
 [ext_resource type="Texture2D" uid="uid://cu14ytb5m7pp8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f1.png" id="4_hojda"]
-[ext_resource type="Texture2D" uid="uid://dbp5fp1rc7e07" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f1.png" id="4_x6qf2"]
 [ext_resource type="Texture2D" uid="uid://buyccfdlaek8j" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f2.png" id="5_4ckmo"]
-[ext_resource type="Texture2D" uid="uid://bcdoivctlv2w2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/hit_effect_anim_f2.png" id="5_ngdmi"]
+[ext_resource type="Texture2D" uid="uid://bnmmspadsreh7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f2.png" id="5_f7y0v"]
 [ext_resource type="Texture2D" uid="uid://c0poyivh1xio5" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f3.png" id="6_erfug"]
+[ext_resource type="Texture2D" uid="uid://b423gqo0ne4kf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f3.png" id="6_n8uv1"]
 [ext_resource type="Texture2D" uid="uid://c37cmrbubm4hf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/hit_anim.png" id="6_nwyni"]
 [ext_resource type="Texture2D" uid="uid://bgmo8makuk5s6" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f4.png" id="7_kkfv8"]
 [ext_resource type="Texture2D" uid="uid://3e03li7enmun" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/goblin_idle_anim_f5.png" id="8_f1g04"]
@@ -29,13 +30,16 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_1wirc")
+"texture": ExtResource("3_p3fqc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_x6qf2")
+"texture": ExtResource("4_7ar4i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ngdmi")
+"texture": ExtResource("5_f7y0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n8uv1")
 }],
 "loop": true,
 "name": &"death",
@@ -109,7 +113,6 @@ size = Vector2(7, 7)
 
 [node name="Goblin" type="CharacterBody2D" groups=["mobs"]]
 z_index = 1
-position = Vector2(50, 0)
 collision_layer = 2
 collision_mask = 55
 motion_mode = 1

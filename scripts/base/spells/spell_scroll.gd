@@ -29,4 +29,3 @@ func _on_spell_cast():
 
 func _on_cooldown_timer_timeout():
 	is_on_cooldown = false
-

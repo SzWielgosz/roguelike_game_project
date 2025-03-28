@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://eq5ww7lt7rbb"]
+[gd_scene load_steps=11 format=3 uid="uid://eq5ww7lt7rbb"]
 
 [ext_resource type="Script" path="res://scripts/main/rooms/lobby.gd" id="1_yldb2"]
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="2_27lwm"]
@@ -8,12 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://bv0tbu73fjmw8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/stair_nextlevel.png" id="6_wa38j"]
 [ext_resource type="Script" path="res://scripts/main/game_teleport.gd" id="7_etd7c"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="8_pms72"]
+[ext_resource type="PackedScene" uid="uid://clui5w1y5f5cb" path="res://scenes/ui/pause_menu.tscn" id="9_61g1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85ljd"]
 size = Vector2(16, 16)
 
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_yldb2")
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_61g1k")]
+process_mode = 3
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_27lwm")

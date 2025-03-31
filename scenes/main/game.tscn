@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3y046xyuhqju"]
+[gd_scene load_steps=12 format=3 uid="uid://c3y046xyuhqju"]
 
 [ext_resource type="Script" path="res://scripts/main/game.gd" id="1_3devl"]
 [ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="2_xyws0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/ui/draw_minimap.gd" id="5_ulq6r"]
 [ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="6_3wwrj"]
 [ext_resource type="Texture2D" uid="uid://brusmq32ks58x" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/minimap_frame.png" id="8_3adma"]
+[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="9_0le2h"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="10_fpvgg"]
 
 [sub_resource type="GDScript" id="GDScript_vp85x"]
 script/source = "extends Camera2D
@@ -87,6 +89,78 @@ position_smoothing_enabled = true
 [node name="NinePatchRect" type="NinePatchRect" parent="Minimap/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("8_3adma")
+
+[node name="Summary" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Summary"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_0le2h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Summary/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SummaryLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("10_fpvgg")
+theme_override_font_sizes/font_size = 21
+text = "Summary
+"
+
+[node name="StatusLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("10_fpvgg")
+theme_override_font_sizes/font_size = 21
+text = "Status: won"
+
+[node name="MobsDestroyedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_fpvgg")
+theme_override_font_sizes/font_size = 21
+text = "Mobs destroyed:"
+
+[node name="MoneyCollectedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_fpvgg")
+theme_override_font_sizes/font_size = 21
+text = "Money collected:"
+
+[node name="ItemsCollectedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("10_fpvgg")
+theme_override_font_sizes/font_size = 21
+text = "Items collected:"
+
+[node name="Button" type="Button" parent="Summary/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_fpvgg")
+theme_override_font_sizes/font_size = 21
+text = "Back to lobby"
 
 [node name="ResetTimer" type="Timer" parent="."]
 one_shot = true

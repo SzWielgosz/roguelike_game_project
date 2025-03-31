@@ -1,8 +1,9 @@
 extends Node2D
 
-var empty_room = preload("res://scenes/main/rooms/24x16/empty_room.tscn")
-var door = preload("res://scenes/environment/door.tscn")
-var room_patterns = preload("res://scenes/main/rooms/24x16/pattern1.tscn")
+var empty_room = preload("res://scenes/rooms/room_24x16/empty_room.tscn")
+var door = preload("res://scenes/environment/props/door.tscn")
+#preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"), 
+var room_layouts = [preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn")]
 enum RoomType { REGULAR, TREASURE, START, END }
 @onready var Map: TileMap = $"../TileMap"
 @onready var Player = $"../Player"
@@ -125,18 +126,18 @@ func generate_minimap():
 				room_dict[minimap_room_rect].neighbours[spawn_direction] = create_minimap_dict[overlaping_rect]
 	minimap.create_minimap(room_dict)
 
-func add_room_patterns():
+func add_room_layouts():
 	for room in $"../Rooms".get_children():
 		if room.get_node("RoomArea").type == RoomType.REGULAR:
-			var room_pattern = room_patterns.instantiate()
+			var room_layout = room_layouts.pick_random().instantiate()
 			
-			var original_nav = room_pattern.get_node("NavigationRegion2D")
+			var original_nav = room_layout.get_node("NavigationRegion2D")
 			if original_nav:
 				var new_nav = original_nav.duplicate() 
-				room_pattern.remove_child(original_nav)
-				room_pattern.add_child(new_nav)
-				new_nav.owner = room_pattern
-			room.get_node("RoomPattern").add_child(room_pattern)
+				room_layout.remove_child(original_nav)
+				room_layout.add_child(new_nav)
+				new_nav.owner = room_layout
+			room.get_node("RoomLayout").add_child(room_layout)
 
 
 func connect_rooms():
@@ -197,7 +198,7 @@ func create_dungeon():
 	find_start_room()
 	find_end_room()
 	generate_minimap()
-	add_room_patterns()
+	add_room_layouts()
 	spawn_player()
 	
 

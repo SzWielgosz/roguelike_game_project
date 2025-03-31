@@ -48,14 +48,14 @@ func choose_new_target_point():
 
 
 func _on_hit_box_body_entered(body):
-	print("Entered: ", body)
-	hit_wall = true
-	wander_timer.start()
+	if !body.is_in_group("player"):
+		hit_wall = true
+		wander_timer.start()
 
 
 func _on_hit_box_body_exited(body):
-	print("Exited: ", body)
-	hit_wall = false
+	if !body.is_in_group("player"):
+		hit_wall = false
 
 
 func _on_timer_timeout():

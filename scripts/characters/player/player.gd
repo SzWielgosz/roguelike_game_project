@@ -4,6 +4,7 @@ var bomb_scene = preload("res://scenes/items/bomb.tscn")
 @export var min_knockback := 100
 @export var slow_knockback := 1.1
 @export var dash_speed = 1000
+@export var push_force = 10.0
 var is_dead = false
 var can_dash = true
 var is_dashing = false
@@ -16,6 +17,8 @@ signal dash_active
 
 
 func _ready():
+	set_collision_mask_value(6, true)
+	set_collision_mask_value(11, true)
 	$HUD.visible = true
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.set_health(PlayerStats.player_health)
@@ -67,6 +70,11 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	update_direction()
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 
 func start_dash(direction):
@@ -78,6 +86,7 @@ func start_dash(direction):
 	$DashParticles.emitting = true
 	$DashTimer.start()
 	$HUD.start_dash_cooldown($DashCooldownTimer.wait_time)
+
 
 func place_bomb():
 	var bomb_instance = bomb_scene.instantiate()

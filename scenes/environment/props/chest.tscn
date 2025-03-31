@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://dqo564kl5ghmv"]
+
+[ext_resource type="Script" path="res://scripts/environment/props/chest.gd" id="1_llan8"]
+[ext_resource type="Texture2D" uid="uid://b14pad43mhtr8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f0.png" id="2_ra5vo"]
+[ext_resource type="Texture2D" uid="uid://bnurf137ebe35" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f1.png" id="3_5mm6d"]
+[ext_resource type="Texture2D" uid="uid://bryapq3f65mm3" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f2.png" id="4_jht2a"]
+[ext_resource type="Texture2D" uid="uid://dlws7f3ahyb3o" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f3.png" id="5_07823"]
+[ext_resource type="Texture2D" uid="uid://bkge7v3tpfoq0" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f4.png" id="6_47e6f"]
+[ext_resource type="Texture2D" uid="uid://cingqs0yakokk" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f5.png" id="7_81o8r"]
+[ext_resource type="Texture2D" uid="uid://dacf3o21p52i4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f6.png" id="8_ep17g"]
+[ext_resource type="Texture2D" uid="uid://dqglrhqj03hfo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_closed_anim_f7.png" id="9_cbotv"]
+[ext_resource type="Texture2D" uid="uid://bfuo5hkf5cvsy" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/chest_open.png" id="10_c2o7n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjgte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ra5vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5mm6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jht2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_07823")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_47e6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_81o8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ep17g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cbotv")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_c2o7n")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqlhk"]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bknyr"]
+size = Vector2(18, 18)
+
+[node name="Chest" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 573
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 25.0
+script = ExtResource("1_llan8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vjgte")
+animation = &"closed"
+frame = 1
+frame_progress = 0.895825
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_jqlhk")
+
+[node name="OpenArea2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpenArea2D"]
+shape = SubResource("RectangleShape2D_bknyr")
+
+[connection signal="body_entered" from="OpenArea2D" to="." method="_on_open_area_2d_body_entered"]

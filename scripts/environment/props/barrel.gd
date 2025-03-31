@@ -15,10 +15,10 @@ func _on_timer_timeout():
 
 func _on_area_2d_area_entered(area):
 	var parent = area.get_parent()
-	if parent.is_in_group("spell") or parent.is_in_group("bomb"):
+	if parent.is_in_group("spell") or parent.is_in_group("explosive"):
+		$NavigationObstacle2D.queue_free()
 		$Area2D.queue_free()
 		$StaticBody2D.queue_free()
-		$NavigationObstacle2D.queue_free()
 		$AnimatedSprite2D.play("destroyed")
 		$Timer.start()
 		destroyed.emit()	

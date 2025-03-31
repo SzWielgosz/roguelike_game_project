@@ -109,12 +109,12 @@ radius = 150.0
 size = Vector2(11, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5unc"]
-size = Vector2(7, 7)
+size = Vector2(4, 4)
 
 [node name="Goblin" type="CharacterBody2D" groups=["mobs"]]
 z_index = 1
 collision_layer = 2
-collision_mask = 55
+collision_mask = 1043
 motion_mode = 1
 script = ExtResource("1_e3qgb")
 
@@ -134,6 +134,7 @@ text = "debug"
 label_settings = SubResource("LabelSettings_q8oa4")
 
 [node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
@@ -148,12 +149,14 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_matrb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_l5unc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 500.0
 avoidance_enabled = true
+radius = 20.0
+neighbor_distance = 50.0
 debug_enabled = true
 
 [node name="StateMachine" type="Node2D" parent="."]
@@ -192,6 +195,8 @@ script = ExtResource("19_uv6mf")
 wait_time = 0.5
 one_shot = true
 
+[node name="GoldDrainTimer" type="Timer" parent="."]
+
 [connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
 [connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
 [connection signal="area_entered" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_entered"]
@@ -200,6 +205,7 @@ one_shot = true
 [connection signal="area_exited" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_exited"]
 [connection signal="area_exited" from="DetectionRange" to="StateMachine/Follow" method="_on_detection_range_area_exited"]
 [connection signal="area_exited" from="DetectionRange" to="StateMachine/Wander" method="_on_detection_range_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="HitBox" to="StateMachine/Wander" method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="StateMachine/Wander" method="_on_hit_box_body_exited"]
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]

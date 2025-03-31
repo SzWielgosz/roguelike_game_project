@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j002f3v3pn57"
-path="res://.godot/imported/rubble1.png-b03977b9e4a3cd0323c6863efa267023.ctex"
+uid="uid://cg0vi7lkjjwsu"
+path="res://.godot/imported/hole2.png-94bb6ea90293d8717988e143487456bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubble/rubble1.png"
-dest_files=["res://.godot/imported/rubble1.png-b03977b9e4a3cd0323c6863efa267023.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole2.png"
+dest_files=["res://.godot/imported/hole2.png-94bb6ea90293d8717988e143487456bd.ctex"]
 
 [params]
 

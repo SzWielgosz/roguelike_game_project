@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://7t8a5pxkb56x"]
+
+[ext_resource type="Texture2D" uid="uid://dpvcjyxsiqcol" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole5.png" id="1_6wrmh"]
+[ext_resource type="Texture2D" uid="uid://curjib6xwl50r" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole6.png" id="2_cdl62"]
+[ext_resource type="Texture2D" uid="uid://ckpppjftlavr1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole7.png" id="3_qmgnr"]
+[ext_resource type="Texture2D" uid="uid://d1p30fsosh0l2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole1.png" id="4_dvdhr"]
+[ext_resource type="Texture2D" uid="uid://cg0vi7lkjjwsu" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole2.png" id="5_0nloe"]
+[ext_resource type="Texture2D" uid="uid://dvli4i3i48lgm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole10.png" id="6_1kod4"]
+[ext_resource type="Texture2D" uid="uid://btik3sshedgf1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole3.png" id="6_v8bh2"]
+[ext_resource type="Texture2D" uid="uid://b3aop741l66be" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole4.png" id="7_v0mr8"]
+[ext_resource type="Texture2D" uid="uid://clbr7vceaeody" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole9.png" id="8_fkv7t"]
+[ext_resource type="Texture2D" uid="uid://c14syhplew6lr" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/hole8.png" id="9_f2cne"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7qxn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6wrmh")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cdl62")
+}],
+"loop": true,
+"name": &"down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qmgnr")
+}],
+"loop": true,
+"name": &"down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dvdhr")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0nloe")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1kod4")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v8bh2")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_v0mr8")
+}],
+"loop": true,
+"name": &"top",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fkv7t")
+}],
+"loop": true,
+"name": &"top_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_f2cne")
+}],
+"loop": true,
+"name": &"top_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seu7g"]
+size = Vector2(16, 16)
+
+[node name="Hole" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_b7qxn")
+animation = &"mid"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_seu7g")

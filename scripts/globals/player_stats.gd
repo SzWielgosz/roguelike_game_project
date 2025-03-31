@@ -7,8 +7,9 @@ var player_max_health: float = 3.0
 var player_max_hearts: int = 10
 var player_gold: int = 0
 var player_bombs: int = 3
-var slots = []
-var selected_slot := 0
+var slots: Array = []
+var selected_slot: int = 0
+var gold_lost_this_frame: bool = false
 
 signal health_changed(value)
 signal gold_changed(value)
@@ -25,6 +26,10 @@ func _ready():
 	add_child(fireball)
 	add_child(fire_boomerang)
 	slots = [lesser_fireball, fireball, fire_boomerang]
+
+
+func _process(_delta):
+	gold_lost_this_frame = false
 
 
 func get_selected_spell():

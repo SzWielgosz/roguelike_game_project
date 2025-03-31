@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://nyw8y02vff81"]
+
+[ext_resource type="Script" path="res://scripts/environment/props/rubble.gd" id="1_iyjyt"]
+[ext_resource type="Texture2D" uid="uid://dwlo1038exdmg" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubbles/rubble_destroyed.png" id="2_lcuei"]
+[ext_resource type="Texture2D" uid="uid://bd63te6p0y8gp" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubbles/rubble1.png" id="3_y7dbk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7j2ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lcuei")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y7dbk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5a7d"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpgck"]
+size = Vector2(16, 16)
+
+[node name="Rubble" type="Node2D"]
+script = ExtResource("1_iyjyt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7j2ml")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 271
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a5a7d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 77
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_xpgck")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+vertices = PackedVector2Array(5, 4.5, 2, -4, -2, -4, -5, 4.5)
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

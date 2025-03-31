@@ -18,3 +18,9 @@ func _physics_process(_delta):
 	velocity = direction.normalized() * speed + knockback
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
+
+func _on_hit_box_body_entered(body):
+	if body.is_in_group("player") and !body.get_node("PlayerHealth").immortality:
+		if PlayerStats.player_gold > 0 and !PlayerStats.gold_lost_this_frame:
+			PlayerStats.substract_gold(1)
+			PlayerStats.gold_lost_this_frame = true

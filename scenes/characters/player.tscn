@@ -127,7 +127,7 @@ gravity = Vector3(0, 0, 0)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 12
-collision_mask = 19
+collision_mask = 2147484689
 motion_mode = 1
 script = ExtResource("1_54bo7")
 dash_speed = 450
@@ -164,7 +164,7 @@ gizmo_extents = 5.0
 
 [node name="HitBox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 12
-collision_mask = 2
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_hupyk")

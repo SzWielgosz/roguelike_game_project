@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcfk0ccwqqebu"]
+[gd_scene load_steps=12 format=3 uid="uid://dcfk0ccwqqebu"]
 
-[ext_resource type="Texture2D" uid="uid://dpcpw8eltbo78" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_spritesheet_no_key.png" id="1_tuvn2"]
-[ext_resource type="Script" path="res://scripts/environment/door.gd" id="2_6jd53"]
+[ext_resource type="Texture2D" uid="uid://dpcpw8eltbo78" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/wall/door_spritesheet_no_key.png" id="1_mnyq2"]
+[ext_resource type="Script" path="res://scripts/environment/props/door.gd" id="2_cg5p5"]
 
 [sub_resource type="Animation" id="Animation_l5rlj"]
 length = 0.001
@@ -104,11 +104,14 @@ size = Vector2(6, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlvxg"]
 size = Vector2(6, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcwub"]
+size = Vector2(20, 4)
+
 [node name="Door" type="Sprite2D"]
-texture = ExtResource("1_tuvn2")
+texture = ExtResource("1_mnyq2")
 hframes = 7
 frame = 6
-script = ExtResource("2_6jd53")
+script = ExtResource("2_cg5p5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -139,6 +142,14 @@ shape = SubResource("RectangleShape2D_72j2r")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DoorFrame/StaticBody2D"]
 position = Vector2(-13, 4)
 shape = SubResource("RectangleShape2D_mlvxg")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 512
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_qcwub")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -39)

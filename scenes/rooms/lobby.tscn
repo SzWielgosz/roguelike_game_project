@@ -1,27 +1,27 @@
 [gd_scene load_steps=11 format=3 uid="uid://eq5ww7lt7rbb"]
 
-[ext_resource type="Script" path="res://scripts/main/rooms/lobby.gd" id="1_yldb2"]
-[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="2_27lwm"]
-[ext_resource type="Script" path="res://scripts/main/spawn_point.gd" id="3_5tge8"]
-[ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="4_pnolv"]
-[ext_resource type="PackedScene" uid="uid://cyuu1n1siygd0" path="res://scenes/characters/alchemist.tscn" id="5_5dkfo"]
-[ext_resource type="Texture2D" uid="uid://bv0tbu73fjmw8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/stair_nextlevel.png" id="6_wa38j"]
-[ext_resource type="Script" path="res://scripts/main/game_teleport.gd" id="7_etd7c"]
-[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="8_pms72"]
-[ext_resource type="PackedScene" uid="uid://clui5w1y5f5cb" path="res://scenes/ui/pause_menu.tscn" id="9_61g1k"]
+[ext_resource type="Script" path="res://scripts/rooms/lobby.gd" id="1_n2gji"]
+[ext_resource type="PackedScene" uid="uid://clui5w1y5f5cb" path="res://scenes/ui/pause_menu.tscn" id="2_xi2gt"]
+[ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="3_2cdy0"]
+[ext_resource type="Script" path="res://scripts/main/spawn_point.gd" id="4_nypvo"]
+[ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="5_8u260"]
+[ext_resource type="PackedScene" uid="uid://cyuu1n1siygd0" path="res://scenes/characters/alchemist.tscn" id="6_l8304"]
+[ext_resource type="Texture2D" uid="uid://bv0tbu73fjmw8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/stair_nextlevel.png" id="7_p685w"]
+[ext_resource type="Script" path="res://scripts/main/game_teleport.gd" id="8_t6811"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="9_qq0wh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85ljd"]
 size = Vector2(16, 16)
 
 [node name="Lobby" type="Node2D"]
-script = ExtResource("1_yldb2")
+script = ExtResource("1_n2gji")
 
-[node name="PauseMenu" parent="." instance=ExtResource("9_61g1k")]
+[node name="PauseMenu" parent="." instance=ExtResource("2_xi2gt")]
 process_mode = 3
 visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("2_27lwm")
+tile_set = ExtResource("3_2cdy0")
 format = 2
 layer_0/name = "floor"
 layer_0/tile_data = PackedInt32Array(65536, 327680, 9, 131072, 327680, 9, 196608, 327680, 9, 262144, 327680, 9, 327680, 327680, 9, 393216, 327680, 9, 458752, 327680, 9, 524288, 327680, 9, 589824, 327680, 9, 655360, 327680, 9, 0, 524288, 8, 1, 524288, 8, 2, 524288, 8, 3, 524288, 8, 4, 524288, 8, 5, 524288, 8, 6, 524288, 8, 7, 524288, 8, 8, 524288, 8, 9, 524288, 8, 10, 524288, 8, 11, 524288, 8, 12, 524288, 8, 13, 524288, 8, 14, 524288, 8, 15, 524288, 8, 16, 524288, 8, 17, 524288, 8, 65553, 720896, 9, 131089, 720896, 9, 196625, 720896, 9, 262161, 720896, 9, 327697, 720896, 9, 393233, 720896, 9, 458769, 720896, 9, 524305, 720896, 9, 589841, 720896, 9, 655377, 720896, 9, 720896, 524288, 11, 720897, 524288, 11, 720898, 524288, 11, 720899, 524288, 11, 720900, 524288, 11, 720901, 524288, 11, 720902, 524288, 11, 720903, 524288, 11, 720904, 524288, 11, 720905, 524288, 11, 720906, 524288, 11, 720907, 524288, 11, 720908, 524288, 11, 720909, 524288, 11, 720910, 524288, 11, 720911, 524288, 11, 720912, 524288, 11, 720913, 524288, 11, 65537, 131072, 1, 131073, 131072, 1, 196609, 131072, 1, 262145, 131072, 1, 327681, 131072, 1, 393217, 131072, 1, 458753, 131072, 1, 524289, 131072, 1, 589825, 131072, 1, 655361, 131072, 1, 655362, 131072, 1, 655363, 131072, 1, 655364, 131072, 1, 655365, 131072, 1, 655366, 131072, 1, 655367, 131072, 1, 655368, 131072, 1, 655369, 131072, 1, 655370, 131072, 1, 655371, 131072, 1, 655372, 131072, 1, 655373, 131072, 1, 655374, 131072, 1, 655375, 131072, 1, 655376, 131072, 1, 589840, 131072, 1, 524304, 131072, 1, 458768, 131072, 1, 393232, 131072, 1, 327696, 131072, 1, 262160, 131072, 1, 196624, 131072, 1, 131088, 131072, 1, 65552, 131072, 1, 65551, 131072, 1, 65550, 131072, 1, 65549, 131072, 1, 65548, 131072, 1, 65547, 131072, 1, 65546, 131072, 1, 65545, 131072, 1, 65544, 131072, 1, 65543, 131072, 1, 65542, 131072, 1, 65541, 131072, 1, 65540, 131072, 1, 65539, 131072, 1, 65538, 131072, 1, 131074, 131072, 1, 196610, 131072, 1, 262146, 131072, 1, 327682, 131072, 1, 393218, 131072, 1, 458754, 131072, 1, 524290, 131072, 1, 589826, 131072, 1, 589827, 131072, 1, 589828, 131072, 1, 589829, 131072, 1, 589830, 131072, 1, 589831, 131072, 1, 589832, 131072, 1, 589833, 131072, 1, 589834, 131072, 1, 589835, 131072, 1, 589836, 131072, 1, 589837, 131072, 1, 589838, 131072, 1, 589839, 131072, 1, 131075, 131072, 1, 196611, 131072, 1, 262147, 131072, 1, 327683, 131072, 1, 393219, 131072, 1, 458755, 131072, 1, 524291, 131072, 1, 524292, 131072, 1, 524293, 131072, 1, 524294, 131072, 1, 524295, 131072, 1, 524296, 131072, 1, 524297, 131072, 1, 524298, 131072, 1, 524299, 131072, 1, 524300, 131072, 1, 524301, 131072, 1, 524302, 131072, 1, 524303, 131072, 1, 458767, 131072, 1, 393231, 131072, 1, 327695, 131072, 1, 262159, 131072, 1, 196623, 131072, 1, 196622, 131072, 1, 131086, 131072, 1, 131085, 131072, 1, 131084, 131072, 1, 131083, 131072, 1, 131082, 131072, 1, 131081, 131072, 1, 131080, 131072, 1, 131079, 131072, 1, 131078, 131072, 1, 131077, 131072, 1, 131076, 131072, 1, 196612, 131072, 1, 262148, 131072, 1, 327684, 131072, 1, 327685, 131072, 1, 393221, 131072, 1, 458757, 131072, 1, 458758, 131072, 1, 458759, 131072, 1, 458760, 131072, 1, 458761, 131072, 1, 458762, 131072, 1, 458763, 131072, 1, 458764, 131072, 1, 458765, 131072, 1, 458766, 131072, 1, 393230, 131072, 1, 393229, 131072, 1, 393228, 131072, 1, 393227, 131072, 1, 393226, 131072, 1, 393225, 131072, 1, 393224, 131072, 1, 393223, 131072, 1, 393222, 131072, 1, 393220, 131072, 1, 458756, 131072, 1, 262150, 131072, 1, 262151, 131072, 1, 196615, 131072, 1, 196616, 131072, 1, 262149, 131072, 1, 196613, 131072, 1, 196614, 131072, 1, 262152, 131072, 1, 327688, 131072, 1, 327687, 131072, 1, 327686, 131072, 1, 262153, 131072, 1, 262154, 131072, 1, 262155, 131072, 1, 327689, 131072, 1, 196617, 131072, 1, 196618, 131072, 1, 196619, 131072, 1, 196620, 131072, 1, 262156, 131072, 1, 327691, 131072, 1, 327690, 131072, 1, 196621, 131072, 1, 262157, 131072, 1, 327693, 131072, 1, 327692, 131072, 1, 262158, 131072, 1, 327694, 131072, 1, 131087, 131072, 1)
@@ -34,10 +34,10 @@ layer_3/tile_data = PackedInt32Array(1, 262144, 0, 16, 262144, 0, 4, 262144, 0, 
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(151, 95)
-script = ExtResource("3_5tge8")
-player = ExtResource("4_pnolv")
+script = ExtResource("4_nypvo")
+player = ExtResource("5_8u260")
 
-[node name="Alchemist" parent="." instance=ExtResource("5_5dkfo")]
+[node name="Alchemist" parent="." instance=ExtResource("6_l8304")]
 position = Vector2(41, 91)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -46,8 +46,8 @@ zoom = Vector2(2.5, 2.5)
 
 [node name="GameTeleport" type="Sprite2D" parent="."]
 position = Vector2(246, 93)
-texture = ExtResource("6_wa38j")
-script = ExtResource("7_etd7c")
+texture = ExtResource("7_p685w")
+script = ExtResource("8_t6811")
 
 [node name="Area2D" type="Area2D" parent="GameTeleport"]
 collision_mask = 12
@@ -62,7 +62,7 @@ offset_top = -18.0
 offset_right = 1776.0
 offset_bottom = 95.0
 scale = Vector2(0.05, 0.05)
-theme_override_fonts/font = ExtResource("8_pms72")
+theme_override_fonts/font = ExtResource("9_qq0wh")
 theme_override_font_sizes/font_size = 128
 text = "press e to enter the dungeon"
 

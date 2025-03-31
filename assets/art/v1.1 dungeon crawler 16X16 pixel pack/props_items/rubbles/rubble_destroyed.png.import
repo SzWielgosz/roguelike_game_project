@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckcr1pgfun785"
-path="res://.godot/imported/rubble2.png-c9c9fd39f690d56791c6b5b8abdcd697.ctex"
+uid="uid://dwlo1038exdmg"
+path="res://.godot/imported/rubble_destroyed.png-a0f1e72d7366700713bd7fe41ada8fb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubble/rubble2.png"
-dest_files=["res://.godot/imported/rubble2.png-c9c9fd39f690d56791c6b5b8abdcd697.ctex"]
+source_file="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/rubbles/rubble_destroyed.png"
+dest_files=["res://.godot/imported/rubble_destroyed.png-a0f1e72d7366700713bd7fe41ada8fb1.ctex"]
 
 [params]
 

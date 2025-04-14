@@ -2,6 +2,7 @@ extends Node
 var lesser_fireball_scroll_scene = preload("res://scenes/spells/lesser_fireball/lesser_fireball_scroll.tscn")
 var fireball_scroll_scene = preload("res://scenes/spells/fireball/fireball_scroll.tscn")
 var fire_boomerang_scroll_scene = preload("res://scenes/spells/fire_boomerang/fire_boomerang_scroll.tscn")
+var player: CharacterBody2D = null
 var player_health: float = 3.0
 var player_max_health: float = 3.0
 var player_max_hearts: int = 10
@@ -30,10 +31,25 @@ func _ready():
 
 func _process(_delta):
 	gold_lost_this_frame = false
+	
+
+func set_spells():
+	pass
+
+
+func set_player(p):
+	player = p
 
 
 func get_selected_spell():
 	return slots[selected_slot]
+	
+
+func get_spell_names():
+	var spells = []
+	for spell in slots:
+		spells.append(spell.name)
+	return spells
 
 
 func switch_slot(slot_index: int):

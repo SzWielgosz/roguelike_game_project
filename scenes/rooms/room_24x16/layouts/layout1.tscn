@@ -19,43 +19,45 @@ agent_radius = 2.0
 navigation_polygon = SubResource("NavigationPolygon_31a2y")
 script = ExtResource("1_0ndmx")
 
-[node name="Barrels" type="Node2D" parent="NavigationRegion2D"]
+[node name="Destroyables" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Barrels" type="Node2D" parent="NavigationRegion2D/Destroyables"]
 position = Vector2(0, 1)
 
-[node name="Barrel" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel1" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, -70)
 
-[node name="Barrel2" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel2" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, -56)
 
-[node name="Barrel3" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel3" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, -42)
 
-[node name="Barrel4" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel4" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, -28)
 
-[node name="Barrel5" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel5" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, -14)
 
-[node name="Barrel6" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel6" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 1)
 
-[node name="Barrel7" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel7" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 15)
 
-[node name="Barrel8" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel8" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 29)
 
-[node name="Barrel9" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel9" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 43)
 
-[node name="Barrel10" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel10" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 57)
 
-[node name="Barrel11" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel11" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 71)
 
-[node name="Barrel12" parent="NavigationRegion2D/Barrels" instance=ExtResource("2_uuunc")]
+[node name="Barrel12" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 85)
 
 [node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
@@ -76,5 +78,9 @@ mob = ExtResource("5_7dxpe")
 [node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_kh4h4")]
 position = Vector2(130, 70)
 mob = ExtResource("5_7dxpe")
+
+[node name="Items" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Statics" type="Node2D" parent="NavigationRegion2D"]
 
 [connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]

@@ -2,8 +2,9 @@ extends Node2D
 
 var empty_room = preload("res://scenes/rooms/room_24x16/empty_room.tscn")
 var door = preload("res://scenes/environment/props/door.tscn")
-#preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"), 
-var room_layouts = [preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn")]
+var next_dungeon_stairs = preload("res://scripts/environment/next_dungeon_stairs.tscn")
+var room_layouts = [preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"), preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn")]
+var load_dungeon: bool = false
 enum RoomType { REGULAR, TREASURE, START, END }
 @onready var Map: TileMap = $"../TileMap"
 @onready var Player = $"../Player"
@@ -43,14 +44,13 @@ func does_overlap(new_room_rect: Rect2) -> bool:
 		if existing_room_rect.intersects(new_room_rect):
 			return true
 	return false
-	
+
 
 func get_overlaping_rect(new_room_rect: Rect2):
 	for existing_room_rect in room_dict.keys():
 		if existing_room_rect.intersects(new_room_rect):
 			return existing_room_rect
 	return null
-	
 
 
 func generate_rooms():
@@ -74,9 +74,14 @@ func generate_rooms():
 		var picked_room_position = picked_room.global_position
 
 		var direction_options = directions.keys()
-		direction_options.shuffle()
+		#direction_options.shuffle()
+		var randomized_directions = []
+		while direction_options.size() > 0:
+			var rand_index = GameStats.random_number_generator.randi_range(0, direction_options.size() - 1)
+			randomized_directions.append(direction_options[rand_index])
+			direction_options.remove_at(rand_index)
 
-		for picked_direction in direction_options:
+		for picked_direction in randomized_directions:
 			if remaining_rooms <= 0:
 				break
 
@@ -113,7 +118,6 @@ func generate_rooms():
 				Map.set_cell(i, target_pos / tile_size, 0, atlas_coords)
 
 		current_tilemap.queue_free()
-	print("End of generation")
 
 
 func generate_minimap():
@@ -126,10 +130,13 @@ func generate_minimap():
 				room_dict[minimap_room_rect].neighbours[spawn_direction] = create_minimap_dict[overlaping_rect]
 	minimap.create_minimap(room_dict)
 
+
 func add_room_layouts():
 	for room in $"../Rooms".get_children():
 		if room.get_node("RoomArea").type == RoomType.REGULAR:
-			var room_layout = room_layouts.pick_random().instantiate()
+			#var room_layout = room_layouts.pick_random().instantiate()
+			var random_index = GameStats.random_number_generator.randi_range(0, room_layouts.size() - 1)
+			var room_layout = room_layouts[random_index].instantiate()
 			
 			var original_nav = room_layout.get_node("NavigationRegion2D")
 			if original_nav:
@@ -185,22 +192,82 @@ func find_end_room():
 			end_room = room
 			max_x = room.global_position.x
 	end_room.get_node("RoomArea").type = RoomType.END
+	var next_dungeon_stairs_instance = next_dungeon_stairs.instantiate()
+	end_room.add_child(next_dungeon_stairs_instance)
+	next_dungeon_stairs_instance.global_position = end_room.global_position
 
 
 func spawn_player():
-	Player.global_position = start_room.global_position
-	return
+	if SaveManager.dungeon_to_load:
+		Player.global_position = SaveManager.get_save_data().player_position
+	else:
+		Player.global_position = start_room.global_position
+
+
+func load_save_dungeon():
+	var rooms = []
+	for room in room_dict.values():
+		rooms.append(room)
+		
+	for room_key in SaveManager.save_data.dungeon_rooms.keys():
+		if SaveManager.save_data.dungeon_rooms[room_key]["status"] == "cleared":
+			for room in room_dict.values():
+				if room.name == room_key:
+					room.get_node("RoomArea").room_cleared = true
+					room.get_node("RoomArea").room_visited = true
+					var destroyables = SaveManager.save_data.dungeon_rooms[room_key]["destroyables"]
+					var items = SaveManager.save_data.dungeon_rooms[room_key]["items"]
+					if destroyables!= null:
+						for destroyable_group in destroyables:
+							var tmp = Utils.get_child_or_null(room.get_node("RoomLayout"), 0)
+							if tmp:
+								var destroyable_group_node = tmp.get_node("NavigationRegion2D")\
+								.get_node("Destroyables").get_node(destroyable_group)
+								for destroyable in destroyable_group_node.get_children():
+									destroyable.is_destroyed = destroyables.get(destroyable_group)[destroyable.name]["is_destroyed"]
+									if destroyable.is_destroyed:
+										destroyable.destroy()
+#
+					if items:
+						for item_group in items:
+							var tmp = Utils.get_child_or_null(room.get_node("RoomLayout"), 0)
+							if tmp:
+								var item_group_node = tmp.get_node("NavigationRegion2D")\
+								.get_node("Items").get_node(item_group)
+								for item in item_group_node.get_children():
+									if items.has(item_group) and not items[item_group].has(item.name):
+										item.queue_free()
+
+
+func clear_dungeon():
+	var rooms_children = $"../Rooms".get_children()
+	if !rooms_children.is_empty():
+		for room in rooms_children:
+			$"../Rooms".remove_child(room)
+			room.queue_free()
+
+	$"../TileMap".clear()
+
+	room_dict = {}
+	create_minimap_dict = {}
+	queue = []
+	start_room = null
+	end_room = null
+
 
 
 func create_dungeon():	
+	clear_dungeon()
 	generate_rooms()
 	connect_rooms()
 	find_start_room()
 	find_end_room()
-	generate_minimap()
 	add_room_layouts()
+	if SaveManager.dungeon_to_load:
+		load_save_dungeon()
+	generate_minimap()
 	spawn_player()
-	
+	SaveManager.dungeon_to_load = false
 
 #func _draw():
 	#for room_rect in room_dict.values():

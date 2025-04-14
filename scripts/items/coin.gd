@@ -4,4 +4,5 @@ extends Node2D
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("player"):
 		PlayerStats.add_gold(1)
+		GameStats.coins_collected += 1
 		queue_free()

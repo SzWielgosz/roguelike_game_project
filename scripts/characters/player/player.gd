@@ -17,6 +17,9 @@ signal dash_active
 
 
 func _ready():
+	if SaveManager.save_data != null:
+		global_position = SaveManager.save_data.player_position
+	PlayerStats.set_player(self)
 	set_collision_mask_value(6, true)
 	set_collision_mask_value(11, true)
 	$HUD.visible = true
@@ -91,6 +94,7 @@ func start_dash(direction):
 func place_bomb():
 	var bomb_instance = bomb_scene.instantiate()
 	bomb_instance.global_position = global_position
+	GameStats.bombs_used += 1
 	get_parent().add_child(bomb_instance)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3y046xyuhqju"]
+[gd_scene load_steps=13 format=3 uid="uid://c3y046xyuhqju"]
 
 [ext_resource type="Script" path="res://scripts/main/game.gd" id="1_3devl"]
 [ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="2_xyws0"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="9_0le2h"]
 [ext_resource type="Script" path="res://scenes/main/summary.gd" id="9_kudhe"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="10_fpvgg"]
-[ext_resource type="Script" path="res://scenes/main/communicates.gd" id="12_xg24h"]
 
 [sub_resource type="GDScript" id="GDScript_vp85x"]
 script/source = "extends Camera2D
@@ -38,10 +37,6 @@ script = SubResource("GDScript_vp85x")
 
 [node name="DungeonGenerator" type="Node2D" parent="."]
 script = ExtResource("3_pi1ky")
-
-[node name="DelayTimer" type="Timer" parent="DungeonGenerator"]
-wait_time = 0.05
-one_shot = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("4_2kxes")
@@ -88,7 +83,6 @@ z_index = 1
 texture = ExtResource("6_3wwrj")
 
 [node name="Camera2D" type="Camera2D" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D/PlayerIcon"]
-zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [node name="Rooms" type="Node2D" parent="Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"]
@@ -159,17 +153,11 @@ horizontal_alignment = 1
 
 [node name="BombsUsedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
 text = "Bombs used:"
-horizontal_alignment = 1
 
 [node name="SpellsCastedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
 text = "Spells casted: "
-horizontal_alignment = 1
 
 [node name="BackToLobbyButton" type="Button" parent="Summary/NinePatchRect/VBoxContainer"]
 layout_mode = 2
@@ -181,95 +169,9 @@ text = "Back to lobby"
 wait_time = 3.0
 one_shot = true
 
-[node name="Communicates" type="CanvasLayer" parent="."]
-script = ExtResource("12_xg24h")
-
-[node name="GameNotSaved" type="Control" parent="Communicates"]
-visible = false
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="Communicates/GameNotSaved"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -253.0
-offset_top = -11.5
-offset_right = 253.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "You cannot save the game in room with monsters"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Communicates/GameNotSaved/Label"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="GameSaved" type="Control" parent="Communicates"]
-visible = false
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="Communicates/GameSaved"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -253.0
-offset_top = -11.5
-offset_right = 253.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Game succesfully saved"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="Communicates/GameSaved/Label"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="VisibilityTimer" type="Timer" parent="Communicates"]
-wait_time = 2.0
-one_shot = true
-
 [node name="ResetTimer" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="pressed" from="Summary/NinePatchRect/VBoxContainer/BackToLobbyButton" to="Summary" method="_on_back_to_lobby_button_pressed"]
 [connection signal="timeout" from="Summary/SummaryAppearTimer" to="Summary" method="_on_summary_appear_timer_timeout"]
-[connection signal="timeout" from="Communicates/VisibilityTimer" to="Communicates" method="_on_visibility_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

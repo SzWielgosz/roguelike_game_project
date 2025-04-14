@@ -26,3 +26,4 @@ func take_damage(damage: int) -> int:
 func die():
 	is_dead = true
 	dead.emit()
+	GameStats.mobs_killed += 1

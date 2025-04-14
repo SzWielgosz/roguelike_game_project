@@ -25,6 +25,9 @@ func _ready():
 		config.set_value("audio", "master_volume", 1.0)
 		config.set_value("audio", "music_volume", 1.0)
 		config.set_value("audio", "sfx_volume", 1.0)
+		
+		config.set_value("show_message", "thank_you", true)
+		
 
 		config.save(SETTINGS_FILE_PATH)
 	else:
@@ -53,3 +56,13 @@ func load_audio_settings():
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
+
+
+func save_show_message_setting(value: bool):
+	config.set_value("show_message", "thank_you", value)
+	config.save(SETTINGS_FILE_PATH)
+
+
+func load_show_message_setting():
+	var value = config.get_value("show_message", "thank_you")
+	return value

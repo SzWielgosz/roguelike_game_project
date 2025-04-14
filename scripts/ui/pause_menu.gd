@@ -41,7 +41,7 @@ func pause():
 
 
 func return_to_lobby():
-	get_tree().change_scene_to_file("res://scenes/main/rooms/lobby.tscn")
+	get_tree().change_scene_to_file("res://scenes/rooms/lobby.tscn")
 
 
 func return_to_main_menu():
@@ -85,6 +85,8 @@ func _on_main_menu_pressed():
 
 func _on_yes_lobby_pressed():
 	resume()
+	GameStats.reset()
+	PlayerStats.reset()
 	return_to_lobby()
 
 

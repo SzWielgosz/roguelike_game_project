@@ -12,6 +12,13 @@ func _ready():
 
 #BFS algorithm
 func create_minimap(create_dict):
+	var minimap_rooms_children = minimap_rooms.get_children()
+	print("Minimap children przed: ", minimap_rooms_children)
+	if minimap_rooms_children:
+		for minimap_room in minimap_rooms_children:
+			minimap_rooms.remove_child(minimap_room)
+			minimap_room.queue_free()
+	print("Minimap children po: ", minimap_rooms_children)
 	create_minimap_dict = create_dict
 	if create_minimap_dict.is_empty():
 		return
@@ -27,8 +34,11 @@ func create_minimap(create_dict):
 
 		var original_icon = current_room.get_node("Icon")
 		var room_icon = original_icon.duplicate()
-		room_icon.visible = false
-		add_child(room_icon)
+		if current_room.get_node("RoomArea").room_cleared:
+			room_icon.visible = true
+			room_icon.get_node("Entered").visible = true
+			room_icon.get_node("Hidden").visible = false
+		minimap_rooms.add_child(room_icon)
 		room_icon.global_position = current_position
 
 		minimap_icons[current_room] = room_icon  

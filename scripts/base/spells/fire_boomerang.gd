@@ -4,7 +4,7 @@ extends InstantSpell
 @export var attack_power: int = 25
 @export var knockback := 0
 @export var target_position: Vector2 = Vector2.ZERO
-@onready var caster = get_tree().root.get_node("Game").get_node("Player").get_node("Arm")
+@onready var caster = PlayerStats.player.get_node("Arm")
 var initial_position: Vector2
 var traveling_to_target = true
 

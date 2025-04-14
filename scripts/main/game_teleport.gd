@@ -18,4 +18,4 @@ func _on_area_2d_body_exited(body):
 func _input(event):
 	if event.is_action_pressed("interact"):
 		if player_inside:
-			get_tree().change_scene_to_file("res://scenes/main/game.tscn")
+			GameManager.start_new_game()

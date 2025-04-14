@@ -17,16 +17,20 @@ signal spawn_mobs
 func _ready():
 	timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 1.0
+	timer.wait_time = 0.1
 	timer.one_shot = true
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
+	if type == RoomType.START:
+		room_cleared = true
+		print("START DZIAŁA")
 
 
 func _on_timer_timeout():
 	if player_inside and not spawning and mobs_left.is_empty() and not room_cleared:
 		room_cleared = true
 		if not doors_opened:
+			GameStats.player_clearing_room = false
 			open_all_doors()
 
 
@@ -41,10 +45,12 @@ func _on_body_entered(body):
 				if doors_opened:
 					close_all_doors()
 				if not mobs_spawned:
+					GameStats.player_clearing_room = true
 					spawn_mobs.emit()
 					mobs_spawned = true
 			else:
 				if not doors_opened:
+					GameStats.player_clearing_room = false
 					open_all_doors()
 
 	if body.is_in_group("mobs"):
@@ -69,6 +75,7 @@ func _on_body_exited(body):
 		if player_inside and mobs_left.is_empty() and not room_cleared:
 			room_cleared = true
 			if not doors_opened:
+				GameStats.player_clearing_room = false
 				open_all_doors()
 
 

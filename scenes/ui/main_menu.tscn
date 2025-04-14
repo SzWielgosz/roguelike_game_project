@@ -124,6 +124,12 @@ theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
 text = "PLAY"
 
+[node name="HowToPlayButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "How to play"
+
 [node name="SettingsButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_84ugh")
@@ -173,6 +179,7 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Settings/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -287,6 +294,148 @@ theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 21
 text = "Back"
 
+[node name="SaveSlots" type="Control" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/SaveSlots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -27.0
+offset_right = 180.5
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="FirstSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "First slot"
+
+[node name="SecondSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Second slot"
+
+[node name="ThirdSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Third slot"
+
+[node name="BackButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "back"
+
+[node name="ThankYouPopup" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/ThankYouPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -225.0
+offset_right = 225.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tdw00")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/ThankYouPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -114.0
+offset_right = 209.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GreetingsLabel" type="Label" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 31
+text = "Hello dear player"
+
+[node name="Label" type="Label" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "I wanted to say thank you for
+trying my first ever made game.
+This game is a result of learning
+godot engine through my free time. 
+The game itself is not long 
+so you can complete it in no time
+because I focused more on
+implementation of as many
+features as possible. Maybe
+in the future I'll expand this game 
+or create something similar to it. 
+Enjoy! :D
+"
+horizontal_alignment = 1
+
+[node name="DoNotShowAgainCheckBox" type="CheckBox" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Do not show this again"
+
+[node name="ClosePopupButton" type="Button" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Close"
+
 [connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
@@ -298,3 +447,9 @@ text = "Back"
 [connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/VSyncSetting" to="." method="_on_v_sync_setting_toggled"]
 [connection signal="pressed" from="NinePatchRect/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
 [connection signal="pressed" from="NinePatchRect/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/FirstSlot" to="." method="_on_first_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/SecondSlot" to="." method="_on_second_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/ThirdSlot" to="." method="_on_third_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="NinePatchRect/ThankYouPopup/VBoxContainer/DoNotShowAgainCheckBox" to="." method="_on_do_not_show_again_check_box_toggled"]
+[connection signal="pressed" from="NinePatchRect/ThankYouPopup/VBoxContainer/ClosePopupButton" to="." method="_on_close_popup_button_pressed"]

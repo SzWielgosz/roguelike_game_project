@@ -22,6 +22,7 @@ func _ready():
 	PlayerStats.set_player(self)
 	set_collision_mask_value(6, true)
 	set_collision_mask_value(11, true)
+	set_collision_mask_value(12, true)
 	$HUD.visible = true
 	PlayerStats.health_changed.connect(_on_health_changed)
 	PlayerStats.set_health(PlayerStats.player_health)
@@ -93,9 +94,9 @@ func start_dash(direction):
 
 func place_bomb():
 	var bomb_instance = bomb_scene.instantiate()
-	bomb_instance.global_position = global_position
+	bomb_instance.global_position = global_position + Vector2(0, 8)
 	GameStats.bombs_used += 1
-	get_parent().add_child(bomb_instance)
+	get_tree().current_scene.add_child(bomb_instance)
 
 
 func _process(_delta):

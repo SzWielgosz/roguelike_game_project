@@ -3,9 +3,10 @@ extends Node2D
 var empty_room = preload("res://scenes/rooms/room_24x16/empty_room.tscn")
 var door = preload("res://scenes/environment/props/door.tscn")
 var next_dungeon_stairs = preload("res://scripts/environment/next_dungeon_stairs.tscn")
+var item_shop_scene = preload("res://scenes/rooms/item_shop.tscn")
 var room_layouts = [preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"), preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn")]
 var load_dungeon: bool = false
-enum RoomType { REGULAR, TREASURE, START, END }
+enum RoomType { REGULAR, TREASURE, START, END, SHOP }
 @onready var Map: TileMap = $"../TileMap"
 @onready var Player = $"../Player"
 @onready var minimap = $"../Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"
@@ -74,7 +75,6 @@ func generate_rooms():
 		var picked_room_position = picked_room.global_position
 
 		var direction_options = directions.keys()
-		#direction_options.shuffle()
 		var randomized_directions = []
 		while direction_options.size() > 0:
 			var rand_index = GameStats.random_number_generator.randi_range(0, direction_options.size() - 1)
@@ -134,7 +134,6 @@ func generate_minimap():
 func add_room_layouts():
 	for room in $"../Rooms".get_children():
 		if room.get_node("RoomArea").type == RoomType.REGULAR:
-			#var room_layout = room_layouts.pick_random().instantiate()
 			var random_index = GameStats.random_number_generator.randi_range(0, room_layouts.size() - 1)
 			var room_layout = room_layouts[random_index].instantiate()
 			
@@ -195,6 +194,62 @@ func find_end_room():
 	var next_dungeon_stairs_instance = next_dungeon_stairs.instantiate()
 	end_room.add_child(next_dungeon_stairs_instance)
 	next_dungeon_stairs_instance.global_position = end_room.global_position
+
+
+func create_shop_room():
+	var selected_room = null
+	var room_not_selected = true
+	while room_not_selected:
+		var room_idx = GameStats.random_number_generator.randi_range(0, rooms_to_generate - 1)
+		selected_room = $"../Rooms".get_child(room_idx)
+		var room_type = selected_room.get_node("RoomArea").type
+		if room_type != RoomType.START and room_type != RoomType.END and room_type != RoomType.TREASURE:
+			selected_room.get_node("RoomArea").type = RoomType.SHOP
+			var shop_instance = item_shop_scene.instantiate()
+			selected_room.add_child(shop_instance)
+			selected_room.global_position = shop_instance.global_position
+			room_not_selected = false
+
+
+func create_treasure_room():
+	var selected_room = null
+	var room_not_selected = true
+	while room_not_selected:
+		var room_idx = GameStats.random_number_generator.randi_range(0, rooms_to_generate - 1)
+		selected_room = $"../Rooms".get_child(room_idx)
+		var room_type = selected_room.get_node("RoomArea").type
+		if room_type != RoomType.START and room_type != RoomType.END and room_type != RoomType.TREASURE:
+			selected_room.get_node("RoomArea").type = RoomType.TREASURE
+			room_not_selected = false
+
+	var effect_drops = null
+	for type in DropStats.drop_table["types"]:
+		if type["name"] == "effect_drops":
+			effect_drops = type
+			break
+	
+	if effect_drops == null:
+		return
+
+	var items = effect_drops["items"]
+	
+	var total_chance = 0.0
+	for item in items:
+		total_chance += item["chance"]
+	
+	var pick = randf() * total_chance
+	var current = 0.0
+	
+	for item in items:
+		current += item["chance"]
+		if pick <= current:
+			var quantity = GameStats.random_number_generator.randi_range(item["quantity_range"].x, item["quantity_range"].y)
+			for i in range(quantity):
+				var item_instance = item["scene"].instantiate()
+				selected_room.add_child(item_instance)
+				item_instance.global_position = selected_room.global_position
+			break
+
 
 
 func spawn_player():
@@ -262,6 +317,8 @@ func create_dungeon():
 	connect_rooms()
 	find_start_room()
 	find_end_room()
+	create_shop_room()
+	create_treasure_room()
 	add_room_layouts()
 	if SaveManager.dungeon_to_load:
 		load_save_dungeon()

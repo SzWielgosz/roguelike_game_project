@@ -21,7 +21,7 @@ func _physics_process(_delta):
 
 func _on_hit_box_body_entered(body):
 	if body.is_in_group("player") and !body.get_node("PlayerHealth").immortality:
-		if PlayerStats.player_gold > 0 and !PlayerStats.gold_lost_this_frame:
-			PlayerStats.substract_gold(1)
+		if PlayerStats.player_coins > 0 and !PlayerStats.coin_lost_this_frame:
+			PlayerStats.substract_coins(1)
 			GameStats.coins_collected -= 1
-			PlayerStats.gold_lost_this_frame = true
+			PlayerStats.coin_lost_this_frame = true

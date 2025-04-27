@@ -10,9 +10,14 @@ extends CanvasLayer
 @onready var save_slots: Control  = $NinePatchRect/SaveSlots
 @onready var thank_you_popup: Control  = $NinePatchRect/ThankYouPopup
 @onready var do_not_show_again_checkbox: CheckBox = $NinePatchRect/ThankYouPopup/VBoxContainer/DoNotShowAgainCheckBox
-@onready var first_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/FirstSlot
-@onready var second_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/SecondSlot
-@onready var third_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/ThirdSlot
+@onready var first_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer/FirstSlot
+@onready var second_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2/SecondSlot
+@onready var third_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/ThirdSlot
+@onready var delete_first_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer/DeleteFirstSlot
+@onready var delete_second_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2/DeleteSecondSlot
+@onready var delete_third_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/DeleteThirdSlot
+@onready var delete_save_enable_button: Button = $NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveEnableButton
+@onready var delete_save_disable_button: Button = $NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveDisableButton
 
 
 func _ready():
@@ -35,15 +40,20 @@ func set_save_slots():
 	var second_slot_time = SaveManager.get_total_time_played_from_slot(2)
 	var third_slot_time = SaveManager.get_total_time_played_from_slot(3)
 	
-
 	if first_slot_time != null:
 		first_slot.text = "First slot\ntime played: " + Utils.format_time(first_slot_time)
-	
+	else:
+		first_slot.text = "First slot\n(no save)"
+
 	if second_slot_time != null:
 		second_slot.text = "Second slot\ntime played: " + Utils.format_time(second_slot_time)
-	
+	else:
+		second_slot.text = "Second slot\n(no save)"
+
 	if third_slot_time != null:
 		third_slot.text = "Third slot\ntime played: " + Utils.format_time(third_slot_time)
+	else:
+		third_slot.text = "Third slot\n(no save)"
 
 
 func _on_play_button_pressed():
@@ -146,3 +156,34 @@ func _on_do_not_show_again_check_box_toggled(toggled_on):
 
 func _on_close_popup_button_pressed():
 	thank_you_popup.visible = false
+
+
+func _on_delete_save_enable_button_pressed():
+	delete_first_slot.visible = true
+	delete_second_slot.visible = true
+	delete_third_slot.visible = true
+	delete_save_enable_button.visible = false
+	delete_save_disable_button.visible = true
+
+
+func _on_delete_save_disable_pressed():
+	delete_first_slot.visible = false
+	delete_second_slot.visible = false
+	delete_third_slot.visible = false
+	delete_save_enable_button.visible = true
+	delete_save_disable_button.visible = false
+
+
+func _on_delete_first_slot_pressed():
+	SaveManager.delete_save_slot(1)
+	set_save_slots()
+
+
+func _on_delete_second_slot_pressed():
+	SaveManager.delete_save_slot(2)
+	set_save_slots()
+
+
+func _on_delete_third_slot_pressed():
+	SaveManager.delete_save_slot(3)
+	set_save_slots()

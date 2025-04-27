@@ -40,8 +40,9 @@ layout_mode = 2
 [node name="Health" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Health"]
+[node name="HBoxContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/Health"]
 layout_mode = 2
+columns = 3
 
 [node name="Dash" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

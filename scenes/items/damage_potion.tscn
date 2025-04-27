@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnup5232i7qr5"]
+
+[ext_resource type="Script" path="res://scenes/items/damage_potion.gd" id="1_ko7d6"]
+[ext_resource type="Texture2D" uid="uid://dv5gwklhahhgx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/potion_yellow.png" id="2_t1o6i"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="3_5thq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_co5cs"]
+size = Vector2(7, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87lyq"]
+size = Vector2(3, 3)
+
+[node name="DamagePotion" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 1549
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 2.0
+script = ExtResource("1_ko7d6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t1o6i")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_co5cs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_87lyq")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+theme_override_fonts/font = ExtResource("3_5thq0")
+theme_override_font_sizes/font_size = 21
+text = "Damage potion
++ 0.1 damage modifier"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -13,4 +13,5 @@ cooldown_timer = NodePath("CooldownTimer")
 texture = ExtResource("3_qjn4t")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true

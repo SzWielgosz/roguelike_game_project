@@ -2,18 +2,20 @@ extends Node
 var lesser_fireball_scroll_scene = preload("res://scenes/spells/lesser_fireball/lesser_fireball_scroll.tscn")
 var fireball_scroll_scene = preload("res://scenes/spells/fireball/fireball_scroll.tscn")
 var fire_boomerang_scroll_scene = preload("res://scenes/spells/fire_boomerang/fire_boomerang_scroll.tscn")
+var damage_modifier: float = 1.0
 var player: CharacterBody2D = null
 var player_health: float = 3.0
 var player_max_health: float = 3.0
-var player_max_hearts: int = 10
-var player_gold: int = 0
+var player_max_hearts: int = 9
+var player_coins: int = 0
 var player_bombs: int = 3
 var slots: Array = []
 var selected_slot: int = 0
-var gold_lost_this_frame: bool = false
+var coin_lost_this_frame: bool = false
 
 signal health_changed(value)
-signal gold_changed(value)
+signal max_health_changed(value)
+signal coins_changed(value)
 signal bombs_changed(value)
 signal slot_changed(value)
 signal cooldown_started(spell_name, slot)
@@ -30,7 +32,7 @@ func _ready():
 
 
 func _process(_delta):
-	gold_lost_this_frame = false
+	coin_lost_this_frame = false
 	
 
 func set_spells():
@@ -66,14 +68,14 @@ func _input(event):
 		switch_slot(2)
 
 
-func add_gold(amount: int):
-	player_gold += amount
-	gold_changed.emit(player_gold)
+func add_coins(amount: int):
+	player_coins += amount
+	coins_changed.emit(player_coins)
 
 
-func substract_gold(amount: int):
-	player_gold -= amount
-	gold_changed.emit(player_gold)
+func substract_coins(amount: int):
+	player_coins -= amount
+	coins_changed.emit(player_coins)
 
 
 func add_bomb(amount: int):
@@ -92,8 +94,12 @@ func set_health(value: float):
 
 
 func increase_max_health(amount: float):
-	player_max_health = clamp(player_max_health + amount, 3, player_max_hearts)
-	set_health(player_health)
+	var new_max = clamp(player_max_health + amount, 3, player_max_hearts)
+	if new_max > player_max_health:
+		player_max_health = new_max
+		player_health = clamp(player_health + amount, 0, player_max_health)
+		max_health_changed.emit(player_max_health)
+		set_health(player_health)
 
 
 func get_heart_count():
@@ -111,5 +117,5 @@ func get_empty_heart_count():
 func reset():
 	player_health = 3.0
 	player_max_health = 3.0
-	player_gold = 0
+	player_coins = 0
 	player_bombs = 3

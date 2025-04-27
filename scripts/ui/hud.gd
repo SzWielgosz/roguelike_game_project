@@ -4,7 +4,7 @@ var full_heart = preload("res://scenes/ui/full_heart.tscn")
 var half_heart = preload("res://scenes/ui/half_heart.tscn")
 @onready var health = PlayerStats.player_health
 @onready var max_hearts = PlayerStats.player_max_health
-@onready var gold = PlayerStats.player_gold
+@onready var coins = PlayerStats.player_coins
 @onready var bombs = PlayerStats.player_bombs
 @onready var spell_slots = PlayerStats.slots
 var current_selected_spell: int = PlayerStats.selected_slot + 1
@@ -41,8 +41,8 @@ func set_hearts(value):
 			$HBoxContainer/VBoxContainer/Health/HBoxContainer.add_child(empty_heart_instance)
 
 
-func set_gold(value):
-	$HBoxContainer/VBoxContainer/CoinCounter/HBoxContainer/Label.text = str(PlayerStats.player_gold)
+func set_coins(value):
+	$HBoxContainer/VBoxContainer/CoinCounter/HBoxContainer/Label.text = str(PlayerStats.player_coins)
 
 
 func set_bombs(value):
@@ -76,20 +76,25 @@ func start_dash_cooldown(value):
 
 func _ready():
 	set_hearts(health)
-	set_gold(gold)
+	set_coins(coins)
 	set_bombs(bombs)
 	set_spells(spell_slots)
 	
 	PlayerStats.health_changed.connect(_on_health_changed)
-	PlayerStats.gold_changed.connect(_on_gold_changed)
+	PlayerStats.coins_changed.connect(_on_coins_changed)
 	PlayerStats.bombs_changed.connect(_on_bombs_changed)
+	PlayerStats.max_health_changed.connect(_on_max_health_changed)
 
 
 func _on_health_changed(value):
 	set_hearts(value)
 
-func _on_gold_changed(value):
-	set_gold(value)
+func _on_coins_changed(value):
+	set_coins(value)
 	
 func _on_bombs_changed(value):
 	set_bombs(value)
+
+func _on_max_health_changed(value):
+	max_hearts = value
+	set_hearts(PlayerStats.player_health)

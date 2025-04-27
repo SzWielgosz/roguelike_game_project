@@ -106,6 +106,7 @@ autoplay = "default"
 frame_progress = 0.172459
 
 [node name="MainButtons" type="Control" parent="NinePatchRect"]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 1.0
@@ -295,7 +296,6 @@ theme_override_font_sizes/font_size = 21
 text = "Back"
 
 [node name="SaveSlots" type="Control" parent="NinePatchRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -317,9 +317,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -180.5
-offset_top = -27.0
+offset_top = -56.5
 offset_right = 180.5
-offset_bottom = 27.0
+offset_bottom = 56.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -327,23 +327,53 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="FirstSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="FirstSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 19
 text = "First slot"
 
-[node name="SecondSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+[node name="DeleteFirstSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SecondSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 19
 text = "Second slot"
 
-[node name="ThirdSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+[node name="DeleteSecondSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ThirdSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 19
 text = "Third slot"
+
+[node name="DeleteThirdSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete"
 
 [node name="BackButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
 layout_mode = 2
@@ -352,7 +382,24 @@ theme_override_fonts/font = ExtResource("2_84ugh")
 theme_override_font_sizes/font_size = 19
 text = "back"
 
+[node name="DeleteSaveEnableButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete save"
+
+[node name="DeleteSaveDisableButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Exit Delete Mode"
+
 [node name="ThankYouPopup" type="Control" parent="NinePatchRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -447,9 +494,14 @@ text = "Close"
 [connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/VSyncSetting" to="." method="_on_v_sync_setting_toggled"]
 [connection signal="pressed" from="NinePatchRect/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
 [connection signal="pressed" from="NinePatchRect/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]
-[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/FirstSlot" to="." method="_on_first_slot_pressed"]
-[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/SecondSlot" to="." method="_on_second_slot_pressed"]
-[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/ThirdSlot" to="." method="_on_third_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer/FirstSlot" to="." method="_on_first_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer/DeleteFirstSlot" to="." method="_on_delete_first_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2/SecondSlot" to="." method="_on_second_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2/DeleteSecondSlot" to="." method="_on_delete_second_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/ThirdSlot" to="." method="_on_third_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/DeleteThirdSlot" to="." method="_on_delete_third_slot_pressed"]
 [connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveEnableButton" to="." method="_on_delete_save_enable_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveDisableButton" to="." method="_on_delete_save_disable_pressed"]
 [connection signal="toggled" from="NinePatchRect/ThankYouPopup/VBoxContainer/DoNotShowAgainCheckBox" to="." method="_on_do_not_show_again_check_box_toggled"]
 [connection signal="pressed" from="NinePatchRect/ThankYouPopup/VBoxContainer/ClosePopupButton" to="." method="_on_close_popup_button_pressed"]

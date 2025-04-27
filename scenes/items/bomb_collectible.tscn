@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cglcncjvmq00j"]
+
+[ext_resource type="Script" path="res://scripts/items/bomb_collectible.gd" id="1_pryya"]
+[ext_resource type="Texture2D" uid="uid://c6m7r5l3gwfwm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/bomb.png" id="2_12l2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhp1g"]
+size = Vector2(8, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvfmr"]
+size = Vector2(3, 3)
+
+[node name="BombCollectible" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 1553
+gravity_scale = 0.0
+linear_damp = 5.0
+script = ExtResource("1_pryya")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_12l2c")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bhp1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wvfmr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

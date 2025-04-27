@@ -14,6 +14,7 @@ class_name SaveData
 @export var spells_casted: int
 @export var selected_spell: int
 @export var player_health: float
+@export var player_hearts: int
 @export var player_bombs: int
 @export var player_coins: int
 @export var dungeon_rooms: Dictionary

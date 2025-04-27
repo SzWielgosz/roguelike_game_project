@@ -1,7 +1,7 @@
 extends Area2D
 class_name RoomArea
 
-enum RoomType { REGULAR, TREASURE, START, END }
+enum RoomType { REGULAR, TREASURE, START, END, SHOP }
 var room_visited: bool = false
 var doors_opened: bool = true
 var room_cleared: bool = false

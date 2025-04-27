@@ -23,6 +23,7 @@ func _on_explosion_radius_body_entered(body):
 
 func _on_placed_timer_timeout():
 	animation_player.play("explosion")
+	$".".freeze = true
 	explosion_timer.start()
 
 

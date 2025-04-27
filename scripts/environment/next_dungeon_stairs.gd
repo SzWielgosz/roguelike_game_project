@@ -9,4 +9,4 @@ func _reload_scene():
 	GameStats.random_number_generator.randomize()
 	GameStats.dungeon_number += 1
 	SaveManager.dungeon_to_load = false
-	get_tree().get_root().get_node("Game").get_node("DungeonGenerator").create_dungeon()
+	get_tree().current_scene.get_node("DungeonGenerator").create_dungeon()

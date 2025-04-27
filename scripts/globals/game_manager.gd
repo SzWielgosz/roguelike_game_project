@@ -1,5 +1,5 @@
 extends Node
-signal create_new_dungeon
+signal show_item_popup(text: String)
 var in_game: bool = false
 
 

@@ -59,9 +59,10 @@ func save_game():
 	save_data.bombs_used = GameStats.bombs_used
 	save_data.spells_casted = GameStats.spells_casted
 	save_data.selected_spell = PlayerStats.selected_slot
+	save_data.player_hearts = PlayerStats.player_max_health
 	save_data.player_health = PlayerStats.player_health
 	save_data.player_bombs = PlayerStats.player_bombs
-	save_data.player_coins = PlayerStats.player_gold
+	save_data.player_coins = PlayerStats.player_coins
 	save_data.rng_seed = GameStats.random_number_generator.seed
 	
 	var rooms_dict = {}
@@ -126,9 +127,10 @@ func apply_loaded_save():
 	
 	#PlayerStats.set_spell_names(save_data.player_spell_slots)
 	PlayerStats.selected_slot = save_data.selected_spell
+	PlayerStats.player_max_health = save_data.player_hearts
 	PlayerStats.player_health = save_data.player_health
 	PlayerStats.player_bombs = save_data.player_bombs
-	PlayerStats.player_gold = save_data.player_coins
+	PlayerStats.player_coins = save_data.player_coins
 	
 	if save_data.player_in_dungeon:
 		get_tree().change_scene_to_file("res://scenes/main/game.tscn")
@@ -169,3 +171,9 @@ func get_total_time_played_from_slot(slot: int):
 
 func create_new_save():
 	save_data = SaveData.new()
+
+
+func delete_save_slot(slot: int):
+	var save_path = get_slot_path(slot)
+	if FileAccess.file_exists(save_path):
+		DirAccess.remove_absolute(save_path)

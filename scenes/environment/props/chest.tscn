@@ -59,7 +59,7 @@ height = 8.0
 size = Vector2(18, 18)
 
 [node name="Chest" type="RigidBody2D"]
-collision_layer = 16
+collision_layer = 2048
 collision_mask = 573
 gravity_scale = 0.0
 lock_rotation = true
@@ -68,9 +68,7 @@ script = ExtResource("1_llan8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vjgte")
-animation = &"closed"
-frame = 1
-frame_progress = 0.895825
+animation = &"opened"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -82,5 +80,7 @@ collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpenArea2D"]
 shape = SubResource("RectangleShape2D_bknyr")
+
+[node name="DroppedItems" type="Node" parent="."]
 
 [connection signal="body_entered" from="OpenArea2D" to="." method="_on_open_area_2d_body_entered"]

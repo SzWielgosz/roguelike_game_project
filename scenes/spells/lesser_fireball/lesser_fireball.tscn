@@ -53,6 +53,7 @@ size = Vector2(16.6667, 14.6667)
 [node name="LesserFireball" type="Node2D" groups=["spell"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_3f66a")
+attack_power = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tlldu")

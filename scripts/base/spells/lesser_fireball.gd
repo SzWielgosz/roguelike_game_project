@@ -1,7 +1,7 @@
 extends InstantSpell
 
 @export var speed: int = 200
-@export var attack_power: float = 25.0 * PlayerStats.damage_modifier
+@export var attack_power: float = 50.0 * PlayerStats.damage_modifier
 @export var knockback: float = 150.0
 
 

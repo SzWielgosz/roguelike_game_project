@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cm44ww7ww8puo"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/boss_fireball.gd" id="1_n16ol"]
+[ext_resource type="Texture2D" uid="uid://dujsahwk380r7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/lesser_fireball/lesser_fireball1.png" id="2_x1bum"]
+[ext_resource type="Texture2D" uid="uid://dvqt3pqc08563" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/lesser_fireball/lesser_fireball2.png" id="3_mfbg5"]
+[ext_resource type="Texture2D" uid="uid://vm38pt15ydox" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/lesser_fireball/lesser_fireball3.png" id="4_4beem"]
+[ext_resource type="Texture2D" uid="uid://dil76d5k2fjkc" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/lesser_fireball/lesser_fireball4.png" id="5_ny2yn"]
+[ext_resource type="Texture2D" uid="uid://0he01jcx0t0r" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/explosions/2/explosion1.png" id="6_yupld"]
+[ext_resource type="Texture2D" uid="uid://bqb8ahv8x02oa" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/explosions/2/explosion2.png" id="7_miasv"]
+[ext_resource type="Texture2D" uid="uid://d1nmkn4k215cc" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/explosions/2/explosion3.png" id="8_xfybq"]
+[ext_resource type="Texture2D" uid="uid://6n3kedjjic8h" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/explosions/2/explosion4.png" id="9_jtytp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6iq1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x1bum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mfbg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4beem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ny2yn")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yupld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_miasv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xfybq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jtytp")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7225"]
+size = Vector2(16.6667, 14.6667)
+
+[node name="BossFireball" type="Node2D"]
+script = ExtResource("1_n16ol")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6iq1q")
+animation = &"flying"
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.66667, 0.666666)
+shape = SubResource("RectangleShape2D_n7225")
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

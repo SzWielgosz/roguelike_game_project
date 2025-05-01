@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://eq5ww7lt7rbb"]
+[gd_scene load_steps=13 format=3 uid="uid://eq5ww7lt7rbb"]
 
 [ext_resource type="Script" path="res://scripts/rooms/lobby.gd" id="1_n2gji"]
 [ext_resource type="PackedScene" uid="uid://clui5w1y5f5cb" path="res://scenes/ui/pause_menu.tscn" id="2_xi2gt"]
@@ -9,17 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bv0tbu73fjmw8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/stair_nextlevel.png" id="7_p685w"]
 [ext_resource type="Script" path="res://scripts/main/game_teleport.gd" id="8_t6811"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="9_qq0wh"]
-[ext_resource type="Script" path="res://scenes/main/communicates.gd" id="10_hvcb6"]
+[ext_resource type="Script" path="res://scripts/ui/communicates.gd" id="10_hvcb6"]
+[ext_resource type="PackedScene" uid="uid://fyqb4k5vrm4b" path="res://scenes/ui/background.tscn" id="11_kliti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85ljd"]
 size = Vector2(16, 16)
 
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_n2gji")
-
-[node name="PauseMenu" parent="." instance=ExtResource("2_xi2gt")]
-process_mode = 3
-visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("3_2cdy0")
@@ -66,6 +63,9 @@ scale = Vector2(0.05, 0.05)
 theme_override_fonts/font = ExtResource("9_qq0wh")
 theme_override_font_sizes/font_size = 128
 text = "press e to enter the dungeon"
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_xi2gt")]
+visible = false
 
 [node name="Communicates" type="CanvasLayer" parent="."]
 script = ExtResource("10_hvcb6")
@@ -193,6 +193,9 @@ one_shot = true
 [node name="VisibilityTimer" type="Timer" parent="Communicates"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Background" parent="." instance=ExtResource("11_kliti")]
+layer = -1
 
 [connection signal="body_entered" from="GameTeleport/Area2D" to="GameTeleport" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="GameTeleport/Area2D" to="GameTeleport" method="_on_area_2d_body_exited"]

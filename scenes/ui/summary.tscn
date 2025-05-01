@@ -1,0 +1,129 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm671xo7dcdj8"]
+
+[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="2_ryjoq"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="3_a5rcn"]
+
+[sub_resource type="GDScript" id="GDScript_ftalh"]
+script/source = "extends CanvasLayer
+
+@onready var time_played_label: Label = $NinePatchRect/VBoxContainer/TimePlayedLabel
+@onready var mobs_killed_label: Label = $NinePatchRect/VBoxContainer/MobsKilledLabel
+@onready var coins_collected_label: Label = $NinePatchRect/VBoxContainer/CoinsCollectedLabel
+@onready var bombs_used_label: Label = $NinePatchRect/VBoxContainer/BombsUsedLabel
+@onready var spells_casted_label: Label = $NinePatchRect/VBoxContainer/SpellsCastedLabel
+@onready var summary_appear_timer: Timer = $SummaryAppearTimer
+@onready var player_health: PlayerHealth = get_tree().current_scene.find_child(\"PlayerHealth\")
+
+
+func _ready():
+	player_health.player_died.connect(_on_player_died)
+
+
+func _on_player_died():
+	create_summary()
+
+
+func _on_summary_appear_timer_timeout():
+	visible = true
+
+
+func _on_back_to_lobby_button_pressed():
+	PlayerStats.reset()
+	GameStats.reset()
+	get_tree().change_scene_to_file(\"res://scenes/rooms/lobby.tscn\")
+
+
+func create_summary():
+	time_played_label.text = \"Time played: %.2f\" % [GameStats.time_played]
+	mobs_killed_label.text = \"Mobs killed: %d\" % [GameStats.mobs_killed]
+	coins_collected_label.text = \"Gold collected: %d\" % [GameStats.coins_collected]
+	bombs_used_label.text = \"Bombs used: %d\" % [GameStats.bombs_used]
+	spells_casted_label.text = \"Spells casted: %d\" % [GameStats.spells_casted]
+	summary_appear_timer.start()
+"
+
+[node name="Summary" type="CanvasLayer"]
+script = SubResource("GDScript_ftalh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ryjoq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SummaryLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Summary"
+horizontal_alignment = 1
+
+[node name="TimePlayedLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Time played:"
+horizontal_alignment = 1
+
+[node name="MobsKilledLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Mobs killed:"
+horizontal_alignment = 1
+
+[node name="CoinsCollectedLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Coins collected:"
+horizontal_alignment = 1
+
+[node name="BombsUsedLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Bombs used:"
+horizontal_alignment = 1
+
+[node name="SpellsCastedLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Spells casted: "
+horizontal_alignment = 1
+
+[node name="BackToLobbyButton" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_a5rcn")
+theme_override_font_sizes/font_size = 21
+text = "Back to lobby"
+
+[node name="SummaryAppearTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/BackToLobbyButton" to="." method="_on_back_to_lobby_button_pressed"]
+[connection signal="timeout" from="SummaryAppearTimer" to="." method="_on_summary_appear_timer_timeout"]

@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="3_7lgxr"]
 
 [node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_sqcrd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

@@ -23,7 +23,6 @@ func _ready():
 	timer.start()
 	if type == RoomType.START:
 		room_cleared = true
-		print("START DZIAŁA")
 
 
 func _on_timer_timeout():

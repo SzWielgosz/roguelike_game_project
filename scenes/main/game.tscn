@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://clui5w1y5f5cb" path="res://scenes/ui/pause_menu.tscn" id="5_bs1wn"]
 [ext_resource type="Script" path="res://scripts/ui/draw_minimap.gd" id="5_ulq6r"]
 [ext_resource type="Texture2D" uid="uid://ntlfkrg8hpgo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/mage_idle_anim_f0.png" id="6_3wwrj"]
+[ext_resource type="PackedScene" uid="uid://cm671xo7dcdj8" path="res://scenes/ui/summary.tscn" id="6_qf24l"]
 [ext_resource type="Texture2D" uid="uid://brusmq32ks58x" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/minimap_frame.png" id="8_3adma"]
-[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="9_0le2h"]
-[ext_resource type="Script" path="res://scenes/main/summary.gd" id="9_kudhe"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="10_fpvgg"]
-[ext_resource type="Script" path="res://scenes/main/communicates.gd" id="12_xg24h"]
+[ext_resource type="PackedScene" uid="uid://fyqb4k5vrm4b" path="res://scenes/ui/background.tscn" id="12_g6bpo"]
+[ext_resource type="Script" path="res://scripts/ui/communicates.gd" id="12_xg24h"]
 
 [sub_resource type="GDScript" id="GDScript_vp85x"]
 script/source = "extends Camera2D
@@ -57,7 +57,9 @@ layer_3/tile_data = PackedInt32Array()
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_bs1wn")]
-process_mode = 3
+visible = false
+
+[node name="Summary" parent="." instance=ExtResource("6_qf24l")]
 visible = false
 
 [node name="Minimap" type="CanvasLayer" parent="."]
@@ -95,90 +97,6 @@ position_smoothing_enabled = true
 [node name="NinePatchRect" type="NinePatchRect" parent="Minimap/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("8_3adma")
-
-[node name="Summary" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("9_kudhe")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Summary"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -125.0
-offset_right = 125.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_0le2h")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Summary/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SummaryLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Summary"
-horizontal_alignment = 1
-
-[node name="TimePlayedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Time played:"
-horizontal_alignment = 1
-
-[node name="MobsKilledLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Mobs killed:"
-horizontal_alignment = 1
-
-[node name="CoinsCollectedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Coins collected:"
-horizontal_alignment = 1
-
-[node name="BombsUsedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Bombs used:"
-horizontal_alignment = 1
-
-[node name="SpellsCastedLabel" type="Label" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Spells casted: "
-horizontal_alignment = 1
-
-[node name="BackToLobbyButton" type="Button" parent="Summary/NinePatchRect/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_fpvgg")
-theme_override_font_sizes/font_size = 21
-text = "Back to lobby"
-
-[node name="SummaryAppearTimer" type="Timer" parent="Summary"]
-wait_time = 2.0
-one_shot = true
 
 [node name="Communicates" type="CanvasLayer" parent="."]
 script = ExtResource("12_xg24h")
@@ -307,11 +225,12 @@ color = Color(0, 0, 0, 1)
 wait_time = 2.0
 one_shot = true
 
+[node name="Background" parent="." instance=ExtResource("12_g6bpo")]
+layer = -1
+
 [node name="ResetTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="Summary/NinePatchRect/VBoxContainer/BackToLobbyButton" to="Summary" method="_on_back_to_lobby_button_pressed"]
-[connection signal="timeout" from="Summary/SummaryAppearTimer" to="Summary" method="_on_summary_appear_timer_timeout"]
 [connection signal="timeout" from="Communicates/VisibilityTimer" to="Communicates" method="_on_visibility_timer_timeout"]
 [connection signal="timeout" from="Communicates/ItemPopup/ItemPopupVisibilityTimer" to="Communicates" method="_on_item_popup_visibility_timer_timeout"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

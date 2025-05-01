@@ -1,8 +1,7 @@
 extends Node
 class_name State
 
-@onready var player = get_tree().root.get_node("Game").find_child("Player")
-#@onready var player = get_tree().root.get_node("TestScene").find_child("Player")
+@onready var player = get_tree().current_scene.find_child("Player")
 @onready var debug = owner.find_child("debug")
 @onready var animated_sprite = owner.find_child("AnimatedSprite2D")
 
@@ -11,6 +10,7 @@ func _ready():
 
 
 func enter():
+	print(name)
 	set_physics_process(true)
 
 

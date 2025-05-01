@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnup5232i7qr5"]
 
-[ext_resource type="Script" path="res://scenes/items/damage_potion.gd" id="1_ko7d6"]
+[ext_resource type="Script" path="res://scripts/items/damage_potion.gd" id="1_ko7d6"]
 [ext_resource type="Texture2D" uid="uid://dv5gwklhahhgx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/potion_yellow.png" id="2_t1o6i"]
 [ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="3_5thq0"]
 

@@ -1,0 +1,170 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsksy0qm473t2"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/boss_laser_beam.gd" id="1_mfrkd"]
+[ext_resource type="Texture2D" uid="uid://c04r8y1eb4qu3" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_channeling1.png" id="2_e58tm"]
+[ext_resource type="Texture2D" uid="uid://bxure0k7wwa1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_begin.png" id="2_kamch"]
+[ext_resource type="Texture2D" uid="uid://bl0f0fgc2fkqm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_middle.png" id="3_j4i7g"]
+[ext_resource type="Texture2D" uid="uid://d2fpwlwst2q4n" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_channeling2.png" id="3_yfidy"]
+[ext_resource type="Texture2D" uid="uid://btajq2l6o5h3s" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_end.png" id="4_27v8x"]
+[ext_resource type="Texture2D" uid="uid://df12qaajpv0ss" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_channeling3.png" id="4_wc57p"]
+[ext_resource type="Texture2D" uid="uid://bvwr3wc8msuph" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_channeling4.png" id="5_gja7h"]
+[ext_resource type="Texture2D" uid="uid://dwhwwa8vm0l1u" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/laser_beam/laser_beam_channeling5.png" id="6_xxc08"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1x5y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e58tm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yfidy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wc57p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gja7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xxc08")
+}],
+"loop": true,
+"name": &"channeling",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_t0wqx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserStart:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserMiddle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserEnd:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6kswi"]
+resource_name = "cast"
+length = 0.375
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserStart:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserMiddle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserEnd:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_pqjky"]
+resource_name = "channeling"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mmv5n"]
+_data = {
+"RESET": SubResource("Animation_t0wqx"),
+"cast": SubResource("Animation_6kswi"),
+"channeling": SubResource("Animation_pqjky")
+}
+
+[node name="BossLaserBeam" type="Node2D"]
+script = ExtResource("1_mfrkd")
+max_length = 300
+laser_speed = 500
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(300, 0)
+collision_mask = 13
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g1x5y")
+animation = &"channeling"
+frame = 3
+frame_progress = 0.940547
+
+[node name="LaserStart" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 0)
+texture = ExtResource("2_kamch")
+hframes = 4
+
+[node name="LaserMiddle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 0)
+texture = ExtResource("3_j4i7g")
+hframes = 4
+
+[node name="LaserEnd" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 0)
+texture = ExtResource("4_27v8x")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mmv5n")
+}
+
+[node name="ChannelingTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ChannelingTimer" to="." method="_on_channeling_timer_timeout"]

@@ -5,9 +5,7 @@ class_name Health
 @export var defense = 10
 @export var damage = 0.5
 @onready var health: int = max_health
-@onready var character_velocity = get_parent().velocity
 var is_dead = false
-var velocity = Vector2.ZERO
 signal took_damage
 signal dead
 

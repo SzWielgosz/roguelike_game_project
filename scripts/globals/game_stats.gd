@@ -10,6 +10,7 @@ var spells_casted: int = 0
 var dungeon_number: int = 1
 var player_clearing_room: bool = false
 var random_number_generator: RandomNumberGenerator = RandomNumberGenerator.new()
+var chest_spawn_probability: float = 1
 
 
 func _ready():

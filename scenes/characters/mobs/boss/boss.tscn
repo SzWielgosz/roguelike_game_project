@@ -1,0 +1,340 @@
+[gd_scene load_steps=50 format=3 uid="uid://7j7it1d7dot8"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/boss.gd" id="1_et370"]
+[ext_resource type="Texture2D" uid="uid://cfteqyslbkjq2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying1.png" id="2_g8nx7"]
+[ext_resource type="Texture2D" uid="uid://cr7d1gt4pw6ky" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying2.png" id="3_dvlrm"]
+[ext_resource type="Texture2D" uid="uid://ck31lws60sf4q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying3.png" id="4_vjsmv"]
+[ext_resource type="Texture2D" uid="uid://bd381cbfda3as" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying4.png" id="5_ia3ui"]
+[ext_resource type="Texture2D" uid="uid://bfvevlrckbvo4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying5.png" id="6_08wns"]
+[ext_resource type="Texture2D" uid="uid://8wtjulbfdkn1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying6.png" id="7_2j764"]
+[ext_resource type="Texture2D" uid="uid://txvgi0uljakm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying7.png" id="8_5fxin"]
+[ext_resource type="Texture2D" uid="uid://drt3jg0rm2t7o" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying8.png" id="9_v0xli"]
+[ext_resource type="Texture2D" uid="uid://dyyodfitisho4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying9.png" id="10_fkynn"]
+[ext_resource type="Texture2D" uid="uid://d1s7tt402sdc3" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying10.png" id="11_b4y1f"]
+[ext_resource type="Texture2D" uid="uid://ivhvt4flh75r" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying11.png" id="12_4x8gg"]
+[ext_resource type="Texture2D" uid="uid://13b2w865wfo0" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying12.png" id="13_vbjka"]
+[ext_resource type="Texture2D" uid="uid://cie8rlu63axbu" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying13.png" id="14_ue3ub"]
+[ext_resource type="Texture2D" uid="uid://cj2o2oou2ku34" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying14.png" id="15_e4d8y"]
+[ext_resource type="Texture2D" uid="uid://dddksq16ywdka" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying15.png" id="16_w85e7"]
+[ext_resource type="Texture2D" uid="uid://cgmgmek8f8u8d" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying16.png" id="17_xwvfj"]
+[ext_resource type="Texture2D" uid="uid://bhd3maob48rgu" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying17.png" id="18_2xjx8"]
+[ext_resource type="Texture2D" uid="uid://5gu4so2vwvrr" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying18.png" id="19_25l6s"]
+[ext_resource type="Texture2D" uid="uid://dqkgm7qmj1bdi" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying19.png" id="20_7sds0"]
+[ext_resource type="Texture2D" uid="uid://bsmkq5xip6nic" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying20.png" id="21_nvgfo"]
+[ext_resource type="Texture2D" uid="uid://bk7r7uwvfdr3n" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_dying21.png" id="22_b8ll3"]
+[ext_resource type="Texture2D" uid="uid://d315ralt86twk" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_hit.png" id="23_2fjm6"]
+[ext_resource type="Texture2D" uid="uid://de4kiqoi8p04s" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f1.png" id="24_hx1sb"]
+[ext_resource type="Texture2D" uid="uid://cx12yqsjkuxqp" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f2.png" id="25_kccjh"]
+[ext_resource type="Texture2D" uid="uid://5v8kvnu78k3c" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f3.png" id="26_y21rn"]
+[ext_resource type="Texture2D" uid="uid://djgenx0c2na7t" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f4.png" id="27_k0y4x"]
+[ext_resource type="Texture2D" uid="uid://nft00n3bekrq" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f5.png" id="28_l1m0b"]
+[ext_resource type="Texture2D" uid="uid://cey1tifhqw7b6" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f6.png" id="29_81730"]
+[ext_resource type="Texture2D" uid="uid://cnk6csrus0vx7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/boss/boss_idle_anim_f7.png" id="30_51inq"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="31_566qa"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="32_nvovt"]
+[ext_resource type="Script" path="res://scripts/base/state_machine.gd" id="33_wca3a"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/freeze.gd" id="34_ylegm"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/idle.gd" id="35_aylfi"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/teleportation.gd" id="36_5gp1g"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/shoot_fireballs.gd" id="37_cdc41"]
+[ext_resource type="PackedScene" uid="uid://cm44ww7ww8puo" path="res://scenes/characters/mobs/boss/boss_fireball.tscn" id="38_dc3h8"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/spawn_flying_eyes.gd" id="39_juqfl"]
+[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://scenes/characters/mobs/flying_eye.tscn" id="40_c3nqk"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/shoot_laser.gd" id="41_v26gl"]
+[ext_resource type="PackedScene" uid="uid://dsksy0qm473t2" path="res://scenes/characters/mobs/boss/boss_laser_beam.tscn" id="42_yykvl"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/teleport_n_shoot.gd" id="43_tpaae"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/spiral_shooting.gd" id="44_d3pqe"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/hit.gd" id="45_ttwso"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/boss/death.gd" id="46_k36w1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r00bo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g8nx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dvlrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vjsmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ia3ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_08wns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2j764")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5fxin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v0xli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fkynn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b4y1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4x8gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vbjka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ue3ub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_e4d8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_w85e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xwvfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2xjx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_25l6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7sds0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_nvgfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_b8ll3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_2fjm6")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_hx1sb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_kccjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_y21rn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_k0y4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_l1m0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_81730")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_51inq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlnv2"]
+size = Vector2(14, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5u3j"]
+size = Vector2(14, 16)
+
+[node name="Boss" type="CharacterBody2D" groups=["mobs"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_et370")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r00bo")
+animation = &"idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rlnv2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("31_566qa")
+max_health = 2000
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 76
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_m5u3j")
+
+[node name="debug" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.5
+offset_top = -8.0
+offset_right = 20.5
+offset_bottom = 15.0
+grow_horizontal = 2
+text = "sawd"
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -27.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+max_value = 1000.0
+value = 1000.0
+
+[node name="Label" type="Label" parent="UI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = -17.0
+offset_right = 103.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("32_nvovt")
+theme_override_font_sizes/font_size = 19
+text = "Kar'dum Flame of Doom"
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("33_wca3a")
+
+[node name="Freeze" type="Node2D" parent="StateMachine"]
+script = ExtResource("34_ylegm")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("35_aylfi")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Teleport" type="Node2D" parent="StateMachine"]
+script = ExtResource("36_5gp1g")
+
+[node name="Timer" type="Timer" parent="StateMachine/Teleport"]
+wait_time = 0.2
+one_shot = true
+
+[node name="ShootFireballs" type="Node2D" parent="StateMachine"]
+script = ExtResource("37_cdc41")
+fireball_scene = ExtResource("38_dc3h8")
+
+[node name="DelayTimer" type="Timer" parent="StateMachine/ShootFireballs"]
+wait_time = 0.2
+one_shot = true
+
+[node name="StateTimer" type="Timer" parent="StateMachine/ShootFireballs"]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpawnFlyingEyes" type="Node2D" parent="StateMachine"]
+script = ExtResource("39_juqfl")
+flying_eye_scene = ExtResource("40_c3nqk")
+
+[node name="CooldownTimer" type="Timer" parent="StateMachine/SpawnFlyingEyes"]
+wait_time = 30.0
+one_shot = true
+
+[node name="ShootLaser" type="Node2D" parent="StateMachine"]
+script = ExtResource("41_v26gl")
+laser_scene = ExtResource("42_yykvl")
+
+[node name="StateTimer" type="Timer" parent="StateMachine/ShootLaser"]
+wait_time = 5.0
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="StateMachine/ShootLaser"]
+wait_time = 0.5
+one_shot = true
+
+[node name="TeleportNShoot" type="Node2D" parent="StateMachine"]
+script = ExtResource("43_tpaae")
+fireball_scene = ExtResource("38_dc3h8")
+
+[node name="DelayTimer" type="Timer" parent="StateMachine/TeleportNShoot"]
+wait_time = 0.3
+one_shot = true
+
+[node name="StateTimer" type="Timer" parent="StateMachine/TeleportNShoot"]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpiralShooting" type="Node2D" parent="StateMachine"]
+script = ExtResource("44_d3pqe")
+fireball_scene = ExtResource("38_dc3h8")
+
+[node name="DelayTimer" type="Timer" parent="StateMachine/SpiralShooting"]
+wait_time = 0.15
+one_shot = true
+
+[node name="StateTimer" type="Timer" parent="StateMachine/SpiralShooting"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("45_ttwso")
+
+[node name="HitTimer" type="Timer" parent="StateMachine/Hit"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("46_k36w1")
+
+[node name="DeathTimer" type="Timer" parent="StateMachine/Death"]
+wait_time = 2.0
+one_shot = true
+
+[node name="MobSpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="MobSpawnPoints"]
+position = Vector2(20, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="MobSpawnPoints"]
+position = Vector2(-20, 0)
+
+[connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Teleport/Timer" to="StateMachine/Teleport" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ShootFireballs/DelayTimer" to="StateMachine/ShootFireballs" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ShootFireballs/StateTimer" to="StateMachine/ShootFireballs" method="_on_state_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ShootLaser/StateTimer" to="StateMachine/ShootLaser" method="_on_state_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ShootLaser/DelayTimer" to="StateMachine/ShootLaser" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TeleportNShoot/DelayTimer" to="StateMachine/TeleportNShoot" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/TeleportNShoot/StateTimer" to="StateMachine/TeleportNShoot" method="_on_state_timer_timeout"]
+[connection signal="timeout" from="StateMachine/SpiralShooting/DelayTimer" to="StateMachine/SpiralShooting" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/SpiralShooting/StateTimer" to="StateMachine/SpiralShooting" method="_on_state_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Hit/HitTimer" to="StateMachine/Hit" method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Death/DeathTimer" to="StateMachine/Death" method="_on_death_timer_timeout"]

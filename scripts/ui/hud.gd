@@ -52,11 +52,12 @@ func set_bombs(value):
 func set_spells(slots):
 	var number = 1
 	for spell in slots:
-		if spell:
+		print("Current spell: ", spell)
+		if spell != null:
 			$HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer.get_node("SpellFrame" + str(number)).get_node("SpellTexture").texture = spell.get_node("Sprite2D").texture
 			$HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer.get_node("SpellFrame" + str(number)).get_node("SpellTexture").scale = spell.get_node("Sprite2D").scale
 			$HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer.get_node("SpellFrame" + str(number)).set_cooldown(spell.cooldown_timer.wait_time)
-			number += 1
+		number += 1
 
 
 func start_spell_cooldown():
@@ -84,6 +85,8 @@ func _ready():
 	PlayerStats.coins_changed.connect(_on_coins_changed)
 	PlayerStats.bombs_changed.connect(_on_bombs_changed)
 	PlayerStats.max_health_changed.connect(_on_max_health_changed)
+	PlayerStats.spell_equipped.connect(_on_spell_equipped)
+	PlayerStats.coin_deposited.connect(_on_coin_deposited)
 
 
 func _on_health_changed(value):
@@ -98,3 +101,9 @@ func _on_bombs_changed(value):
 func _on_max_health_changed(value):
 	max_hearts = value
 	set_hearts(PlayerStats.player_health)
+
+func _on_spell_equipped():
+	set_spells(PlayerStats.slots)
+
+func _on_coin_deposited(value):
+	set_coins(value)

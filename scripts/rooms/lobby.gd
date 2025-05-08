@@ -1,8 +1,12 @@
 extends Node2D
 @onready var spawn_point: Marker2D = $SpawnPoint
+@onready var alchemist: Node2D = $Alchemist
 
 
 func _ready():
+	var player = find_child("Player")
+	if player:
+		PlayerStats.reset()
 	spawn_point.spawn_player()
 	GameStats.player_in_dungeon = false
 

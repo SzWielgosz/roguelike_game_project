@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxuh2nfknhvt3"]
+[gd_scene load_steps=7 format=3 uid="uid://dxuh2nfknhvt3"]
 
 [ext_resource type="Script" path="res://scripts/rooms/24x16/empty_room.gd" id="1_lwqfj"]
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="2_ecs8l"]
 [ext_resource type="Script" path="res://scripts/rooms/room_area.gd" id="3_st8yp"]
 [ext_resource type="Script" path="res://scripts/rooms/mob_spawn_manager.gd" id="4_tbs50"]
-[ext_resource type="Script" path="res://scripts/rooms/room_manager.gd" id="5_ptdqj"]
 [ext_resource type="PackedScene" uid="uid://cgm1hc5eeb3mj" path="res://scenes/ui/small_room_icon.tscn" id="6_th71r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rasot"]
@@ -34,11 +33,8 @@ shape = SubResource("RectangleShape2D_rasot")
 
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="MobSpawnManager" type="Node2D" parent="."]
+[node name="SpawnManager" type="Node2D" parent="."]
 script = ExtResource("4_tbs50")
-
-[node name="RoomManager" type="Node" parent="."]
-script = ExtResource("5_ptdqj")
 
 [node name="RoomLayout" type="Node2D" parent="."]
 
@@ -51,5 +47,6 @@ z_index = -1
 [connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
 [connection signal="body_entered" from="RoomArea" to="RoomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="RoomArea" to="RoomArea" method="_on_body_exited"]
-[connection signal="spawn_mobs" from="RoomArea" to="MobSpawnManager" method="_on_room_area_spawn_mobs"]
+[connection signal="spawn_chest" from="RoomArea" to="SpawnManager" method="_on_room_area_spawn_chest"]
+[connection signal="spawn_mobs" from="RoomArea" to="SpawnManager" method="_on_room_area_spawn_mobs"]
 [connection signal="timeout" from="SpawnTimer" to="RoomArea" method="_on_spawn_timer_timeout"]

@@ -14,7 +14,7 @@ func enter():
 
 func transition():
 	if can_transition and $"../../../..".player_inside:
-		get_parent().change_state("Teleportation")
+		get_parent().change_state("Teleport")
 
 
 func _on_idle_timer_timeout():

@@ -1,5 +1,5 @@
 extends State
-@onready var teleportation_points: Node2D = $"../../../../TeleportationPoints"
+@onready var teleportation_points: Array[Marker2D] = $"../..".teleportation_points
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var boss: CharacterBody2D = $"../.."
 @onready var timer: Timer = $Timer
@@ -23,7 +23,8 @@ func transition():
 
 func teleport():
 	while true:
-		var teleportation_point = teleportation_points.get_child(randi_range(0, teleportation_points.get_child_count() - 1))
+		var tp_idx = randi_range(0, teleportation_points.size() - 1)
+		var teleportation_point = teleportation_points[tp_idx]
 		if teleportation_point.global_position != boss.global_position:
 			boss.global_position = teleportation_point.global_position
 			timer.start()

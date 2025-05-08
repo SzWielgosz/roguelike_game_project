@@ -45,6 +45,7 @@ func return_to_lobby():
 
 
 func return_to_main_menu():
+	PlayerStats.clear_slots()
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 

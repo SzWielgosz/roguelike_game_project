@@ -51,7 +51,7 @@ collision_mask = 205
 shape = SubResource("RectangleShape2D_japbr")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-vertices = PackedVector2Array(1, 2, 1, -4, -2, -4, -2, 2)
+vertices = PackedVector2Array(4, 6, 4, -6, -4, -6, -4, 6)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

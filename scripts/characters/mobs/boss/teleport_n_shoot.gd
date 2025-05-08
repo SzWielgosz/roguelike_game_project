@@ -1,9 +1,9 @@
 extends State
 @onready var boss: CharacterBody2D = $"../.."
-@onready var teleportation_points: Node2D = $"../../../../TeleportationPoints"
 @onready var delay_timer: Timer = $DelayTimer
 @onready var state_timer: Timer = $StateTimer
 @export var fireball_scene: PackedScene
+@onready var teleportation_points: Array[Marker2D] = $"../..".teleportation_points
 var can_transition: bool
 
 
@@ -26,10 +26,9 @@ func transition():
 
 
 func teleport():
-	var tp_children = teleportation_points.get_child_count() - 1
-	var rand_idx = randi_range(0, tp_children)
-	var tp_child = teleportation_points.get_child(rand_idx)
-	boss.global_position = tp_child.global_position
+	var rand_idx = randi_range(0, teleportation_points.size() - 1)
+	var tp_point = teleportation_points[rand_idx]
+	boss.global_position = tp_point.global_position
 
 
 func shoot_fireball():

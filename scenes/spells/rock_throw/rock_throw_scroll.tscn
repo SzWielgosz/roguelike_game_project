@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl4pdyefwkq70"]
+
+[ext_resource type="Script" path="res://scripts/base/spells/spell_scroll.gd" id="1_h3lhk"]
+[ext_resource type="PackedScene" uid="uid://bhstgryexd1qw" path="res://scenes/spells/rock_throw/rock_throw.tscn" id="2_wgmty"]
+[ext_resource type="Texture2D" uid="uid://dhxup1gi66gy7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/rock_throw/rock_throw_idle.png" id="3_aymhr"]
+[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="4_35blc"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="5_bwhut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk4v1"]
+size = Vector2(10, 11)
+
+[node name="RockThrowScroll" type="Node2D" node_paths=PackedStringArray("cooldown_timer", "ui", "pickup_area") groups=["spell_scroll"]]
+script = ExtResource("1_h3lhk")
+cast_type = 1
+spell_scene = ExtResource("2_wgmty")
+cooldown_timer = NodePath("CooldownTimer")
+ui = NodePath("Control")
+pickup_area = NodePath("Area2D")
+scroll_name = "rock_throw_scroll"
+spell_name = "rock_throw"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_aymhr")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 7.5
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gk4v1")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -350.0
+offset_right = 175.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_35blc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -38.5
+offset_right = 20.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpellNameLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_bwhut")
+theme_override_font_sizes/font_size = 32
+text = "SpellName"
+
+[node name="SpellDamageLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_bwhut")
+theme_override_font_sizes/font_size = 32
+text = "SpellDamage"
+
+[node name="SpellCastTypeLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_bwhut")
+theme_override_font_sizes/font_size = 32
+text = "SpellCastType"
+
+[node name="SpellCastSpeedLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_bwhut")
+theme_override_font_sizes/font_size = 32
+text = "SpellCastSpeed"

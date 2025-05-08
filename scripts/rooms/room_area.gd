@@ -7,11 +7,13 @@ var doors_opened: bool = true
 var room_cleared: bool = false
 var mobs_spawned: bool = false
 var player_inside: bool = false
+var treasure_collected: bool = false
 var mobs_left = []
 @onready var timer = Timer.new()
 @export var type: RoomType
 var spawning: bool = false
 signal spawn_mobs
+signal spawn_chest
 
 
 func _ready():
@@ -73,9 +75,12 @@ func _on_body_exited(body):
 		mobs_left.erase(body)
 		if player_inside and mobs_left.is_empty() and not room_cleared:
 			room_cleared = true
+			spawn_chest.emit()
 			if not doors_opened:
 				GameStats.player_clearing_room = false
 				open_all_doors()
+	if body.is_in_group("spell_scroll"):
+		treasure_collected = true
 
 
 func _on_spawn_timer_timeout():

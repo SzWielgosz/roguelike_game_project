@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dagcau3qmcq5n"]
+[gd_scene load_steps=7 format=3 uid="uid://dagcau3qmcq5n"]
 
 [ext_resource type="Script" path="res://scripts/base/spells/spell_scroll.gd" id="1_m57yh"]
 [ext_resource type="Texture2D" uid="uid://b4gkabuq4ur5q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/heroes/mage/magic/fireball/fireball_animation1.png" id="2_18cxe"]
 [ext_resource type="PackedScene" uid="uid://fg1br5u3cpyf" path="res://scenes/spells/fireball/fireball.tscn" id="2_huv0n"]
+[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="4_jntyn"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="5_mapxs"]
 
-[node name="FireballScroll" type="Node2D" node_paths=PackedStringArray("cooldown_timer")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jatd7"]
+size = Vector2(25, 16)
+
+[node name="FireballScroll" type="Node2D" node_paths=PackedStringArray("cooldown_timer", "ui", "pickup_area") groups=["spell_scroll"]]
 script = ExtResource("1_m57yh")
 spell_scene = ExtResource("2_huv0n")
 cooldown_timer = NodePath("CooldownTimer")
+ui = NodePath("Control")
+pickup_area = NodePath("Area2D")
+scroll_name = "fireball_scroll"
+spell_name = "fireball"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_18cxe")
@@ -15,3 +24,79 @@ texture = ExtResource("2_18cxe")
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_jatd7")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -350.0
+offset_right = 175.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_jntyn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -38.5
+offset_right = 20.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpellNameLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_mapxs")
+theme_override_font_sizes/font_size = 32
+text = "SpellName"
+
+[node name="SpellDamageLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_mapxs")
+theme_override_font_sizes/font_size = 32
+text = "SpellDamage"
+
+[node name="SpellCastTypeLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_mapxs")
+theme_override_font_sizes/font_size = 32
+text = "SpellCastType"
+
+[node name="SpellCastSpeedLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_mapxs")
+theme_override_font_sizes/font_size = 32
+text = "SpellCastSpeed"

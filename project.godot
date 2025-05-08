@@ -26,6 +26,8 @@ SaveManager="*res://scripts/globals/save_manager.gd"
 Utils="*res://scripts/globals/utils.gd"
 GameManager="*res://scripts/globals/game_manager.gd"
 DropStats="*res://scripts/globals/drop_stats.gd"
+ShopStats="*res://scripts/globals/shop_stats.gd"
+TreasureStats="*res://scripts/globals/treasure_stats.gd"
 
 [dialogue_manager]
 

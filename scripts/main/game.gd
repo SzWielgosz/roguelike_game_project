@@ -14,7 +14,7 @@ func _process(delta):
 	GameStats.total_time_played += delta
 	
 	if GameStats.dungeon_number >= 2:
-		get_tree().change_scene_to_file("res://scenes/main/boss_room.tscn")
+		get_tree().change_scene_to_file("res://scenes/rooms/boss_room.tscn")
 
 
 func _input(event):
@@ -30,6 +30,7 @@ func _input(event):
 		else:
 			SaveManager.game_save_result.emit(false)
 
+
 func reset():
 	get_tree().reload_current_scene()
 	PlayerStats.reset()
@@ -38,3 +39,4 @@ func reset():
 func _on_reset_timer_timeout():
 	if holding_reset:
 		reset()
+

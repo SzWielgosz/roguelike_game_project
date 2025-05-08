@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvi4og8w0td1d"]
+
+[ext_resource type="Script" path="res://scenes/characters/coin_collector.gd" id="1_fk7jx"]
+[ext_resource type="Texture2D" uid="uid://cvkh0kw0a0f20" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/coins_collector/coin_collector1.png" id="2_g7tfy"]
+[ext_resource type="Texture2D" uid="uid://dlqx8ul3k18c2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/coins_collector/coin_collector2.png" id="3_2qgkj"]
+[ext_resource type="Texture2D" uid="uid://d2smdjlo27l8x" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/coins_collector/coin_collector3.png" id="4_pxhcv"]
+[ext_resource type="Texture2D" uid="uid://sgdnopbrcnd7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/coins_collector/coin_collector4.png" id="5_1py3p"]
+[ext_resource type="Texture2D" uid="uid://u5qa17n07f3k" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/coins_collector/coin_collector5.png" id="6_m2g7f"]
+[ext_resource type="Texture2D" uid="uid://nn7bmf0hysac" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/npcs/coins_collector/coin_collector6.png" id="7_hbw83"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="8_418ij"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yi3bi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g7tfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2qgkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pxhcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1py3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m2g7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hbw83")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbyg2"]
+radius = 20.0
+
+[node name="CoinCollector" type="Node2D"]
+script = ExtResource("1_fk7jx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yi3bi")
+animation = &"idle"
+frame = 5
+frame_progress = 0.604355
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xbyg2")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = -19.0
+offset_right = 211.0
+offset_bottom = 4.0
+grow_horizontal = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("8_418ij")
+theme_override_font_sizes/font_size = 21
+text = "Press e to deposit coin"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

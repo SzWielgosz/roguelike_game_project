@@ -1,10 +1,5 @@
 ~ this_is_a_node_title
-Alchemist: [[Hi|Hello|Howdy]], I've prepared some good potions for you.
-Alchemist: Choose what you need my friend.
-- Health potion
-	Alchemist: Health potion purchased.
-- Stone skin potion
-	Alchemist: Stone skin potion purchased.
-- I'm not interested => END
-Alchemist: Good luck out there.
-=> END
+Alchemist: [[Hi|Hello|Howdy]], welcome to my shop. How can I help you?.
+- Purchase spell
+Alchemist: Splendid! [do! alchemist.open_shop()]
+=> END!

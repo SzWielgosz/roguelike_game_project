@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbeeqwkcuqvw3"]
+[gd_scene load_steps=8 format=3 uid="uid://cbeeqwkcuqvw3"]
 
 [ext_resource type="Script" path="res://scripts/rooms/navigation_region_2d.gd" id="1_0ndmx"]
 [ext_resource type="PackedScene" uid="uid://dbt7xdj2fr5u0" path="res://scenes/environment/props/barrel.tscn" id="2_uuunc"]
-[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/mob_spawner.tscn" id="3_kh4h4"]
+[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/spawner.tscn" id="3_35fps"]
+[ext_resource type="Script" path="res://scripts/rooms/spawner.gd" id="4_5srym"]
 [ext_resource type="PackedScene" uid="uid://bxf8y8e8qe12p" path="res://scenes/characters/mobs/goblin.tscn" id="4_ayvfj"]
-[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://scenes/characters/mobs/flying_eye.tscn" id="5_7dxpe"]
+[ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="6_0ukl2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_31a2y"]
 vertices = PackedVector2Array(8, 96, 184, 121, -184, 121, -8, 96, 184, -119, 8, -79, -184, -119, -8, -79)
@@ -63,24 +64,28 @@ position = Vector2(0, 85)
 [node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
 position = Vector2(0, 1)
 
-[node name="MobSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_kh4h4")]
+[node name="MobSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_35fps")]
 position = Vector2(-130, -70)
-mob = ExtResource("4_ayvfj")
+entity = ExtResource("4_ayvfj")
 
-[node name="MobSpawner2" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_kh4h4")]
+[node name="MobSpawner2" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_35fps")]
 position = Vector2(130, -70)
-mob = ExtResource("5_7dxpe")
+entity = ExtResource("4_ayvfj")
 
-[node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_kh4h4")]
+[node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_35fps")]
 position = Vector2(-130, 70)
-mob = ExtResource("5_7dxpe")
+entity = ExtResource("4_ayvfj")
 
-[node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_kh4h4")]
+[node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_35fps")]
 position = Vector2(130, 70)
-mob = ExtResource("5_7dxpe")
+entity = ExtResource("4_ayvfj")
 
 [node name="Items" type="Node2D" parent="NavigationRegion2D"]
 
 [node name="Statics" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="ChestSpawner" type="Marker2D" parent="NavigationRegion2D"]
+script = ExtResource("4_5srym")
+entity = ExtResource("6_0ukl2")
 
 [connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]

@@ -31,8 +31,8 @@ func shoot_fireball():
 	var direction = (player.global_position - boss.global_position).normalized()
 	var fireball_node = fireball_scene.instantiate()
 	get_tree().current_scene.add_child(fireball_node)
-	fireball_node.global_position = boss.global_position
 	fireball_node.set_direction(direction)
+	fireball_node.global_position = boss.global_position
 
 
 func _on_delay_timer_timeout():

@@ -16,6 +16,7 @@ func _process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("use_spell"):
+		print(PlayerStats.get_selected_spell())
 		current_spell_scroll = PlayerStats.get_selected_spell()
 		if current_spell_scroll:
 			current_spell = current_spell_scroll.cast_spell()

@@ -51,7 +51,7 @@ func save_game():
 	
 	save_data.player_in_dungeon = GameStats.player_in_dungeon
 	save_data.player_position = PlayerStats.player.global_position
-	save_data.player_spell_slots = PlayerStats.get_spell_names()
+	save_data.player_spell_slots = PlayerStats.get_current_spell_scrolls()
 	save_data.total_time_played = GameStats.total_time_played
 	save_data.time_played = GameStats.time_played
 	save_data.mobs_killed = GameStats.mobs_killed
@@ -64,6 +64,14 @@ func save_game():
 	save_data.player_bombs = PlayerStats.player_bombs
 	save_data.player_coins = PlayerStats.player_coins
 	save_data.rng_seed = GameStats.random_number_generator.seed
+	
+	var clean_shop_table = {}
+	for key in ShopStats.shop_table.keys():
+		clean_shop_table[key] = {
+			"unlocked": ShopStats.shop_table[key].get("unlocked", false),
+			"price": ShopStats.shop_table[key].get("price", 0)
+		}
+	save_data.shop_table = clean_shop_table
 	
 	var rooms_dict = {}
 	if save_data.player_in_dungeon:
@@ -125,12 +133,32 @@ func apply_loaded_save():
 	GameStats.spells_casted = save_data.spells_casted
 	GameStats.random_number_generator.seed = save_data.rng_seed
 	
-	#PlayerStats.set_spell_names(save_data.player_spell_slots)
 	PlayerStats.selected_slot = save_data.selected_spell
 	PlayerStats.player_max_health = save_data.player_hearts
 	PlayerStats.player_health = save_data.player_health
 	PlayerStats.player_bombs = save_data.player_bombs
 	PlayerStats.player_coins = save_data.player_coins
+	
+	for idx in save_data.player_spell_slots.keys():
+		if save_data.player_spell_slots[idx] == null:
+			PlayerStats.slots[idx] = null
+		else:
+			var spell_name = save_data.player_spell_slots[idx]["spell_name"]
+			var scroll_name = save_data.player_spell_slots[idx]["scroll_name"]
+			var path = "res://scenes/spells/%s/%s.tscn" % [spell_name, scroll_name]
+			var scene = load(path)
+			var instance = scene.instantiate()
+			print("Utworzono instancje spella: ", instance)
+			get_tree().current_scene.add_child(instance)
+			PlayerStats.equip_spell(instance, Vector2(0, 0), idx)
+
+	for key in save_data.shop_table.keys():
+		if ShopStats.shop_table.has(key):
+			ShopStats.shop_table[key]["unlocked"] = save_data.shop_table[key]["unlocked"]
+	ShopStats.apply_saved_shop_state(save_data.shop_table)
+	
+	TreasureStats.add_unlocked_items_to_drop_table()
+
 	
 	if save_data.player_in_dungeon:
 		get_tree().change_scene_to_file("res://scenes/main/game.tscn")

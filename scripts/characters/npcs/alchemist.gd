@@ -2,6 +2,7 @@ extends Node2D
 var player_nearby: bool = false
 var dialogue_enabled: bool = false
 @export var dialogue: DialogueResource
+@export var shop: CanvasLayer
 
 
 func _ready():
@@ -19,6 +20,8 @@ func _on_area_2d_body_exited(body):
 	if body.is_in_group("player"):
 		player_nearby = false
 		$Label.visible = false
+		if shop:
+			shop.close_shop()
 
 
 func _input(event):
@@ -31,3 +34,7 @@ func _input(event):
 
 func _on_dialogue_ended(_dialogue: DialogueResource):
 	dialogue_enabled = false
+
+
+func open_shop():
+	shop.open_shop()

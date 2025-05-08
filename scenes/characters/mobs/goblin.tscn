@@ -109,7 +109,7 @@ radius = 150.0
 size = Vector2(11, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5unc"]
-size = Vector2(4, 4)
+size = Vector2(2, 2)
 
 [node name="Goblin" type="CharacterBody2D" groups=["mobs"]]
 z_index = 1
@@ -149,10 +149,10 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_matrb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_l5unc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
 path_max_distance = 500.0
 avoidance_enabled = true
 radius = 20.0
@@ -173,7 +173,7 @@ one_shot = true
 script = ExtResource("17_pavl7")
 
 [node name="FollowTimer" type="Timer" parent="StateMachine/Follow"]
-wait_time = 0.2
+wait_time = 0.5
 
 [node name="Wander" type="Node2D" parent="StateMachine"]
 script = ExtResource("18_m7vbj")

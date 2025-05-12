@@ -28,7 +28,6 @@ script = ExtResource("1_3devl")
 
 [node name="Player" parent="." instance=ExtResource("2_xyws0")]
 collision_mask = 147
-speed = 100
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)

@@ -1,0 +1,230 @@
+[gd_scene load_steps=38 format=3 uid="uid://eun7jo3ixjth"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/slime.gd" id="1_erhse"]
+[ext_resource type="Texture2D" uid="uid://c0bbd4a1ipswx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f0.png" id="2_ej7o6"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="2_vwm7k"]
+[ext_resource type="Texture2D" uid="uid://bl5fyu1v4a327" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png" id="3_3w0rq"]
+[ext_resource type="Texture2D" uid="uid://bdsf71m4jmt04" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f1.png" id="3_gon26"]
+[ext_resource type="Shader" path="res://scenes/characters/mobs/slime_boss/damage_flash.gdshader" id="3_j8ay5"]
+[ext_resource type="Texture2D" uid="uid://fo38q0hqbl7s" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_hit.png" id="3_x6esu"]
+[ext_resource type="Texture2D" uid="uid://y3o1yi60bxm3" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f2.png" id="4_odktg"]
+[ext_resource type="Texture2D" uid="uid://b2066ud5kg54" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f1.png" id="4_rs17s"]
+[ext_resource type="Texture2D" uid="uid://bnmmspadsreh7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f2.png" id="5_inohr"]
+[ext_resource type="Texture2D" uid="uid://d3i2nvjnvxfi" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f4.png" id="5_r877a"]
+[ext_resource type="Texture2D" uid="uid://cak4oee6q0hkx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f5.png" id="6_4b8wv"]
+[ext_resource type="Texture2D" uid="uid://b423gqo0ne4kf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f3.png" id="6_wew2n"]
+[ext_resource type="Texture2D" uid="uid://djw84woxt1x2q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f3.png" id="7_rrner"]
+[ext_resource type="Texture2D" uid="uid://bpxnpxnh433sr" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f0.png" id="8_yrypg"]
+[ext_resource type="Texture2D" uid="uid://d4knc3ig7ko1y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f1.png" id="9_jkq1g"]
+[ext_resource type="Texture2D" uid="uid://d0x8mqd4b5ogq" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f2.png" id="10_2lds0"]
+[ext_resource type="Texture2D" uid="uid://dhxciowwpu4l4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f3.png" id="11_gr20w"]
+[ext_resource type="Texture2D" uid="uid://4qsj80afg5nb" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f4.png" id="12_ovsb5"]
+[ext_resource type="Texture2D" uid="uid://dvnyokb33d80y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f5.png" id="13_8jggp"]
+[ext_resource type="Script" path="res://scripts/base/state_machine.gd" id="14_2422w"]
+[ext_resource type="Texture2D" uid="uid://2bira54ppdon" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim1.png" id="14_xlaf2"]
+[ext_resource type="Texture2D" uid="uid://vqekrwtj4sun" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim2.png" id="15_ny5gb"]
+[ext_resource type="Texture2D" uid="uid://d0oatjh1jk586" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim3.png" id="16_qa8jj"]
+[ext_resource type="Texture2D" uid="uid://dttxtefb2sy4c" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim4.png" id="17_5i0p8"]
+[ext_resource type="Texture2D" uid="uid://b07v048wh3ef7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim5.png" id="18_2ycse"]
+[ext_resource type="PackedScene" uid="uid://duwgqxiux6rj4" path="res://scenes/characters/mobs/slime_goo.tscn" id="19_jwy73"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/Idle.gd" id="27_4t7q1"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/wander.gd" id="28_bxhna"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/hit_slime.gd" id="30_cxu1x"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/death.gd" id="31_mdhlr"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/jump.gd" id="32_b5jj8"]
+[ext_resource type="PackedScene" uid="uid://cnap0ae0h4gqp" path="res://scenes/characters/mobs/goo_ball.tscn" id="32_lywug"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bdm1"]
+shader = ExtResource("3_j8ay5")
+shader_parameter/flash_strength = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tik5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3w0rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rs17s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_inohr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wew2n")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x6esu")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ej7o6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gon26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_odktg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r877a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4b8wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rrner")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_xlaf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ny5gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qa8jj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5i0p8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2ycse")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yrypg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jkq1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2lds0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gr20w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ovsb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8jggp")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxx6q"]
+size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w57d7"]
+size = Vector2(6, 6)
+
+[node name="Slime" type="CharacterBody2D" groups=["mobs"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 19
+motion_mode = 1
+script = ExtResource("1_erhse")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_vwm7k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_3bdm1")
+sprite_frames = SubResource("SpriteFrames_tik5l")
+animation = &"jump"
+frame = 4
+frame_progress = 1.0
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_xxx6q")
+
+[node name="debug" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w57d7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
+path_max_distance = 200.0
+avoidance_enabled = true
+radius = 5.0
+neighbor_distance = 50.0
+debug_enabled = true
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("14_2422w")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("27_4t7q1")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Wander" type="Node2D" parent="StateMachine"]
+script = ExtResource("28_bxhna")
+goo_scene = ExtResource("19_jwy73")
+
+[node name="WanderTimer" type="Timer" parent="StateMachine/Wander"]
+one_shot = true
+
+[node name="GooSpawnTimer" type="Timer" parent="StateMachine/Wander"]
+wait_time = 0.25
+
+[node name="GooContainer" type="Node" parent="StateMachine/Wander"]
+
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("30_cxu1x")
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("31_mdhlr")
+
+[node name="DeathTimer" type="Timer" parent="StateMachine/Death"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Jump" type="Node2D" parent="StateMachine"]
+script = ExtResource("32_b5jj8")
+goo_ball_scene = ExtResource("32_lywug")
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/Jump"]
+wait_time = 0.2
+one_shot = true
+
+[node name="ProjectilesContainer" type="Node" parent="StateMachine/Jump"]
+
+[connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Jump" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateMachine/Wander" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Wander/WanderTimer" to="StateMachine/Wander" method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Wander/GooSpawnTimer" to="StateMachine/Wander" method="_on_goo_spawn_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Death/DeathTimer" to="StateMachine/Death" method="_on_death_timer_timeout"]

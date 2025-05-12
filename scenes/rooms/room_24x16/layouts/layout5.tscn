@@ -1,0 +1,160 @@
+[gd_scene load_steps=8 format=3 uid="uid://b58xtxmtjoe1g"]
+
+[ext_resource type="Script" path="res://scripts/rooms/navigation_region_2d.gd" id="1_khcyv"]
+[ext_resource type="PackedScene" uid="uid://nyw8y02vff81" path="res://scenes/environment/props/rubble.tscn" id="2_fxlss"]
+[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/spawner.tscn" id="3_2uywl"]
+[ext_resource type="PackedScene" uid="uid://eun7jo3ixjth" path="res://scenes/characters/mobs/slime.tscn" id="4_xoh2o"]
+[ext_resource type="Script" path="res://scripts/rooms/spawner.gd" id="6_ja1bh"]
+[ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="7_vcm3w"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5g4kq"]
+vertices = PackedVector2Array(172, 109, -172, 109, -129, 108, -110, 108, -158, 108, 160, -18, 131, -18, -107, -37, -88, -37, 160, 79, 131, 79, -107, 60, -88, 60, 134, 31, 105, 31, -129, 12, -110, 12, 160, 12, 172, -108, -172, -108, -158, 79, -129, -85, -129, -108, -110, -108, -110, -85, -81, -85, -81, -108, -62, -108, -62, -85, -33, -85, -33, -108, 35, -108, 35, -85, 9, -66, 64, -85, 64, -108, 83, -108, 83, -85, 112, -85, 112, -108, 131, -108, 131, -85, 160, -85, 160, -108, 134, -37, 134, -66, 105, -66, 86, -66, 105, -37, 86, -37, 57, -66, 131, 12, 112, 12, 112, -18, 83, -18, 105, 60, 86, 60, 86, 31, 57, 31, 131, 108, 112, 108, 112, 79, 83, 79, -136, 60, -158, -108, -158, -85, 160, 108, 134, 60, 57, -37, 38, -66, 83, 12, 64, 12, 64, -18, 35, -18, 35, 12, 16, 12, 16, -18, -14, -18, -136, -37, 38, -37, 57, 60, 38, 60, 38, 31, 9, 31, -14, 12, -33, 12, -33, -18, -62, -18, -11, -66, 9, -37, -11, -37, -40, -66, 9, 60, -11, 60, -11, 31, -40, 31, -158, 12, -62, 12, -81, 12, -81, -18, -110, -18, -129, -18, -40, -37, -59, -37, -59, -66, -88, -66, -40, 60, -59, 60, -59, 31, -88, 31, -158, -18, -136, -66, -107, -66, -129, 79, -107, 31, -136, 31, 83, 108, 64, 108, 64, 79, 35, 79, 35, 108, -33, 108, -33, 79, -62, 79, -62, 108, -81, 108, -81, 79, -110, 79)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 18, 0, 9), PackedInt32Array(18, 17, 5), PackedInt32Array(4, 1, 19, 20), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(25, 26, 27, 28), PackedInt32Array(29, 30, 31, 32, 33), PackedInt32Array(34, 35, 36, 37), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(42, 43, 18), PackedInt32Array(42, 18, 5), PackedInt32Array(42, 5, 44, 45), PackedInt32Array(41, 42, 45, 46), PackedInt32Array(38, 41, 46), PackedInt32Array(37, 38, 46, 47), PackedInt32Array(46, 48, 49, 47), PackedInt32Array(37, 47, 50, 34), PackedInt32Array(32, 34, 50), PackedInt32Array(6, 51, 52, 53), PackedInt32Array(7, 6, 53), PackedInt32Array(7, 53, 54), PackedInt32Array(14, 55, 56, 57), PackedInt32Array(15, 14, 57), PackedInt32Array(15, 57, 58), PackedInt32Array(10, 59, 60, 61), PackedInt32Array(11, 10, 61), PackedInt32Array(11, 61, 62, 63), PackedInt32Array(19, 64, 65), PackedInt32Array(0, 66, 9), PackedInt32Array(17, 9, 67, 13), PackedInt32Array(51, 17, 13), PackedInt32Array(52, 51, 13), PackedInt32Array(32, 50, 68, 69), PackedInt32Array(70, 52, 13), PackedInt32Array(70, 13, 71), PackedInt32Array(54, 70, 71, 72), PackedInt32Array(7, 54, 72), PackedInt32Array(7, 72, 73), PackedInt32Array(48, 44, 5), PackedInt32Array(55, 67, 9), PackedInt32Array(49, 48, 5), PackedInt32Array(56, 55, 9), PackedInt32Array(74, 71, 13), PackedInt32Array(74, 13, 75), PackedInt32Array(73, 74, 75, 76), PackedInt32Array(7, 73, 76), PackedInt32Array(7, 76, 77, 78), PackedInt32Array(68, 49, 5), PackedInt32Array(68, 5, 79), PackedInt32Array(68, 79, 69), PackedInt32Array(32, 69, 33), PackedInt32Array(28, 29, 33), PackedInt32Array(25, 28, 33), PackedInt32Array(80, 56, 9), PackedInt32Array(80, 9, 81), PackedInt32Array(58, 80, 81, 82), PackedInt32Array(15, 58, 82), PackedInt32Array(15, 82, 83), PackedInt32Array(24, 25, 33), PackedInt32Array(84, 75, 13), PackedInt32Array(84, 13, 85), PackedInt32Array(77, 84, 85, 86), PackedInt32Array(78, 77, 86), PackedInt32Array(78, 86, 87), PackedInt32Array(21, 24, 33, 88), PackedInt32Array(89, 79, 5), PackedInt32Array(89, 5, 90), PackedInt32Array(33, 89, 90, 88), PackedInt32Array(21, 88, 91, 65), PackedInt32Array(92, 81, 9), PackedInt32Array(92, 9, 93), PackedInt32Array(83, 92, 93, 94), PackedInt32Array(15, 83, 94), PackedInt32Array(15, 94, 95, 96), PackedInt32Array(97, 85, 13), PackedInt32Array(97, 13, 98), PackedInt32Array(87, 97, 98, 99), PackedInt32Array(78, 87, 99), PackedInt32Array(78, 99, 100), PackedInt32Array(78, 100, 16, 101), PackedInt32Array(102, 90, 5), PackedInt32Array(102, 5, 103), PackedInt32Array(91, 102, 103, 104), PackedInt32Array(65, 91, 104), PackedInt32Array(65, 104, 105), PackedInt32Array(106, 93, 9), PackedInt32Array(106, 9, 107), PackedInt32Array(95, 106, 107, 108), PackedInt32Array(96, 95, 108), PackedInt32Array(96, 108, 109), PackedInt32Array(16, 98, 13), PackedInt32Array(16, 15, 101), PackedInt32Array(78, 101, 110), PackedInt32Array(111, 78, 110, 65), PackedInt32Array(8, 103, 5), PackedInt32Array(105, 8, 7, 112), PackedInt32Array(65, 105, 112), PackedInt32Array(65, 112, 111), PackedInt32Array(19, 65, 110), PackedInt32Array(19, 110, 96), PackedInt32Array(20, 19, 96), PackedInt32Array(113, 20, 96, 63), PackedInt32Array(12, 107, 9), PackedInt32Array(109, 12, 11, 114), PackedInt32Array(96, 109, 114), PackedInt32Array(96, 114, 115), PackedInt32Array(96, 115, 63), PackedInt32Array(59, 66, 0), PackedInt32Array(60, 59, 0), PackedInt32Array(116, 60, 0), PackedInt32Array(116, 0, 117), PackedInt32Array(62, 116, 117, 118), PackedInt32Array(63, 62, 118), PackedInt32Array(63, 118, 119), PackedInt32Array(120, 117, 0), PackedInt32Array(120, 0, 121), PackedInt32Array(119, 120, 121, 122), PackedInt32Array(63, 119, 122), PackedInt32Array(63, 122, 123), PackedInt32Array(124, 121, 0), PackedInt32Array(124, 0, 125), PackedInt32Array(123, 124, 125, 126), PackedInt32Array(63, 123, 126), PackedInt32Array(63, 126, 127), PackedInt32Array(113, 63, 127, 3), PackedInt32Array(2, 113, 3), PackedInt32Array(0, 3, 125)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(178, -114, 178, 115, -178, 115, -178, -114)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 6.5
+
+[node name="Layout5" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_5g4kq")
+script = ExtResource("1_khcyv")
+
+[node name="Destroyables" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Rubbles" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+position = Vector2(-143, -99)
+
+[node name="Rubble" parent="NavigationRegion2D/Destroyables/Rubbles" instance=ExtResource("2_fxlss")]
+
+[node name="Rubble2" parent="NavigationRegion2D/Destroyables/Rubbles" instance=ExtResource("2_fxlss")]
+position = Vector2(48, 0)
+
+[node name="Rubble3" parent="NavigationRegion2D/Destroyables/Rubbles" instance=ExtResource("2_fxlss")]
+position = Vector2(96, 0)
+
+[node name="Rubble5" parent="NavigationRegion2D/Destroyables/Rubbles" instance=ExtResource("2_fxlss")]
+position = Vector2(192, 0)
+
+[node name="Rubble6" parent="NavigationRegion2D/Destroyables/Rubbles" instance=ExtResource("2_fxlss")]
+position = Vector2(240, 0)
+
+[node name="Rubble7" parent="NavigationRegion2D/Destroyables/Rubbles" instance=ExtResource("2_fxlss")]
+position = Vector2(288, 0)
+
+[node name="Rubbles2" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+position = Vector2(-121, -51)
+
+[node name="Rubble" parent="NavigationRegion2D/Destroyables/Rubbles2" instance=ExtResource("2_fxlss")]
+
+[node name="Rubble2" parent="NavigationRegion2D/Destroyables/Rubbles2" instance=ExtResource("2_fxlss")]
+position = Vector2(48, 0)
+
+[node name="Rubble3" parent="NavigationRegion2D/Destroyables/Rubbles2" instance=ExtResource("2_fxlss")]
+position = Vector2(96, 0)
+
+[node name="Rubble4" parent="NavigationRegion2D/Destroyables/Rubbles2" instance=ExtResource("2_fxlss")]
+position = Vector2(144, 0)
+
+[node name="Rubble5" parent="NavigationRegion2D/Destroyables/Rubbles2" instance=ExtResource("2_fxlss")]
+position = Vector2(192, 0)
+
+[node name="Rubble6" parent="NavigationRegion2D/Destroyables/Rubbles2" instance=ExtResource("2_fxlss")]
+position = Vector2(240, 0)
+
+[node name="Rubbles3" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+position = Vector2(-143, -3)
+
+[node name="Rubble" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+
+[node name="Rubble2" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+position = Vector2(48, 0)
+
+[node name="Rubble3" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+position = Vector2(96, 0)
+
+[node name="Rubble4" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+position = Vector2(144, 0)
+
+[node name="Rubble5" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+position = Vector2(192, 0)
+
+[node name="Rubble6" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+position = Vector2(240, 0)
+
+[node name="Rubble7" parent="NavigationRegion2D/Destroyables/Rubbles3" instance=ExtResource("2_fxlss")]
+position = Vector2(288, 0)
+
+[node name="Rubbles4" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+position = Vector2(-121, 45)
+
+[node name="Rubble" parent="NavigationRegion2D/Destroyables/Rubbles4" instance=ExtResource("2_fxlss")]
+
+[node name="Rubble2" parent="NavigationRegion2D/Destroyables/Rubbles4" instance=ExtResource("2_fxlss")]
+position = Vector2(48, 0)
+
+[node name="Rubble3" parent="NavigationRegion2D/Destroyables/Rubbles4" instance=ExtResource("2_fxlss")]
+position = Vector2(96, 0)
+
+[node name="Rubble4" parent="NavigationRegion2D/Destroyables/Rubbles4" instance=ExtResource("2_fxlss")]
+position = Vector2(144, 0)
+
+[node name="Rubble5" parent="NavigationRegion2D/Destroyables/Rubbles4" instance=ExtResource("2_fxlss")]
+position = Vector2(192, 0)
+
+[node name="Rubble6" parent="NavigationRegion2D/Destroyables/Rubbles4" instance=ExtResource("2_fxlss")]
+position = Vector2(240, 0)
+
+[node name="Rubbles5" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+position = Vector2(-143, 93)
+
+[node name="Rubble" parent="NavigationRegion2D/Destroyables/Rubbles5" instance=ExtResource("2_fxlss")]
+
+[node name="Rubble2" parent="NavigationRegion2D/Destroyables/Rubbles5" instance=ExtResource("2_fxlss")]
+position = Vector2(48, 0)
+
+[node name="Rubble3" parent="NavigationRegion2D/Destroyables/Rubbles5" instance=ExtResource("2_fxlss")]
+position = Vector2(96, 0)
+
+[node name="Rubble5" parent="NavigationRegion2D/Destroyables/Rubbles5" instance=ExtResource("2_fxlss")]
+position = Vector2(192, 0)
+
+[node name="Rubble6" parent="NavigationRegion2D/Destroyables/Rubbles5" instance=ExtResource("2_fxlss")]
+position = Vector2(240, 0)
+
+[node name="Rubble7" parent="NavigationRegion2D/Destroyables/Rubbles5" instance=ExtResource("2_fxlss")]
+position = Vector2(288, 0)
+
+[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="MobSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
+position = Vector2(-144, -81)
+entity = ExtResource("4_xoh2o")
+
+[node name="MobSpawner2" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
+position = Vector2(-144, 76)
+entity = ExtResource("4_xoh2o")
+
+[node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
+position = Vector2(146, -82)
+entity = ExtResource("4_xoh2o")
+
+[node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
+position = Vector2(144, 76)
+entity = ExtResource("4_xoh2o")
+
+[node name="MobSpawner5" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
+position = Vector2(-111, 0)
+entity = ExtResource("4_xoh2o")
+
+[node name="MobSpawner6" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
+position = Vector2(114, 0)
+entity = ExtResource("4_xoh2o")
+
+[node name="Statics" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Items" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="ChestSpawner" type="Marker2D" parent="NavigationRegion2D"]
+script = ExtResource("6_ja1bh")
+entity = ExtResource("7_vcm3w")

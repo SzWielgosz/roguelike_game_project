@@ -20,7 +20,12 @@ func _on_timer_timeout():
 
 func spawn_mobs():
 	for spawn_point in get_parent().get_node("RoomLayout").get_child(0).get_node("NavigationRegion2D").get_node("SpawnPoints").get_children():
-		spawn_point.call_deferred("spawn_entity")
+		var spawned_entity = spawn_point.call_deferred("spawn_entity")
+	await get_tree().process_frame
+	for spawn_point in get_parent().get_node("RoomLayout").get_child(0).get_node("NavigationRegion2D").get_node("SpawnPoints").get_children():
+		var spawned_entity = spawn_point.get_child(0)
+		if spawned_entity and spawned_entity.is_in_group("bosses"):
+			spawned_entity.area_2d = $"../RoomArea"
 
 
 func _on_room_area_spawn_chest():
@@ -29,3 +34,11 @@ func _on_room_area_spawn_chest():
 		if chest_spawner:
 			if GameStats.random_number_generator.randf() < GameStats.chest_spawn_probability:
 				chest_spawner.call_deferred("spawn_entity")
+
+
+func _on_room_area_spawn_stairs():
+	if Utils.get_child_or_null(self.get_parent().get_node("RoomLayout"), 0) != null:
+		var stairs_spawner = self.get_parent().get_node("RoomLayout").get_child(0).get_node("NavigationRegion2D").get_node_or_null("StairsSpawner")
+		if stairs_spawner:
+			stairs_spawner.call_deferred("spawn_entity")
+

@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="6_0ukl2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_31a2y"]
-vertices = PackedVector2Array(8, 96, 184, 121, -184, 121, -8, 96, 184, -119, 8, -79, -184, -119, -8, -79)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(2, 6, 7, 3)])
+vertices = PackedVector2Array(184, -119, 184, 121, 116, 11, 116, -9, 8, -9, 8, -79, -184, -119, -8, -79, -8, -9, -104, -9, -184, 121, -104, 11, -8, 11, -8, 96, 8, 96, 8, 11)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 5, 0), PackedInt32Array(6, 0, 5, 7), PackedInt32Array(7, 8, 9, 6), PackedInt32Array(10, 6, 9, 11), PackedInt32Array(11, 12, 13, 10), PackedInt32Array(1, 10, 13, 14), PackedInt32Array(2, 1, 14, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(186, -121, 186, 123, -186, 123, -186, -121)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 2.0
@@ -61,6 +61,57 @@ position = Vector2(0, 71)
 [node name="Barrel12" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
 position = Vector2(0, 85)
 
+[node name="Barrel13" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(12, 0)
+
+[node name="Barrel14" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(24, 0)
+
+[node name="Barrel15" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(36, 0)
+
+[node name="Barrel16" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(48, 0)
+
+[node name="Barrel17" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(60, 0)
+
+[node name="Barrel18" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(72, 0)
+
+[node name="Barrel19" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(84, 0)
+
+[node name="Barrel20" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(96, 0)
+
+[node name="Barrel21" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(108, 0)
+
+[node name="Barrel22" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-12, 0)
+
+[node name="Barrel23" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-24, 0)
+
+[node name="Barrel24" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-36, 0)
+
+[node name="Barrel25" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-48, 0)
+
+[node name="Barrel26" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-60, 0)
+
+[node name="Barrel27" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-72, 0)
+
+[node name="Barrel28" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-84, 0)
+
+[node name="Barrel29" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_uuunc")]
+position = Vector2(-96, 0)
+
 [node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
 position = Vector2(0, 1)
 
@@ -85,6 +136,7 @@ entity = ExtResource("4_ayvfj")
 [node name="Statics" type="Node2D" parent="NavigationRegion2D"]
 
 [node name="ChestSpawner" type="Marker2D" parent="NavigationRegion2D"]
+position = Vector2(28, 0)
 script = ExtResource("4_5srym")
 entity = ExtResource("6_0ukl2")
 

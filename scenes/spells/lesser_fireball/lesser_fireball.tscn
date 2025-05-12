@@ -47,17 +47,16 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vy1k"]
-size = Vector2(16.6667, 14.6667)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bh2e7"]
+radius = 6.66667
 
 [node name="LesserFireball" type="Node2D" groups=["spell"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_3f66a")
-attack_power = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tlldu")
-animation = &"hit"
+animation = &"flying"
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 0.4
@@ -68,8 +67,8 @@ collision_layer = 64
 collision_mask = 19
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.66667, 0.666666)
-shape = SubResource("RectangleShape2D_6vy1k")
+position = Vector2(1.33333, 0)
+shape = SubResource("CircleShape2D_bh2e7")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

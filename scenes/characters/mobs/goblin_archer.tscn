@@ -1,0 +1,255 @@
+[gd_scene load_steps=34 format=3 uid="uid://sbhalnlicq7a"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin_archer/goblin_archer.gd" id="1_rrebb"]
+[ext_resource type="Texture2D" uid="uid://c4tg17vw05lww" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_idle_anim1.png" id="1_v0ugj"]
+[ext_resource type="Texture2D" uid="uid://sgs0dtex6gu4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_idle_anim2.png" id="2_34tjp"]
+[ext_resource type="Texture2D" uid="uid://c37cmrbubm4hf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin/hit_anim.png" id="2_b0oe5"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="2_mmbft"]
+[ext_resource type="Texture2D" uid="uid://bl5fyu1v4a327" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png" id="3_p54re"]
+[ext_resource type="Texture2D" uid="uid://dpgrn6jcr6ce2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_idle_anim3.png" id="3_t521q"]
+[ext_resource type="Texture2D" uid="uid://b2066ud5kg54" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f1.png" id="4_amr21"]
+[ext_resource type="Texture2D" uid="uid://b4ntou7krji66" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_idle_anim4.png" id="4_yfv7u"]
+[ext_resource type="Texture2D" uid="uid://eegqrpr7didv" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_idle_anim5.png" id="5_epl0k"]
+[ext_resource type="Texture2D" uid="uid://bnmmspadsreh7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f2.png" id="5_ru8yf"]
+[ext_resource type="Texture2D" uid="uid://dw4tv6osmm3pk" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_idle_anim6.png" id="6_50iqb"]
+[ext_resource type="Texture2D" uid="uid://b423gqo0ne4kf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f3.png" id="6_makka"]
+[ext_resource type="Texture2D" uid="uid://bu5i58x1dgy87" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_run_anim1.png" id="7_uuiqn"]
+[ext_resource type="Texture2D" uid="uid://8ihm6moh3v0j" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_run_anim2.png" id="8_uv0e7"]
+[ext_resource type="Texture2D" uid="uid://dn8rexklg6b8q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_run_anim3.png" id="9_co3t3"]
+[ext_resource type="Texture2D" uid="uid://bs4pjhgunqg5e" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_run_anim4.png" id="10_6dd4b"]
+[ext_resource type="Texture2D" uid="uid://5p7a34ltnglv" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_run_anim5.png" id="11_258g7"]
+[ext_resource type="Texture2D" uid="uid://dak43n8hcr54x" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/goblin_archer_run_anim6.png" id="12_m31xk"]
+[ext_resource type="Texture2D" uid="uid://b7e0pib3gvse1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/bow1.png" id="14_3mbnl"]
+[ext_resource type="Texture2D" uid="uid://b6qeginro24jw" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/bow2.png" id="15_j15yj"]
+[ext_resource type="Texture2D" uid="uid://d1cydtv51f88n" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin archer/bow3.png" id="16_y5e2i"]
+[ext_resource type="Script" path="res://scripts/base/state_machine.gd" id="17_s80oa"]
+[ext_resource type="PackedScene" uid="uid://bdayotxijuwnx" path="res://scenes/characters/mobs/arrow.tscn" id="21_q1fe1"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin_archer/idle.gd" id="24_q6jiu"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin_archer/wander.gd" id="25_pqffg"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin_archer/shoot.gd" id="26_lg2hg"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin_archer/hit_archer.gd" id="28_2mivp"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/goblin_archer/death.gd" id="29_x8eli"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlxbw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p54re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_amr21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ru8yf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_makka")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v0ugj")
+}],
+"loop": true,
+"name": &"draw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b0oe5")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v0ugj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_34tjp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t521q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yfv7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_epl0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_50iqb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_uuiqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uv0e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_co3t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6dd4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_258g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m31xk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh5ub"]
+size = Vector2(6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgltq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3mbnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j15yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_y5e2i")
+}],
+"loop": true,
+"name": &"draw",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_y5e2i")
+}],
+"loop": true,
+"name": &"drawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_3mbnl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu6k0"]
+radius = 323.002
+
+[node name="GoblinArcher" type="CharacterBody2D" groups=["mobs"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 1043
+script = ExtResource("1_rrebb")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_mmbft")
+max_health = 80
+defense = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dlxbw")
+animation = &"death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lh5ub")
+
+[node name="debug" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Bow" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bow"]
+position = Vector2(5, 0)
+rotation = -0.785398
+sprite_frames = SubResource("SpriteFrames_dgltq")
+animation = &"draw"
+frame_progress = 0.782058
+
+[node name="Marker2D" type="Marker2D" parent="Bow"]
+position = Vector2(6, 0)
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_lu6k0")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("17_s80oa")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("24_q6jiu")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Wander" type="Node2D" parent="StateMachine"]
+script = ExtResource("25_pqffg")
+
+[node name="WanderTimer" type="Timer" parent="StateMachine/Wander"]
+one_shot = true
+
+[node name="Shoot" type="Node2D" parent="StateMachine"]
+script = ExtResource("26_lg2hg")
+arrow_scene = ExtResource("21_q1fe1")
+
+[node name="DrawTimer" type="Timer" parent="StateMachine/Shoot"]
+wait_time = 0.5
+one_shot = true
+
+[node name="DrawnTimer" type="Timer" parent="StateMachine/Shoot"]
+one_shot = true
+
+[node name="ShootDelayTimer" type="Timer" parent="StateMachine/Shoot"]
+one_shot = true
+
+[node name="Projectiles" type="Node" parent="StateMachine/Shoot"]
+
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("28_2mivp")
+
+[node name="HitTimer" type="Timer" parent="StateMachine/Hit"]
+wait_time = 0.15
+one_shot = true
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("29_x8eli")
+
+[node name="DeathTimer" type="Timer" parent="StateMachine/Death"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
+[connection signal="area_entered" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_entered"]
+[connection signal="area_entered" from="DetectionRange" to="StateMachine/Wander" method="_on_detection_range_area_entered"]
+[connection signal="area_exited" from="DetectionRange" to="StateMachine/Idle" method="_on_detection_range_area_exited"]
+[connection signal="area_exited" from="DetectionRange" to="StateMachine/Wander" method="_on_detection_range_area_exited"]
+[connection signal="body_entered" from="DetectionRange" to="StateMachine/Shoot" method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="StateMachine/Shoot" method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Wander/WanderTimer" to="StateMachine/Wander" method="_on_wander_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/DrawTimer" to="StateMachine/Shoot" method="_on_draw_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/DrawnTimer" to="StateMachine/Shoot" method="_on_drawn_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/ShootDelayTimer" to="StateMachine/Shoot" method="_on_shoot_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Hit/HitTimer" to="StateMachine/Hit" method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Death/DeathTimer" to="StateMachine/Death" method="_on_death_timer_timeout"]

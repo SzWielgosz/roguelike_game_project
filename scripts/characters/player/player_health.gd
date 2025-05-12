@@ -85,6 +85,11 @@ func _on_hit_box_body_entered(body):
 		take_damage(body.get_node("Health").damage)
 
 
+func _on_hit_box_area_entered(area):
+	if area.is_in_group("traps"):
+		take_damage(0.5)
+
+
 func _on_dash_timer_timeout():
 	dash_immortal = false
 	set_immortality(false)

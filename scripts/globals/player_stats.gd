@@ -5,12 +5,12 @@ var player: CharacterBody2D = null
 var player_health: float = 3.0
 var player_max_health: float = 3.0
 var player_max_hearts: int = 9
-var player_coins: int = 0
+var player_coins: int = 20
 var player_bombs: int = 3
 var slots: Array = [null, null, null]
 var selected_slot: int = 0
 var coin_lost_this_frame: bool = false
-var coins_deposited: int = 0
+var coins_deposited: int = 99
 
 signal health_changed(value)
 signal max_health_changed(value)

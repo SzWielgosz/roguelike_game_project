@@ -1,0 +1,485 @@
+[gd_scene load_steps=10 format=3 uid="uid://s6mrebvsknd1"]
+
+[ext_resource type="Script" path="res://scripts/rooms/navigation_region_2d.gd" id="1_fd3hv"]
+[ext_resource type="PackedScene" uid="uid://dbt7xdj2fr5u0" path="res://scenes/environment/props/barrel.tscn" id="2_wpsxh"]
+[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/spawner.tscn" id="3_42q36"]
+[ext_resource type="PackedScene" uid="uid://sbhalnlicq7a" path="res://scenes/characters/mobs/goblin_archer.tscn" id="4_k65q6"]
+[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://scenes/characters/mobs/flying_eye.tscn" id="5_mgmei"]
+[ext_resource type="PackedScene" uid="uid://7t8a5pxkb56x" path="res://scenes/environment/hole.tscn" id="6_hxeus"]
+[ext_resource type="Script" path="res://scripts/rooms/spawner.gd" id="7_1lno0"]
+[ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="8_us3n4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xm3yn"]
+vertices = PackedVector2Array(13, 60, -8, 60, -8, 58, 13, 58, 16, -3, 16, -29, 17, -29, 17, -4, 30, -4, 30, 14, 16, 14, 16, 2, -10, -3, -10, 2, -10, 14, -22, 14, -22, -5, -12, -5, -10, -29, -12, -29, 108, 35, 105, 35, 105, -33, 108, -33, -101, 33, -104, 33, -104, -35, -101, -35, 60, -78, 60, 80, 55, 22, 55, -8, -56, 78, -33, 71, -10, 71, -10, 88, 172, -108, 172, 109, 153, 80, 153, -78, -172, 109, 16, 88, -172, -108, 39, -82, 42, -8, 42, -32, 27, -32, 27, -54, 39, -54, -35, -54, -23, -54, -23, -33, -37, -33, -37, -8, -47, -8, -56, -80, -47, 22, -32, 22, -32, 42, -33, 43, -10, 42, -10, 43, 16, 71, 38, 71, 38, 43, 16, 43, 16, 42, 39, 42, 39, 22, -35, -82, -149, 78, -149, -80)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 8, 9, 10, 11), PackedInt32Array(4, 7, 11), PackedInt32Array(12, 4, 11, 13), PackedInt32Array(13, 14, 15, 16, 17), PackedInt32Array(12, 13, 17), PackedInt32Array(18, 12, 17, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(32, 33, 34, 35), PackedInt32Array(36, 37, 38, 39), PackedInt32Array(38, 37, 40, 41), PackedInt32Array(42, 36, 39, 43), PackedInt32Array(31, 44, 45, 28), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(28, 45, 48, 43), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(52, 53, 54, 55), PackedInt32Array(56, 57, 58, 59), PackedInt32Array(58, 60, 61, 59), PackedInt32Array(41, 62, 63, 29), PackedInt32Array(64, 65, 66, 67), PackedInt32Array(67, 68, 30, 29), PackedInt32Array(64, 67, 29, 63), PackedInt32Array(59, 33, 32, 56), PackedInt32Array(56, 32, 55, 54), PackedInt32Array(49, 52, 55, 69), PackedInt32Array(70, 32, 35, 40), PackedInt32Array(39, 28, 43), PackedInt32Array(42, 43, 69), PackedInt32Array(42, 69, 55, 71), PackedInt32Array(40, 42, 71, 70), PackedInt32Array(41, 29, 38), PackedInt32Array(40, 35, 41)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(178, -114, 178, 115, -178, 115, -178, -114)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 6.5
+
+[node name="Layout3" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_xm3yn")
+script = ExtResource("1_fd3hv")
+
+[node name="Destroyables" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Barrels" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+position = Vector2(3, 0)
+
+[node name="Barrel1" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-25, -67)
+
+[node name="Barrel2" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-1, -67)
+
+[node name="Barrel3" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(23, -67)
+
+[node name="Barrel4" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(11, -42)
+
+[node name="Barrel5" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-13, -42)
+
+[node name="Barrel6" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(0, -16)
+
+[node name="Barrel7" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-23, 56)
+
+[node name="Barrel8" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(0, 15)
+
+[node name="Barrel9" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(0, 73)
+
+[node name="Barrel10" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(22, 56)
+
+[node name="Barrel11" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(39, 7)
+
+[node name="Barrel12" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(23, 27)
+
+[node name="Barrel13" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(0, 43)
+
+[node name="Barrel14" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-22, 27)
+
+[node name="Barrel15" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-37, 7)
+
+[node name="Barrel16" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(26, -17)
+
+[node name="Barrel17" parent="NavigationRegion2D/Destroyables/Barrels" instance=ExtResource("2_wpsxh")]
+position = Vector2(-27, -18)
+
+[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="MobSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(-102, -27)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner2" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(-102, -14)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(-13, -26)
+entity = ExtResource("5_mgmei")
+
+[node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(-11, 33)
+entity = ExtResource("5_mgmei")
+
+[node name="MobSpawner5" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(-102, 14)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner6" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(-102, 26)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner7" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(106, -28)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner8" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(106, -14)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner9" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(17, -28)
+entity = ExtResource("5_mgmei")
+
+[node name="MobSpawner10" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(16, 19)
+entity = ExtResource("5_mgmei")
+
+[node name="MobSpawner11" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(105, 28)
+entity = ExtResource("4_k65q6")
+
+[node name="MobSpawner12" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_42q36")]
+position = Vector2(105, 13)
+entity = ExtResource("4_k65q6")
+
+[node name="Items" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Statics" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="BigHole" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(-126, -1)
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole2" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(-78, -1)
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole2" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole3" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(-102, 55)
+rotation = 1.5708
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole3" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole4" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(-102, -57)
+rotation = 1.5708
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole4" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole5" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(82, 1)
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole5" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole6" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(130, 1)
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole6" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole7" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(106, 57)
+rotation = 1.5708
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole7" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="BigHole8" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(106, -55)
+rotation = 1.5708
+
+[node name="Hole" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -32)
+animation = &"top_left"
+
+[node name="Hole2" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -32)
+animation = &"top_right"
+
+[node name="Hole3" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, -16)
+animation = &"left"
+
+[node name="Hole4" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(8, -16)
+animation = &"right"
+
+[node name="Hole5" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 0)
+animation = &"left"
+
+[node name="Hole6" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 0)
+animation = &"right"
+
+[node name="Hole7" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 16)
+animation = &"left"
+
+[node name="Hole8" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 16)
+animation = &"right"
+
+[node name="Hole9" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(-8, 32)
+animation = &"down_left"
+
+[node name="Hole10" parent="NavigationRegion2D/Statics/BigHole8" instance=ExtResource("6_hxeus")]
+position = Vector2(8, 32)
+animation = &"down_right"
+
+[node name="ChestSpawner" type="Marker2D" parent="NavigationRegion2D"]
+script = ExtResource("7_1lno0")
+entity = ExtResource("8_us3n4")

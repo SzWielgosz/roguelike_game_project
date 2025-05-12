@@ -9,7 +9,7 @@ func enter():
 	
 func exit():
 	super.exit()
-	
+
 func _on_health_took_damage():
 	animated_sprite_2d.play("hit")
 	hit_timer.start()

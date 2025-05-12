@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://bgjobubbnewqs"]
+
+[ext_resource type="Script" path="res://scenes/environment/spikes.gd" id="1_gwpnt"]
+[ext_resource type="Texture2D" uid="uid://ufi2t4slbxqy" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f7.png" id="2_kem7l"]
+[ext_resource type="Texture2D" uid="uid://d4nkycbv172q0" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f8.png" id="3_njh4g"]
+[ext_resource type="Texture2D" uid="uid://2kaxaevqn4ww" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f9.png" id="4_41amb"]
+[ext_resource type="Texture2D" uid="uid://rael8destygo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f6.png" id="5_q65nq"]
+[ext_resource type="Texture2D" uid="uid://nlii6tclabtm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f5.png" id="6_4bprj"]
+[ext_resource type="Texture2D" uid="uid://fa62cfubukme" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f4.png" id="7_7uift"]
+[ext_resource type="Texture2D" uid="uid://cqmygu3275a2a" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f3.png" id="8_5o26w"]
+[ext_resource type="Texture2D" uid="uid://b2qjf5wvu0qiv" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f1.png" id="9_g2m3h"]
+[ext_resource type="Texture2D" uid="uid://dww6vcnofgphv" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f0.png" id="10_xn4no"]
+[ext_resource type="Texture2D" uid="uid://dwd5fya1gdvw" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/tiles/floor/spikes_anim_f2.png" id="11_x8gax"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fx5it"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kem7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_njh4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_41amb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q65nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4bprj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7uift")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5o26w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x8gax")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_xn4no")
+}],
+"loop": true,
+"name": &"fallen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_xn4no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g2m3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x8gax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5o26w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7uift")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4bprj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q65nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kem7l")
+}],
+"loop": true,
+"name": &"rise",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kem7l")
+}],
+"loop": true,
+"name": &"risen",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ns1ig"]
+size = Vector2(16, 16)
+
+[node name="Spikes" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fx5it")
+animation = &"fallen"
+script = ExtResource("1_gwpnt")
+
+[node name="Area2D" type="Area2D" parent="." groups=["traps"]]
+collision_layer = 32
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ns1ig")
+disabled = true
+
+[node name="RiseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StateTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="RiseTimer" to="." method="_on_rise_timer_timeout"]
+[connection signal="timeout" from="FallTimer" to="." method="_on_fall_timer_timeout"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

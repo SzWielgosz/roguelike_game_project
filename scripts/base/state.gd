@@ -10,7 +10,6 @@ func _ready():
 
 
 func enter():
-	print(name)
 	set_physics_process(true)
 
 

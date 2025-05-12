@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://cs5w2mb0ikxrg"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/goo_puddle_drop.gd" id="1_yw5if"]
+[ext_resource type="Texture2D" uid="uid://bbo7e28bydhno" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim1.png" id="2_mx5jj"]
+[ext_resource type="Texture2D" uid="uid://xuyje41h6a73" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim2.png" id="3_1ydxn"]
+[ext_resource type="Texture2D" uid="uid://bqgo5gv8p1lvl" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim3.png" id="4_voqi4"]
+[ext_resource type="Texture2D" uid="uid://c0nxya2jcgl86" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim4.png" id="5_kyrs6"]
+[ext_resource type="Texture2D" uid="uid://cfradne3kcagn" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim5.png" id="6_50fhk"]
+[ext_resource type="Texture2D" uid="uid://dasy5tlhjcgx8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim6.png" id="7_aus63"]
+[ext_resource type="Texture2D" uid="uid://d1fds67sb5gsu" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim7.png" id="8_mke53"]
+[ext_resource type="Texture2D" uid="uid://d1whewnduumyb" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim8.png" id="9_sx8jm"]
+[ext_resource type="Texture2D" uid="uid://dmwe1u5ps1lu4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_puddle_drop_anim9.png" id="10_0ttfq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_briqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mx5jj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ydxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_voqi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kyrs6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_50fhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aus63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mke53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sx8jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ttfq")
+}],
+"loop": false,
+"name": &"drop",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0ttfq")
+}],
+"loop": true,
+"name": &"dropped",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx84p"]
+size = Vector2(8, 7)
+
+[node name="GooPuddleDrop" type="Node2D"]
+script = ExtResource("1_yw5if")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_briqn")
+animation = &"drop"
+
+[node name="Area2D" type="Area2D" parent="." groups=["traps"]]
+collision_layer = 32
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_jx84p")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

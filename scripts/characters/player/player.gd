@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var bomb_scene = preload("res://scenes/items/bomb.tscn")
-@export var speed := 150
+@export var speed: int
 @export var min_knockback := 100
 @export var slow_knockback := 1.1
 @export var dash_speed = 1000

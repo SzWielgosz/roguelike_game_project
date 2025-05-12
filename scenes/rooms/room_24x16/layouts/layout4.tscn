@@ -1,0 +1,468 @@
+[gd_scene load_steps=10 format=3 uid="uid://p1qpx01x3kis"]
+
+[ext_resource type="Script" path="res://scripts/rooms/navigation_region_2d.gd" id="1_yxs80"]
+[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/spawner.tscn" id="3_wjgxe"]
+[ext_resource type="PackedScene" uid="uid://sbhalnlicq7a" path="res://scenes/characters/mobs/goblin_archer.tscn" id="4_w62my"]
+[ext_resource type="PackedScene" uid="uid://bgjobubbnewqs" path="res://scenes/environment/spikes.tscn" id="5_6xvmf"]
+[ext_resource type="PackedScene" uid="uid://bakolh0lkertk" path="res://scenes/items/coin.tscn" id="5_70hgt"]
+[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://scenes/characters/mobs/flying_eye.tscn" id="5_ddymb"]
+[ext_resource type="Script" path="res://scripts/rooms/spawner.gd" id="7_anbtu"]
+[ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="8_dl5yn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_b52av"]
+vertices = PackedVector2Array(172, 109, -172, 109, -172, -108, 172, -108)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(178, -114, 178, 115, -178, 115, -178, -114)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 6.5
+
+[node name="Layout4" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_b52av")
+script = ExtResource("1_yxs80")
+
+[node name="Destroyables" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Barrels" type="Node2D" parent="NavigationRegion2D/Destroyables"]
+
+[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="MobSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_wjgxe")]
+position = Vector2(-153, -99)
+entity = ExtResource("4_w62my")
+
+[node name="MobSpawner2" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_wjgxe")]
+position = Vector2(-161, 91)
+entity = ExtResource("4_w62my")
+
+[node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_wjgxe")]
+position = Vector2(151, -89)
+entity = ExtResource("5_ddymb")
+
+[node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_wjgxe")]
+position = Vector2(156, 91)
+entity = ExtResource("5_ddymb")
+
+[node name="Statics" type="Node2D" parent="NavigationRegion2D"]
+position = Vector2(-15, 10)
+
+[node name="SpikeRectangle" type="Node2D" parent="NavigationRegion2D/Statics"]
+
+[node name="SpikeLine" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(15, -80)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="SpikeLine2" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(95, -80)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine2" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="SpikeLine3" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(-65, -80)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine3" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="SpikeLine4" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(143, -46)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -34)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -18)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -2)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 14)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 30)
+
+[node name="SpikeLine5" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(-113, -46)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -34)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -18)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -2)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 14)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 30)
+
+[node name="SpikeLine6" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(-113, 34)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -34)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -18)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -2)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 14)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 30)
+
+[node name="SpikeLine7" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(143, 34)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine7" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -34)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine7" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -18)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine7" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -2)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine7" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 14)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine7" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 30)
+
+[node name="SpikeLine8" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(-65, 64)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine8" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine8" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine8" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine8" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine8" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="SpikeLine9" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(15, 64)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine9" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine9" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine9" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine9" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine9" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="SpikeLine10" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle"]
+position = Vector2(95, 64)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine10" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine10" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine10" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine10" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle/SpikeLine10" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="SpikeRectangle2" type="Node2D" parent="NavigationRegion2D/Statics"]
+
+[node name="SpikeLine" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle2"]
+position = Vector2(-49, -49)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(48, 0)
+
+[node name="SpikeLine2" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle2"]
+position = Vector2(47, -49)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine2" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(48, 0)
+
+[node name="SpikeLine3" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle2"]
+position = Vector2(-33, 31)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine3" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine3" instance=ExtResource("5_6xvmf")]
+position = Vector2(48, 0)
+
+[node name="SpikeLine4" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle2"]
+position = Vector2(63, 31)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine4" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine4" instance=ExtResource("5_6xvmf")]
+position = Vector2(48, 0)
+
+[node name="SpikeLine5" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle2"]
+position = Vector2(-81, 1)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -34)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -18)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -2)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 14)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine5" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 30)
+
+[node name="SpikeLine6" type="Node2D" parent="NavigationRegion2D/Statics/SpikeRectangle2"]
+position = Vector2(111, -15)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -34)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -18)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, -2)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 14)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeRectangle2/SpikeLine6" instance=ExtResource("5_6xvmf")]
+position = Vector2(0, 30)
+
+[node name="SpikeLine" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(-17, -18)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(48, 0)
+
+[node name="Spikes7" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(64, 0)
+
+[node name="Spikes8" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(80, 0)
+
+[node name="Spikes9" parent="NavigationRegion2D/Statics/SpikeLine" instance=ExtResource("5_6xvmf")]
+position = Vector2(96, 0)
+
+[node name="SpikeLine2" type="Node2D" parent="NavigationRegion2D/Statics"]
+position = Vector2(-17, -2)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(-32, 0)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(-16, 0)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(16, 0)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(32, 0)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(48, 0)
+
+[node name="Spikes7" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(64, 0)
+
+[node name="Spikes8" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(80, 0)
+
+[node name="Spikes9" parent="NavigationRegion2D/Statics/SpikeLine2" instance=ExtResource("5_6xvmf")]
+position = Vector2(96, 0)
+
+[node name="Spikes10" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(159, -80)
+
+[node name="Spikes4" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(143, -96)
+
+[node name="Spikes" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-129, -80)
+
+[node name="Spikes2" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-145, -80)
+
+[node name="Spikes3" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-113, -96)
+
+[node name="Spikes11" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(175, -80)
+
+[node name="Spikes12" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(159, 64)
+
+[node name="Spikes13" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(175, 64)
+
+[node name="Spikes14" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(143, 80)
+
+[node name="Spikes15" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-129, 64)
+
+[node name="Spikes16" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-113, 80)
+
+[node name="Spikes17" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-129, 92)
+
+[node name="Spikes18" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-145, 64)
+
+[node name="Spikes5" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(-113, -112)
+
+[node name="Spikes19" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(159, 91)
+
+[node name="Spikes6" parent="NavigationRegion2D/Statics" instance=ExtResource("5_6xvmf")]
+position = Vector2(143, -112)
+
+[node name="Items" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Coin" parent="NavigationRegion2D/Items" instance=ExtResource("5_70hgt")]
+position = Vector2(-22, 0)
+
+[node name="Coin2" parent="NavigationRegion2D/Items" instance=ExtResource("5_70hgt")]
+position = Vector2(-11, 0)
+
+[node name="Coin3" parent="NavigationRegion2D/Items" instance=ExtResource("5_70hgt")]
+
+[node name="Coin4" parent="NavigationRegion2D/Items" instance=ExtResource("5_70hgt")]
+position = Vector2(11, 0)
+
+[node name="Coin5" parent="NavigationRegion2D/Items" instance=ExtResource("5_70hgt")]
+position = Vector2(21, 0)
+
+[node name="ChestSpawner" type="Marker2D" parent="NavigationRegion2D"]
+script = ExtResource("7_anbtu")
+entity = ExtResource("8_dl5yn")

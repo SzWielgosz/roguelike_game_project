@@ -49,4 +49,5 @@ z_index = -1
 [connection signal="body_exited" from="RoomArea" to="RoomArea" method="_on_body_exited"]
 [connection signal="spawn_chest" from="RoomArea" to="SpawnManager" method="_on_room_area_spawn_chest"]
 [connection signal="spawn_mobs" from="RoomArea" to="SpawnManager" method="_on_room_area_spawn_mobs"]
+[connection signal="spawn_stairs" from="RoomArea" to="SpawnManager" method="_on_room_area_spawn_stairs"]
 [connection signal="timeout" from="SpawnTimer" to="RoomArea" method="_on_spawn_timer_timeout"]

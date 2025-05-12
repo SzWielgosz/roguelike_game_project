@@ -1,0 +1,395 @@
+[gd_scene load_steps=59 format=3 uid="uid://dncf718uj86ut"]
+
+[ext_resource type="Texture2D" uid="uid://b2m084s3aghui" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim1.png" id="1_7vq7m"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/slime_boss.gd" id="1_kaww2"]
+[ext_resource type="Texture2D" uid="uid://6ix4lcnkrjpu" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim2.png" id="2_5jkq1"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="2_87cyn"]
+[ext_resource type="Texture2D" uid="uid://b18vv68djkduq" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim3.png" id="3_c3xch"]
+[ext_resource type="Shader" path="res://scenes/characters/mobs/slime_boss/damage_flash.gdshader" id="3_o1ora"]
+[ext_resource type="Texture2D" uid="uid://c3wmcj3pxwbfx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim4.png" id="4_gdswc"]
+[ext_resource type="Texture2D" uid="uid://dgr8f6b238ebv" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim5.png" id="5_1jbfp"]
+[ext_resource type="Texture2D" uid="uid://crkncu5g44sj2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim6.png" id="6_bgfba"]
+[ext_resource type="Texture2D" uid="uid://bhqslvmoyo43w" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim7.png" id="7_ocerq"]
+[ext_resource type="Texture2D" uid="uid://c0bbd4a1ipswx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f0.png" id="8_amr7j"]
+[ext_resource type="Texture2D" uid="uid://bdsf71m4jmt04" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f1.png" id="9_oj4bq"]
+[ext_resource type="Texture2D" uid="uid://fo38q0hqbl7s" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_hit.png" id="10_4aqwp"]
+[ext_resource type="Texture2D" uid="uid://bl5fyu1v4a327" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png" id="10_6by6n"]
+[ext_resource type="Texture2D" uid="uid://y3o1yi60bxm3" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f2.png" id="10_8vpub"]
+[ext_resource type="Texture2D" uid="uid://djw84woxt1x2q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f3.png" id="11_8066w"]
+[ext_resource type="Texture2D" uid="uid://b2066ud5kg54" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f1.png" id="11_u1swa"]
+[ext_resource type="Texture2D" uid="uid://bnmmspadsreh7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f2.png" id="12_m0js0"]
+[ext_resource type="Texture2D" uid="uid://d3i2nvjnvxfi" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f4.png" id="12_oq27k"]
+[ext_resource type="Texture2D" uid="uid://cak4oee6q0hkx" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_anim_f5.png" id="13_0blej"]
+[ext_resource type="Texture2D" uid="uid://b423gqo0ne4kf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f3.png" id="13_pi5g3"]
+[ext_resource type="Texture2D" uid="uid://2bira54ppdon" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim1.png" id="14_b5rjm"]
+[ext_resource type="Texture2D" uid="uid://vqekrwtj4sun" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim2.png" id="15_teflf"]
+[ext_resource type="Texture2D" uid="uid://d0oatjh1jk586" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim3.png" id="16_6f1sv"]
+[ext_resource type="Texture2D" uid="uid://dttxtefb2sy4c" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim4.png" id="17_smaty"]
+[ext_resource type="Texture2D" uid="uid://b07v048wh3ef7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_jump_anim5.png" id="18_bumss"]
+[ext_resource type="Texture2D" uid="uid://drtaneh3qey7y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim1.png" id="19_vd8uk"]
+[ext_resource type="Texture2D" uid="uid://b54cdw8duiote" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim2.png" id="20_atano"]
+[ext_resource type="Texture2D" uid="uid://dfc853n5ifj2k" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim3.png" id="21_pjvjx"]
+[ext_resource type="Texture2D" uid="uid://cw4gb8iinfflm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim4.png" id="22_isqew"]
+[ext_resource type="Texture2D" uid="uid://dgakk4lddi8vj" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/in_air.png" id="22_ny5e7"]
+[ext_resource type="Texture2D" uid="uid://ysua6p7kydsh" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim5.png" id="23_hkudf"]
+[ext_resource type="Texture2D" uid="uid://dgf8d2kdu3lho" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim6.png" id="24_k3ioe"]
+[ext_resource type="Texture2D" uid="uid://c7nlte02r4p1q" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_landing_anim7.png" id="25_uonk1"]
+[ext_resource type="Script" path="res://scripts/base/state_machine.gd" id="26_0u7nj"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="33_4rkyv"]
+[ext_resource type="Texture2D" uid="uid://bpxnpxnh433sr" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f0.png" id="34_mhkup"]
+[ext_resource type="Texture2D" uid="uid://d4knc3ig7ko1y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f1.png" id="35_6x8kb"]
+[ext_resource type="Texture2D" uid="uid://d0x8mqd4b5ogq" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f2.png" id="36_yjhu6"]
+[ext_resource type="PackedScene" uid="uid://cnap0ae0h4gqp" path="res://scenes/characters/mobs/goo_ball.tscn" id="37_oue50"]
+[ext_resource type="Texture2D" uid="uid://dhxciowwpu4l4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f3.png" id="37_ut15i"]
+[ext_resource type="Texture2D" uid="uid://4qsj80afg5nb" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f4.png" id="38_dqhar"]
+[ext_resource type="Texture2D" uid="uid://dvnyokb33d80y" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_run_anim_f5.png" id="39_tfhns"]
+[ext_resource type="PackedScene" uid="uid://eun7jo3ixjth" path="res://scenes/characters/mobs/slime.tscn" id="41_tuokj"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/idle.gd" id="43_w62v1"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/jump.gd" id="44_iua3x"]
+[ext_resource type="PackedScene" uid="uid://cs5w2mb0ikxrg" path="res://scenes/characters/mobs/slime_boss/goo_puddle_drop.tscn" id="46_bxkt5"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/big_jump.gd" id="46_mv0i8"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/spawn_slimes.gd" id="48_jr23v"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/dash.gd" id="50_awr20"]
+[ext_resource type="PackedScene" uid="uid://duwgqxiux6rj4" path="res://scenes/characters/mobs/slime_goo.tscn" id="51_wnjp1"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/hit.gd" id="52_7wb1g"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/death.gd" id="53_8ptei"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h2v6"]
+shader = ExtResource("3_o1ora")
+shader_parameter/flash_strength = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dgf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7vq7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5jkq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c3xch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gdswc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1jbfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bgfba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ocerq")
+}],
+"loop": true,
+"name": &"big_jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6by6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u1swa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m0js0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pi5g3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4aqwp")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_amr7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oj4bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8vpub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8066w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_oq27k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0blej")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_ny5e7")
+}],
+"loop": true,
+"name": &"in_air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_b5rjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_teflf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6f1sv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_smaty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bumss")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_vd8uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_atano")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pjvjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_isqew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hkudf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_k3ioe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_uonk1")
+}],
+"loop": true,
+"name": &"landing",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_mhkup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_6x8kb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_yjhu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ut15i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_dqhar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_tfhns")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbt0b"]
+size = Vector2(12, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b438b"]
+radius = 123.341
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlc8p"]
+size = Vector2(16, 13)
+
+[node name="SlimeBoss" type="CharacterBody2D" groups=["bosses", "mobs"]]
+z_index = 1
+scale = Vector2(3, 3)
+collision_layer = 2
+script = ExtResource("1_kaww2")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_87cyn")
+max_health = 1500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5h2v6")
+sprite_frames = SubResource("SpriteFrames_6dgf3")
+animation = &"landing"
+frame_progress = 0.250387
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_kbt0b")
+
+[node name="debug" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -28.0
+offset_right = 18.0
+offset_bottom = -5.0
+text = "fdgd"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -27.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+max_value = 1000.0
+value = 1000.0
+
+[node name="Label" type="Label" parent="UI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = -17.0
+offset_right = 103.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("33_4rkyv")
+theme_override_font_sizes/font_size = 19
+text = "Big Slime"
+horizontal_alignment = 1
+
+[node name="DetectionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_b438b")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 70
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wlc8p")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("26_0u7nj")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("43_w62v1")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Jump" type="Node2D" parent="StateMachine"]
+script = ExtResource("44_iua3x")
+goo_ball_scene = ExtResource("37_oue50")
+jumps = 2
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/Jump"]
+one_shot = true
+
+[node name="ProjectilesContainer" type="Node" parent="StateMachine/Jump"]
+
+[node name="BigJump" type="Node2D" parent="StateMachine"]
+script = ExtResource("46_mv0i8")
+goo_ball_scene = ExtResource("37_oue50")
+goo_drop_scene = ExtResource("46_bxkt5")
+num_drops = 10
+num_projectiles = 12
+
+[node name="InAirTimer" type="Timer" parent="StateMachine/BigJump"]
+wait_time = 3.0
+one_shot = true
+
+[node name="LandingTimer" type="Timer" parent="StateMachine/BigJump"]
+wait_time = 0.5
+one_shot = true
+
+[node name="BigJumpTimer" type="Timer" parent="StateMachine/BigJump"]
+wait_time = 0.6
+one_shot = true
+
+[node name="Container" type="Node" parent="StateMachine/BigJump"]
+
+[node name="SpawnSlimes" type="Node2D" parent="StateMachine"]
+script = ExtResource("48_jr23v")
+slime_scene = ExtResource("41_tuokj")
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/SpawnSlimes"]
+one_shot = true
+
+[node name="MobsCointainer" type="Node" parent="StateMachine/SpawnSlimes"]
+
+[node name="Dash" type="Node2D" parent="StateMachine"]
+script = ExtResource("50_awr20")
+goo_scene = ExtResource("51_wnjp1")
+dashes = 3
+
+[node name="DashTimer" type="Timer" parent="StateMachine/Dash"]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/Dash"]
+wait_time = 1.5
+one_shot = true
+
+[node name="GooSpawnTimer" type="Timer" parent="StateMachine/Dash"]
+wait_time = 0.1
+
+[node name="GooContainer" type="Node" parent="StateMachine/Dash"]
+
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("52_7wb1g")
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("53_8ptei")
+
+[node name="DeathTimer" type="Timer" parent="StateMachine/Death"]
+wait_time = 0.5
+one_shot = true
+
+[node name="MobSpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="MobSpawnPoints"]
+position = Vector2(13.3333, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="MobSpawnPoints"]
+position = Vector2(-11.3333, 0)
+
+[connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Jump/WaitTimer" to="StateMachine/Jump" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="StateMachine/BigJump/InAirTimer" to="StateMachine/BigJump" method="_on_in_air_timer_timeout"]
+[connection signal="timeout" from="StateMachine/BigJump/LandingTimer" to="StateMachine/BigJump" method="_on_landing_timer_timeout"]
+[connection signal="timeout" from="StateMachine/BigJump/BigJumpTimer" to="StateMachine/BigJump" method="_on_big_jump_timer_timeout"]
+[connection signal="timeout" from="StateMachine/SpawnSlimes/WaitTimer" to="StateMachine/SpawnSlimes" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Dash/DashTimer" to="StateMachine/Dash" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Dash/WaitTimer" to="StateMachine/Dash" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Dash/GooSpawnTimer" to="StateMachine/Dash" method="_on_goo_spawn_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Death/DeathTimer" to="StateMachine/Death" method="_on_death_timer_timeout"]

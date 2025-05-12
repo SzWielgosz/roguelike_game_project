@@ -1,0 +1,564 @@
+[gd_scene load_steps=12 format=3 uid="uid://cuusbkfhfktvo"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_3nm0u"]
+[ext_resource type="Texture2D" uid="uid://m04uxgubymal" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/background.png" id="1_tdw00"]
+[ext_resource type="Texture2D" uid="uid://vjdf0jec8jc4" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/scroll2.png" id="2_7vgjr"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="2_84ugh"]
+[ext_resource type="Texture2D" uid="uid://dsyo2rm7wvwb5" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f0.png" id="3_r2cc1"]
+[ext_resource type="Texture2D" uid="uid://bi3opp2mga6b2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f1.png" id="4_uf0oo"]
+[ext_resource type="Texture2D" uid="uid://batifbu4f6rfd" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f2.png" id="5_h2ro2"]
+[ext_resource type="Texture2D" uid="uid://cfmx6hoy1l2ho" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f3.png" id="6_0who7"]
+[ext_resource type="Texture2D" uid="uid://c8ybcwabc4cbm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f4.png" id="7_d6lcx"]
+[ext_resource type="Texture2D" uid="uid://ccnjawl8dmabe" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/props_items/torch_anim_f5.png" id="8_w6m1u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxno5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r2cc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uf0oo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h2ro2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0who7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d6lcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w6m1u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_3nm0u")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -320.0
+offset_right = 320.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tdw00")
+
+[node name="Title" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 89.0
+offset_right = 173.0
+offset_bottom = 105.0
+scale = Vector2(6.74219, 8.46875)
+texture = ExtResource("2_7vgjr")
+
+[node name="Title" type="Label" parent="NinePatchRect/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.029
+offset_top = -3.74908
+offset_right = 965.971
+offset_bottom = 151.251
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.05, 0.05)
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 176
+text = "LITTLE MAGE"
+horizontal_alignment = 1
+
+[node name="TorchAnimF0" type="AnimatedSprite2D" parent="NinePatchRect/Title"]
+position = Vector2(-0.148319, 49.2399)
+scale = Vector2(1.63152, 1.53258)
+sprite_frames = SubResource("SpriteFrames_oxno5")
+autoplay = "default"
+frame_progress = 0.330474
+flip_h = true
+
+[node name="TorchAnimF1" type="AnimatedSprite2D" parent="NinePatchRect/Title"]
+position = Vector2(62.8876, 49.2399)
+scale = Vector2(1.63152, 1.53258)
+sprite_frames = SubResource("SpriteFrames_oxno5")
+autoplay = "default"
+frame_progress = 0.172459
+
+[node name="MainButtons" type="Control" parent="NinePatchRect"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VboxContainer" type="VBoxContainer" parent="NinePatchRect/MainButtons"]
+layout_mode = 2
+offset_left = 192.0
+offset_top = 228.0
+offset_right = 448.0
+offset_bottom = 352.0
+
+[node name="PlayButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "PLAY"
+
+[node name="HowToPlayButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "How to play"
+
+[node name="SettingsButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/MainButtons/VboxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "QUIT"
+
+[node name="Settings" type="Control" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -56.0
+offset_right = 79.5
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="MusicVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="SFXVolumeLabel" type="Label" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="MasterVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="MusicVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="SFXVolumeSlider" type="HSlider" parent="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="FullscreenSetting" type="CheckButton" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Fullscreen"
+
+[node name="VSyncSetting" type="CheckButton" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "v-sync"
+
+[node name="KeyBindingsButton" type="Button" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "key bindings"
+
+[node name="SettingsBack" type="Button" parent="NinePatchRect/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Back"
+
+[node name="KeyBindings" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/KeyBindings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -83.0
+offset_right = 107.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/KeyBindings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="KeyBindingsSetting" type="VBoxContainer" parent="NinePatchRect/KeyBindings/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/KeyBindings/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResetKeyBindingsButton" type="Button" parent="NinePatchRect/KeyBindings/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset keybindins"
+
+[node name="KeyBindingsBackButton" type="Button" parent="NinePatchRect/KeyBindings/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "back
+"
+
+[node name="Credits" type="Control" parent="NinePatchRect"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Credits"]
+layout_mode = 2
+offset_left = 204.0
+offset_top = 237.0
+offset_right = 437.0
+offset_bottom = 447.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -78.0
+offset_right = 117.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/Credits/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Credits/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreditsLabel" type="Label" parent="NinePatchRect/Credits/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "programming: 
+myself
+
+art:
+O_LOBSTER
+blackdragon1727
+myself
+
+Music:
+null
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsBack" type="Button" parent="NinePatchRect/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Back"
+
+[node name="SaveSlots" type="Control" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/SaveSlots"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -56.5
+offset_right = 180.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="FirstSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "First slot"
+
+[node name="DeleteFirstSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SecondSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Second slot"
+
+[node name="DeleteSecondSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ThirdSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Third slot"
+
+[node name="DeleteThirdSlot" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete"
+
+[node name="BackButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "back"
+
+[node name="DeleteSaveEnableButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Delete save"
+
+[node name="DeleteSaveDisableButton" type="Button" parent="NinePatchRect/SaveSlots/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 19
+text = "Exit Delete Mode"
+
+[node name="ThankYouPopup" type="Control" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/ThankYouPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -225.0
+offset_right = 225.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tdw00")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/ThankYouPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -114.0
+offset_right = 209.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GreetingsLabel" type="Label" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 31
+text = "Hello dear player"
+
+[node name="Label" type="Label" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "I wanted to say thank you for
+trying my first ever made game.
+This game is a result of learning
+godot engine through my free time. 
+The game itself is not long 
+so you can complete it in no time
+because I focused more on
+implementation of as many
+features as possible. Maybe
+in the future I'll expand this game 
+or create something similar to it. 
+Enjoy! :D
+"
+horizontal_alignment = 1
+
+[node name="DoNotShowAgainCheckBox" type="CheckBox" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Do not show this again"
+
+[node name="ClosePopupButton" type="Button" parent="NinePatchRect/ThankYouPopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_84ugh")
+theme_override_font_sizes/font_size = 21
+text = "Close"
+
+[connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MainButtons/VboxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/MasterVolumeSlider" to="." method="_on_master_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="NinePatchRect/Settings/VBoxContainer/HBoxContainer/VBoxContainer2/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
+[connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/FullscreenSetting" to="." method="_on_fullscreen_setting_toggled"]
+[connection signal="toggled" from="NinePatchRect/Settings/VBoxContainer/VSyncSetting" to="." method="_on_v_sync_setting_toggled"]
+[connection signal="pressed" from="NinePatchRect/Settings/VBoxContainer/KeyBindingsButton" to="." method="_on_key_bindings_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/Settings/VBoxContainer/SettingsBack" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="NinePatchRect/KeyBindings/VBoxContainer/VBoxContainer/KeyBindingsBackButton" to="." method="_on_key_bindings_back_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/Credits/VBoxContainer/CreditsBack" to="." method="_on_credits_back_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer/FirstSlot" to="." method="_on_first_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer/DeleteFirstSlot" to="." method="_on_delete_first_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2/SecondSlot" to="." method="_on_second_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer2/DeleteSecondSlot" to="." method="_on_delete_second_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/ThirdSlot" to="." method="_on_third_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/DeleteThirdSlot" to="." method="_on_delete_third_slot_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveEnableButton" to="." method="_on_delete_save_enable_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveDisableButton" to="." method="_on_delete_save_disable_pressed"]
+[connection signal="toggled" from="NinePatchRect/ThankYouPopup/VBoxContainer/DoNotShowAgainCheckBox" to="." method="_on_do_not_show_again_check_box_toggled"]
+[connection signal="pressed" from="NinePatchRect/ThankYouPopup/VBoxContainer/ClosePopupButton" to="." method="_on_close_popup_button_pressed"]

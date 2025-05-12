@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnap0ae0h4gqp"]
+
+[ext_resource type="Script" path="res://scenes/characters/mobs/goo_ball.gd" id="1_mljts"]
+[ext_resource type="Texture2D" uid="uid://c0h7wbuiymspw" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/goo_fragment.png" id="2_4ek7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1n8d0"]
+size = Vector2(4.25, 4)
+
+[node name="GooBall" type="Node2D"]
+script = ExtResource("1_mljts")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 2.35619
+texture = ExtResource("2_4ek7o")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1n8d0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

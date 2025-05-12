@@ -2,17 +2,26 @@ extends Node2D
 
 var empty_room = preload("res://scenes/rooms/room_24x16/empty_room.tscn")
 var door = preload("res://scenes/environment/props/door.tscn")
-var next_dungeon_stairs = preload("res://scenes/environment/next_dungeon_stairs.tscn")
 var item_shop_scene = preload("res://scenes/rooms/item_shop.tscn")
 var coin_collector = preload("res://scenes/characters/coin_collector.tscn")
-var room_layouts = [preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"),] #preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn")]
+var room_layouts = [
+	preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"), 
+	preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn"),
+	preload("res://scenes/rooms/room_24x16/layouts/layout3.tscn"),
+	preload("res://scenes/rooms/room_24x16/layouts/layout4.tscn"),
+	preload("res://scenes/rooms/room_24x16/layouts/layout5.tscn")
+]
+var bosses = [
+	preload("res://scenes/characters/mobs/slime_boss/slime_boss.tscn")
+]
+var end_room_layout = preload("res://scenes/rooms/room_24x16/end_room_layout.tscn")
 var load_dungeon: bool = false
 enum RoomType { REGULAR, TREASURE, START, END, SHOP }
 @onready var Map: TileMap = $"../TileMap"
 @onready var Player = $"../Player"
 @onready var minimap = $"../Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"
 var tile_size: int = 16
-var rooms_to_generate: int = 8
+var rooms_to_generate: int = 6
 var room_dict: Dictionary = {}
 var create_minimap_dict: Dictionary = {}
 var queue: Array = []
@@ -192,9 +201,9 @@ func find_end_room():
 			end_room = room
 			max_x = room.global_position.x
 	end_room.get_node("RoomArea").type = RoomType.END
-	var next_dungeon_stairs_instance = next_dungeon_stairs.instantiate()
-	end_room.add_child(next_dungeon_stairs_instance)
-	next_dungeon_stairs_instance.global_position = end_room.global_position
+	var end_room_layout_instance = end_room_layout.instantiate()
+	end_room_layout_instance.get_node("NavigationRegion2D").get_node("SpawnPoints").get_child(0).entity = bosses[0]
+	end_room.get_node("RoomLayout").add_child(end_room_layout_instance)
 
 
 func create_shop_room():

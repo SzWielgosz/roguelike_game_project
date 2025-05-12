@@ -2,6 +2,7 @@ extends Area2D
 class_name RoomArea
 
 enum RoomType { REGULAR, TREASURE, START, END, SHOP }
+var next_dungeon_stairs_scene = preload("res://scenes/environment/next_dungeon_stairs.tscn")
 var room_visited: bool = false
 var doors_opened: bool = true
 var room_cleared: bool = false
@@ -14,6 +15,7 @@ var mobs_left = []
 var spawning: bool = false
 signal spawn_mobs
 signal spawn_chest
+signal spawn_stairs
 
 
 func _ready():
@@ -38,7 +40,7 @@ func _on_timer_timeout():
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		$"../Icon".visible = true
-		if type == RoomType.REGULAR:
+		if type == RoomType.REGULAR or type == RoomType.END:
 			if not room_visited:
 				room_visited = true
 			player_inside = true
@@ -53,6 +55,7 @@ func _on_body_entered(body):
 				if not doors_opened:
 					GameStats.player_clearing_room = false
 					open_all_doors()
+
 
 	if body.is_in_group("mobs"):
 		mobs_left.append(body)
@@ -76,6 +79,8 @@ func _on_body_exited(body):
 		if player_inside and mobs_left.is_empty() and not room_cleared:
 			room_cleared = true
 			spawn_chest.emit()
+			if type == RoomType.END:
+				spawn_stairs.emit()
 			if not doors_opened:
 				GameStats.player_clearing_room = false
 				open_all_doors()

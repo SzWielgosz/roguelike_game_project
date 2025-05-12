@@ -123,7 +123,7 @@ script = ExtResource("2_fh7qx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y88jy")
-animation = &"death"
+animation = &"idle"
 
 [node name="debug" type="Label" parent="."]
 offset_left = -23.0
@@ -134,7 +134,7 @@ text = "debug"
 label_settings = SubResource("LabelSettings_q8oa4")
 
 [node name="DetectionRange" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
@@ -153,9 +153,9 @@ shape = SubResource("RectangleShape2D_l5unc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
-path_max_distance = 500.0
+path_max_distance = 200.0
 avoidance_enabled = true
-radius = 20.0
+radius = 8.0
 neighbor_distance = 50.0
 debug_enabled = true
 
@@ -173,7 +173,7 @@ one_shot = true
 script = ExtResource("17_pavl7")
 
 [node name="FollowTimer" type="Timer" parent="StateMachine/Follow"]
-wait_time = 0.5
+wait_time = 0.1
 
 [node name="Wander" type="Node2D" parent="StateMachine"]
 script = ExtResource("18_m7vbj")
@@ -208,6 +208,8 @@ one_shot = true
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="HitBox" to="StateMachine/Wander" method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="HitBox" to="StateMachine/Wander" method="_on_hit_box_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateMachine/Follow" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="StateMachine/Wander" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Follow/FollowTimer" to="StateMachine/Follow" method="_on_follow_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Wander/WanderTimer" to="StateMachine/Wander" method="_on_timer_timeout"]

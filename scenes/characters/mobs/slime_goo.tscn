@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://duwgqxiux6rj4"]
+
+[ext_resource type="Script" path="res://scripts/characters/mobs/slime/slime_goo.gd" id="1_whet4"]
+[ext_resource type="Texture2D" uid="uid://bicf4vt7b2o3p" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_goo_spritesheet.png" id="2_wty8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yode8"]
+size = Vector2(12, 13)
+
+[node name="SlimeGoo" type="Node2D"]
+script = ExtResource("1_whet4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wty8i")
+hframes = 3
+
+[node name="Area2D" type="Area2D" parent="." groups=["traps"]]
+collision_layer = 32
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_yode8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

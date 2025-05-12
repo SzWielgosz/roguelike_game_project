@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0ltss8yjm77m"]
+
+[ext_resource type="Script" path="res://scripts/rooms/navigation_region_2d.gd" id="1_vy3u2"]
+[ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/spawner.tscn" id="2_d0h4w"]
+[ext_resource type="Script" path="res://scripts/rooms/spawner.gd" id="3_unvrw"]
+[ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="4_ohd6p"]
+[ext_resource type="PackedScene" uid="uid://calspqjlm53pc" path="res://scenes/environment/next_dungeon_stairs.tscn" id="5_dwip6"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dlva1"]
+vertices = PackedVector2Array(184, 117, -184, 117, -184, -119, 184, -119)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(186, -121, 186, 118.947, -186, 118.947, -186, -121)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 2.0
+
+[node name="EndRoomLayout" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(0.93, 0.93)
+navigation_polygon = SubResource("NavigationPolygon_dlva1")
+script = ExtResource("1_vy3u2")
+
+[node name="Destroyables" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="SpawnPoints" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="BossSpawner" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("2_d0h4w")]
+
+[node name="Items" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Statics" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="ChestSpawner" type="Marker2D" parent="NavigationRegion2D"]
+position = Vector2(50, 0)
+script = ExtResource("3_unvrw")
+entity = ExtResource("4_ohd6p")
+
+[node name="StairsSpawner" type="Marker2D" parent="NavigationRegion2D"]
+script = ExtResource("3_unvrw")
+entity = ExtResource("5_dwip6")
+
+[connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]

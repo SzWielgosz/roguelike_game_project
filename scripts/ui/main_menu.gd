@@ -18,10 +18,14 @@ extends CanvasLayer
 @onready var delete_third_slot: Button = $NinePatchRect/SaveSlots/VBoxContainer/HBoxContainer/VBoxContainer3/DeleteThirdSlot
 @onready var delete_save_enable_button: Button = $NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveEnableButton
 @onready var delete_save_disable_button: Button = $NinePatchRect/SaveSlots/VBoxContainer/DeleteSaveDisableButton
+@onready var key_bindings: Control = $NinePatchRect/KeyBindings
+@onready var key_bindings_setting: VBoxContainer = $NinePatchRect/KeyBindings/VBoxContainer/ScrollContainer/KeyBindingsSetting
+@onready var how_to_play: Control = $NinePatchRect/HowToPlay
 
 
 func _ready():
 	var video_settings = ConfigFileHandler.load_video_settings()
+	var keybinding_settings = ConfigFileHandler.apply_keybindings_to_input_map()
 	fullscreen_setting.button_pressed = video_settings.fullscreen
 	vsync_setting.button_pressed = video_settings.vsync
 	var audio_settings = ConfigFileHandler.load_audio_settings()
@@ -33,6 +37,7 @@ func _ready():
 		thank_you_popup.visible = false
 	
 	set_save_slots()
+	set_keybinding_buttons()
 
 
 func set_save_slots():
@@ -187,3 +192,39 @@ func _on_delete_second_slot_pressed():
 func _on_delete_third_slot_pressed():
 	SaveManager.delete_save_slot(3)
 	set_save_slots()
+
+
+func _on_key_bindings_button_pressed():
+	key_bindings.visible = true
+	settings.visible = false
+
+
+func _on_key_bindings_back_button_pressed():
+	settings.visible = true
+	key_bindings.visible = false
+
+
+func set_keybinding_buttons():
+	var keybindings = ConfigFileHandler.config.get_section_keys("keybindings")
+	var keybinding_children = key_bindings_setting.get_children()
+	var idx = 0
+	for action in keybindings:
+		var key = ConfigFileHandler.config.get_value("keybindings", action)
+		var button = keybinding_children[idx]
+		button.set_input_button(action, key)
+		idx += 1
+
+
+func _on_reset_key_bindings_button_pressed():
+	ConfigFileHandler.set_default_keybindings()
+	set_keybinding_buttons()
+
+
+func _on_how_to_play_button_pressed():
+	how_to_play.visible = true
+	main_buttons.visible = false
+
+
+func _on_how_to_play_back_button_pressed():
+	how_to_play.visible = false
+	main_buttons.visible = true

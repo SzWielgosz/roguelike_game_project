@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://druri61kbfjpb"]
+
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/tree_turret.gd" id="1_bhdcy"]
+[ext_resource type="PackedScene" uid="uid://c50xddrttcrd4" path="res://scenes/characters/mobs/goblin_boss/goblin_boss_bullet.tscn" id="2_clav3"]
+[ext_resource type="Texture2D" uid="uid://gq6nrh6cvb1" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/little_tree.png" id="2_kbhgh"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="3_m1bac"]
+[ext_resource type="Shader" path="res://scenes/characters/mobs/slime_boss/damage_flash.gdshader" id="4_8wcnf"]
+[ext_resource type="Texture2D" uid="uid://bl5fyu1v4a327" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png" id="4_uh5lu"]
+[ext_resource type="Texture2D" uid="uid://b2066ud5kg54" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f1.png" id="5_vjmey"]
+[ext_resource type="Texture2D" uid="uid://bnmmspadsreh7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f2.png" id="6_fkc84"]
+[ext_resource type="Texture2D" uid="uid://b423gqo0ne4kf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f3.png" id="7_00bae"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ag8fe"]
+shader = ExtResource("4_8wcnf")
+shader_parameter/flash_strength = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ell6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uh5lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vjmey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fkc84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_00bae")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kbhgh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7slk"]
+size = Vector2(6, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwe7i"]
+size = Vector2(6, 9)
+
+[node name="TreeTurret" type="CharacterBody2D" groups=["mobs"]]
+light_mask = 2
+visibility_layer = 12
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_bhdcy")
+bullet_scene = ExtResource("2_clav3")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_m1bac")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ag8fe")
+sprite_frames = SubResource("SpriteFrames_3ell6")
+animation = &"idle"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_s7slk")
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="ShootDelayTimer" type="Timer" parent="."]
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vwe7i")
+
+[connection signal="dead" from="Health" to="." method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="." method="_on_health_took_damage"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="ShootDelayTimer" to="." method="_on_shoot_delay_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

@@ -5,12 +5,13 @@ var player: CharacterBody2D = null
 var player_health: float = 3.0
 var player_max_health: float = 3.0
 var player_max_hearts: int = 9
-var player_coins: int = 20
+var player_coins: int = 0
 var player_bombs: int = 3
 var slots: Array = [null, null, null]
 var selected_slot: int = 0
 var coin_lost_this_frame: bool = false
-var coins_deposited: int = 99
+var coins_deposited: int = 15
+var treasure_collected: bool = false
 
 signal health_changed(value)
 signal max_health_changed(value)
@@ -23,8 +24,7 @@ signal coin_deposited(coins_left)
 
 
 func _ready():
-	var lesser_fireball = lesser_fireball_scroll_scene.instantiate()
-	equip_spell(lesser_fireball, Vector2(0, 0), 0)
+	pass
 
 
 func _process(_delta):
@@ -32,17 +32,16 @@ func _process(_delta):
 	
 
 func equip_spell(input_scroll: SpellScroll, input_position: Vector2, slot=selected_slot):
-	var spell_scroll = get_selected_spell() # pobieram aktualnego spella
-	print("Input position: ", input_position)
-	print("Aktualny spell w slocie: ", spell_scroll)
-	print("Pobierany spell: ", input_scroll)
-	if spell_scroll: # jezeli istnieje
-		spell_scroll.drop(input_position, get_tree().current_scene) # dropnij do aktualnej sceny z pozycją inputa
-	if input_scroll.get_parent(): # jezeli podnoszony spell ma rodzica, to reparent
+	var spell_scroll = get_selected_spell()
+	if spell_scroll and get_tree().current_scene.name != "MainMenu":
+		spell_scroll.drop(input_position, get_tree().current_scene)
+	if input_scroll.get_parent():
 		input_scroll.reparent(self)
-	else: # jak nie ma rodzica, to add_child
+	else:
 		add_child(input_scroll)
-	slots[slot] = input_scroll # ustaw input spella na selected slota 
+	slots[slot] = input_scroll
+	input_scroll.get_node("Sprite2D").visible = false
+	input_scroll.get_node("Area2D").get_child(0).visible = false
 	spell_equipped.emit()
 
 
@@ -84,7 +83,15 @@ func switch_slot(slot_index: int):
 
 
 func clear_slots():
+	for spell in slots:
+		if spell != null:
+			spell.queue_free()
 	slots = [null, null, null]
+
+
+func get_start_spell():
+	var lesser_fireball = lesser_fireball_scroll_scene.instantiate()
+	equip_spell(lesser_fireball, Vector2(0, 0), 0)
 
 
 func _input(event):

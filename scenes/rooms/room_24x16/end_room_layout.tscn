@@ -38,5 +38,3 @@ entity = ExtResource("4_ohd6p")
 [node name="StairsSpawner" type="Marker2D" parent="NavigationRegion2D"]
 script = ExtResource("3_unvrw")
 entity = ExtResource("5_dwip6")
-
-[connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]

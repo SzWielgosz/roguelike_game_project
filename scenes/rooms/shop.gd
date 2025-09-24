@@ -34,6 +34,7 @@ func purchase_item(index):
 		deposited_money -= item["price"]
 		item_list.set_item_disabled(index, true)
 		shop_table[key]["unlocked"] = true
+		TreasureStats.add_unlocked_items_to_drop_table()
 		change_counter(deposited_money)
 		print("Item unlocked: " + key)
 	else:

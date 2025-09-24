@@ -7,10 +7,10 @@ var mobs_killed: int = 0
 var coins_collected: int = 0
 var bombs_used: int = 0
 var spells_casted: int = 0
-var dungeon_number: int = 1
+var dungeon_number: int = 0
 var player_clearing_room: bool = false
 var random_number_generator: RandomNumberGenerator = RandomNumberGenerator.new()
-var chest_spawn_probability: float = 1
+var chest_spawn_probability: float = 0.5
 
 
 func _ready():
@@ -27,4 +27,4 @@ func reset():
 	time_played = 0.0
 	bombs_used = 0
 	spells_casted = 0
-	dungeon_number = 1
+	dungeon_number = 0

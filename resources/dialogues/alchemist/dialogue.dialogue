@@ -1,5 +1,5 @@
 ~ this_is_a_node_title
-Alchemist: [[Hi|Hello|Howdy]], welcome to my shop. How can I help you?.
+Shopkeeper: [[Hi|Hello|Howdy]], welcome to my shop. How can I help you?.
 - Purchase spell
-Alchemist: Splendid! [do! alchemist.open_shop()]
+Shopkeeper: Splendid! [do! alchemist.open_shop()]
 => END!

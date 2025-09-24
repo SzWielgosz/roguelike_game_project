@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://p1qpx01x3kis"]
+[gd_scene load_steps=9 format=3 uid="uid://p1qpx01x3kis"]
 
 [ext_resource type="Script" path="res://scripts/rooms/navigation_region_2d.gd" id="1_yxs80"]
 [ext_resource type="PackedScene" uid="uid://crgxu44cdpejv" path="res://scenes/main/spawner.tscn" id="3_wjgxe"]
 [ext_resource type="PackedScene" uid="uid://sbhalnlicq7a" path="res://scenes/characters/mobs/goblin_archer.tscn" id="4_w62my"]
 [ext_resource type="PackedScene" uid="uid://bgjobubbnewqs" path="res://scenes/environment/spikes.tscn" id="5_6xvmf"]
 [ext_resource type="PackedScene" uid="uid://bakolh0lkertk" path="res://scenes/items/coin.tscn" id="5_70hgt"]
-[ext_resource type="PackedScene" uid="uid://cyb8oxg7okohu" path="res://scenes/characters/mobs/flying_eye.tscn" id="5_ddymb"]
 [ext_resource type="Script" path="res://scripts/rooms/spawner.gd" id="7_anbtu"]
 [ext_resource type="PackedScene" uid="uid://dqo564kl5ghmv" path="res://scenes/environment/props/chest.tscn" id="8_dl5yn"]
 
@@ -38,11 +37,11 @@ entity = ExtResource("4_w62my")
 
 [node name="MobSpawner3" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_wjgxe")]
 position = Vector2(151, -89)
-entity = ExtResource("5_ddymb")
+entity = ExtResource("4_w62my")
 
 [node name="MobSpawner4" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_wjgxe")]
 position = Vector2(156, 91)
-entity = ExtResource("5_ddymb")
+entity = ExtResource("4_w62my")
 
 [node name="Statics" type="Node2D" parent="NavigationRegion2D"]
 position = Vector2(-15, 10)

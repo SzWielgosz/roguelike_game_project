@@ -1,0 +1,313 @@
+[gd_scene load_steps=46 format=3 uid="uid://hwpos1snob22"]
+
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/goblin_boss.gd" id="1_cc1xq"]
+[ext_resource type="Script" path="res://scripts/characters/mobs/health.gd" id="1_mriux"]
+[ext_resource type="Texture2D" uid="uid://3qhhg4cgp4c2" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_idle_anim1.png" id="1_oil0f"]
+[ext_resource type="Texture2D" uid="uid://cg2esqd2vstd0" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_idle_anim2.png" id="2_2rprt"]
+[ext_resource type="Shader" path="res://scenes/characters/mobs/slime_boss/damage_flash.gdshader" id="3_6io2x"]
+[ext_resource type="Texture2D" uid="uid://p1mod6mxvbpk" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_idle_anim3.png" id="3_agwfg"]
+[ext_resource type="Texture2D" uid="uid://5imknabfr7cy" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_idle_anim4.png" id="4_d5b4u"]
+[ext_resource type="Texture2D" uid="uid://bl5fyu1v4a327" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f0.png" id="4_v1v1y"]
+[ext_resource type="Texture2D" uid="uid://b2ls3s83cle51" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_idle_anim5.png" id="5_malwu"]
+[ext_resource type="Texture2D" uid="uid://b2066ud5kg54" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f1.png" id="5_rmiwr"]
+[ext_resource type="Texture2D" uid="uid://bnmmspadsreh7" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f2.png" id="6_3gb3f"]
+[ext_resource type="Texture2D" uid="uid://be5gmwfxuegjo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_idle_anim6.png" id="6_clwkf"]
+[ext_resource type="Texture2D" uid="uid://ce4tqo3l18rqo" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim1.png" id="7_15jx4"]
+[ext_resource type="Texture2D" uid="uid://b423gqo0ne4kf" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/effects (new)/enemy_afterdead_explosion_anim_f3.png" id="7_l4pek"]
+[ext_resource type="Texture2D" uid="uid://c7y6xaxvtg8uu" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim2.png" id="8_xo4bk"]
+[ext_resource type="Texture2D" uid="uid://bebl074wad7ut" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim3.png" id="9_6ojc0"]
+[ext_resource type="FontFile" uid="uid://qkq8p3y1rws1" path="res://assets/fonts/EditUndo/editundo.ttf" id="9_25vp7"]
+[ext_resource type="Texture2D" uid="uid://cr1va07ayx1jd" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim4.png" id="10_mux8u"]
+[ext_resource type="Texture2D" uid="uid://b8dw23hcmchmh" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim5.png" id="11_vq1mi"]
+[ext_resource type="Texture2D" uid="uid://hik3rby17kfk" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim6.png" id="12_xji3g"]
+[ext_resource type="Texture2D" uid="uid://cec6g8pejpxm0" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim7.png" id="13_vvspf"]
+[ext_resource type="Texture2D" uid="uid://bnv22upel0oi8" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim8.png" id="14_xe6nn"]
+[ext_resource type="Texture2D" uid="uid://y5su6m4c4ard" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim9.png" id="15_pmprj"]
+[ext_resource type="Texture2D" uid="uid://dqhh2melyk0oi" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_cast_anim10.png" id="16_3eo04"]
+[ext_resource type="Texture2D" uid="uid://dqmje5blq6roy" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/goblin_druid_staff.png" id="17_uddfh"]
+[ext_resource type="Texture2D" uid="uid://b07vynjxvss13" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_charged.png" id="17_unnae"]
+[ext_resource type="Script" path="res://scripts/base/state_machine.gd" id="18_rnldd"]
+[ext_resource type="Texture2D" uid="uid://mp5yh8cnvgo3" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_charging_anim1.png" id="18_s222i"]
+[ext_resource type="Texture2D" uid="uid://damavvd6axahj" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_charging_anim2.png" id="19_cj7nx"]
+[ext_resource type="Texture2D" uid="uid://808ei2rof3kr" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_charging_anim3.png" id="20_rw0ri"]
+[ext_resource type="Texture2D" uid="uid://vaog8h00niww" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_charging_anim4.png" id="21_60g11"]
+[ext_resource type="Texture2D" uid="uid://cqdbf6n6eqhpm" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/goblin druid/staff_charging_anim5.png" id="22_p4i8o"]
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/idle.gd" id="25_s1cv5"]
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/shoot.gd" id="27_gwehm"]
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/shoot_direct.gd" id="27_jvpkv"]
+[ext_resource type="PackedScene" uid="uid://c50xddrttcrd4" path="res://scenes/characters/mobs/goblin_boss/goblin_boss_bullet.tscn" id="31_04u7p"]
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/hit.gd" id="32_3v0w2"]
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/death.gd" id="33_rucdx"]
+[ext_resource type="Script" path="res://scenes/characters/mobs/goblin_boss/spawn_tree_turret.gd" id="34_awo6o"]
+[ext_resource type="PackedScene" uid="uid://druri61kbfjpb" path="res://scenes/characters/mobs/goblin_boss/tree_turret.tscn" id="35_gqi3i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d7ek"]
+shader = ExtResource("3_6io2x")
+shader_parameter/flash_strength = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_np7nk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_v1v1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rmiwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3gb3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l4pek")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oil0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2rprt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_agwfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d5b4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_malwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_clwkf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmsxr"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7heol"]
+size = Vector2(12, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecmnp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_15jx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xo4bk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6ojc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mux8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vq1mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xji3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vvspf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xe6nn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pmprj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3eo04")
+}],
+"loop": true,
+"name": &"cast",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_s222i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_cj7nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rw0ri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_60g11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_p4i8o")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_unnae")
+}],
+"loop": true,
+"name": &"charged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_uddfh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="GoblinBoss" type="CharacterBody2D" groups=["bosses", "mobs"]]
+collision_layer = 2
+collision_mask = 18
+motion_mode = 1
+script = ExtResource("1_cc1xq")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_mriux")
+max_health = 1000
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_2d7ek")
+sprite_frames = SubResource("SpriteFrames_np7nk")
+animation = &"idle"
+
+[node name="debug" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "debug"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bmsxr")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -27.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+max_value = 1000.0
+value = 1000.0
+
+[node name="Label" type="Label" parent="UI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = -17.0
+offset_right = 103.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("9_25vp7")
+theme_override_font_sizes/font_size = 19
+text = "Goblin Druid"
+horizontal_alignment = 1
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 76
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_7heol")
+
+[node name="Staff" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Staff"]
+position = Vector2(6, 0)
+sprite_frames = SubResource("SpriteFrames_ecmnp")
+animation = &"charge"
+
+[node name="Marker2D" type="Marker2D" parent="Staff"]
+position = Vector2(6, 0)
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("18_rnldd")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("25_s1cv5")
+
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 3.0
+one_shot = true
+
+[node name="SpawnTreeTurret" type="Node2D" parent="StateMachine"]
+script = ExtResource("34_awo6o")
+tree_turret_scene = ExtResource("35_gqi3i")
+turret_count = 2
+
+[node name="ChargeTimer" type="Timer" parent="StateMachine/SpawnTreeTurret"]
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/SpawnTreeTurret"]
+one_shot = true
+
+[node name="MobsContainer" type="Node" parent="StateMachine/SpawnTreeTurret"]
+
+[node name="ShootDirect" type="Node2D" parent="StateMachine"]
+script = ExtResource("27_jvpkv")
+bullet_scene = ExtResource("31_04u7p")
+shots = 5
+
+[node name="DelayTimer" type="Timer" parent="StateMachine/ShootDirect"]
+wait_time = 0.25
+one_shot = true
+
+[node name="ChargeTimer" type="Timer" parent="StateMachine/ShootDirect"]
+one_shot = true
+
+[node name="Projectiles" type="Node" parent="StateMachine/ShootDirect"]
+
+[node name="Shoot" type="Node2D" parent="StateMachine"]
+script = ExtResource("27_gwehm")
+bullet_scene = ExtResource("31_04u7p")
+shots = 6
+
+[node name="Projectiles" type="Node" parent="StateMachine/Shoot"]
+
+[node name="DelayTimer" type="Timer" parent="StateMachine/Shoot"]
+wait_time = 0.25
+one_shot = true
+
+[node name="ChargeTimer" type="Timer" parent="StateMachine/Shoot"]
+one_shot = true
+
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource("32_3v0w2")
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("33_rucdx")
+
+[node name="DeathTimer" type="Timer" parent="StateMachine/Death"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="dead" from="Health" to="StateMachine" method="_on_health_dead"]
+[connection signal="took_damage" from="Health" to="StateMachine/Hit" method="_on_health_took_damage"]
+[connection signal="timeout" from="StateMachine/Idle/IdleTimer" to="StateMachine/Idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/SpawnTreeTurret/ChargeTimer" to="StateMachine/SpawnTreeTurret" method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="StateMachine/SpawnTreeTurret/WaitTimer" to="StateMachine/SpawnTreeTurret" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ShootDirect/DelayTimer" to="StateMachine/ShootDirect" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/ShootDirect/ChargeTimer" to="StateMachine/ShootDirect" method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/DelayTimer" to="StateMachine/Shoot" method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Shoot/ChargeTimer" to="StateMachine/Shoot" method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Death/DeathTimer" to="StateMachine/Death" method="_on_death_timer_timeout"]

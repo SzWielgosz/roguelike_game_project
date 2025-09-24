@@ -31,7 +31,7 @@ func transition():
 		var player_position = player.global_position - boss.global_position
 		laser_instance.rotation = lerp_angle(laser_instance.rotation, player_position.angle(), rotation_speed * get_process_delta_time())
 	if can_transition:
-		get_parent().change_state("SpiralShooting")
+		get_parent().change_state("RotatingCrossFire")
 
 
 func shoot_laser():

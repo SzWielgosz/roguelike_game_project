@@ -65,7 +65,7 @@ func _on_big_jump_timer_timeout():
 	is_in_air = true
 	animated_sprite_2d.play("in_air")
 	hitbox_collision_shape.disabled = true
-	character_body_collision_shape.disabled = true
+	#character_body_collision_shape.disabled = true
 	in_air_timer.start()
 
 
@@ -79,6 +79,6 @@ func _on_in_air_timer_timeout():
 func _on_landing_timer_timeout():
 	land()
 	hitbox_collision_shape.disabled = false
-	character_body_collision_shape.disabled = false
+	#character_body_collision_shape.disabled = false
 	can_transition = true
 	

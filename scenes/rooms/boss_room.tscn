@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://djw8f0o58mryj" path="res://assets/art/tilemaps/new_general.tres" id="5_5kgmq"]
 [ext_resource type="PackedScene" uid="uid://dcfk0ccwqqebu" path="res://scenes/environment/props/door.tscn" id="6_f1fkx"]
 [ext_resource type="PackedScene" uid="uid://d06uia2xoesnx" path="res://scenes/characters/player.tscn" id="7_jlppl"]
-[ext_resource type="PackedScene" uid="uid://7j7it1d7dot8" path="res://scenes/characters/mobs/main_boss/boss.tscn" id="8_hlbs4"]
+[ext_resource type="PackedScene" uid="uid://7j7it1d7dot8" path="res://scenes/characters/mobs/main_boss/main_boss.tscn" id="8_hlbs4"]
 
 [sub_resource type="GDScript" id="GDScript_wpcwk"]
 script/source = "extends Camera2D
@@ -86,7 +86,10 @@ shoot_laser_point = NodePath("../../MiddlePoint")
 area_2d = NodePath("../../Area2D")
 
 [node name="Player" parent="." instance=ExtResource("7_jlppl")]
-position = Vector2(-265, -7)
+position = Vector2(-243, -8)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-263, -8)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Mobs/Boss" method="_on_area_2d_body_entered"]

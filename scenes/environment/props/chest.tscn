@@ -83,4 +83,7 @@ shape = SubResource("RectangleShape2D_bknyr")
 
 [node name="DroppedItems" type="Node" parent="."]
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 13.0
+
 [connection signal="body_entered" from="OpenArea2D" to="." method="_on_open_area_2d_body_entered"]

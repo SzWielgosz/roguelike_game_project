@@ -10,7 +10,6 @@ signal destroyed
 func _ready():
 	animated_sprite_2d.play("idle")
 
-
 func _on_area_2d_area_entered(area):
 	var parent = area.get_parent()
 	if parent.is_in_group("explosive"):

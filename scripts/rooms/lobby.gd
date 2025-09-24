@@ -4,6 +4,8 @@ extends Node2D
 
 
 func _ready():
+	if PlayerStats.slots == [null, null, null]:
+		PlayerStats.get_start_spell()
 	var player = find_child("Player")
 	if player:
 		PlayerStats.reset()

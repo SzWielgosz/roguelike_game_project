@@ -2,7 +2,7 @@ extends State
 @onready var boss = $"../.."
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var mob_spawn_points: Node2D = $"../../MobSpawnPoints"
-@onready var mobs_container: Node2D = $"../../.."
+@onready var mobs_container: Node = $"../../.."
 @export var flying_eye_scene: PackedScene
 var can_transition: bool 
 

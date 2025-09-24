@@ -52,7 +52,6 @@ func set_bombs(value):
 func set_spells(slots):
 	var number = 1
 	for spell in slots:
-		print("Current spell: ", spell)
 		if spell != null:
 			$HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer.get_node("SpellFrame" + str(number)).get_node("SpellTexture").texture = spell.get_node("Sprite2D").texture
 			$HBoxContainer/VBoxContainer/SpellSlots/HBoxContainer.get_node("SpellFrame" + str(number)).get_node("SpellTexture").scale = spell.get_node("Sprite2D").scale

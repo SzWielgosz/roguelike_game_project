@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dncf718uj86ut"]
+[gd_scene load_steps=58 format=3 uid="uid://dncf718uj86ut"]
 
 [ext_resource type="Texture2D" uid="uid://b2m084s3aghui" path="res://assets/art/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_big_jump_anim1.png" id="1_7vq7m"]
 [ext_resource type="Script" path="res://scripts/characters/mobs/slime_boss/slime_boss.gd" id="1_kaww2"]
@@ -215,9 +215,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbt0b"]
 size = Vector2(12, 8)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b438b"]
-radius = 123.341
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlc8p"]
 size = Vector2(16, 13)
 
@@ -225,6 +222,7 @@ size = Vector2(16, 13)
 z_index = 1
 scale = Vector2(3, 3)
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_kaww2")
 
 [node name="Health" type="Node" parent="."]
@@ -234,8 +232,7 @@ max_health = 1500
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_5h2v6")
 sprite_frames = SubResource("SpriteFrames_6dgf3")
-animation = &"landing"
-frame_progress = 0.250387
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -246,7 +243,7 @@ offset_left = -17.0
 offset_top = -28.0
 offset_right = 18.0
 offset_bottom = -5.0
-text = "fdgd"
+text = "debug"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
@@ -282,11 +279,6 @@ theme_override_fonts/font = ExtResource("33_4rkyv")
 theme_override_font_sizes/font_size = 19
 text = "Big Slime"
 horizontal_alignment = 1
-
-[node name="DetectionRange" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_b438b")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 2

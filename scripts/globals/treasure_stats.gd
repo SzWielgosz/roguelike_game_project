@@ -4,7 +4,7 @@ var drop_table = {
 		"scene": preload("res://scenes/spells/lesser_fireball/lesser_fireball_scroll.tscn"),
 		"chance": 0.1
 	}
-} # items for treasure room here
+}
 
 func add_unlocked_items_to_drop_table():
 	var shop_table = ShopStats.shop_table

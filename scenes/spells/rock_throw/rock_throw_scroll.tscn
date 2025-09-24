@@ -10,6 +10,7 @@
 size = Vector2(10, 11)
 
 [node name="RockThrowScroll" type="Node2D" node_paths=PackedStringArray("cooldown_timer", "ui", "pickup_area") groups=["spell_scroll"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_h3lhk")
 cast_type = 1
 spell_scene = ExtResource("2_wgmty")
@@ -20,15 +21,14 @@ scroll_name = "rock_throw_scroll"
 spell_name = "rock_throw"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_aymhr")
 
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 7.5
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
+[node name="Area2D" type="Area2D" parent="." groups=["spell_scroll"]]
+collision_layer = 4096
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -80,25 +80,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_bwhut")
 theme_override_font_sizes/font_size = 32
-text = "SpellName"
+text = "rock throw"
 
 [node name="SpellDamageLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_bwhut")
 theme_override_font_sizes/font_size = 32
-text = "SpellDamage"
+text = "damage: high"
 
 [node name="SpellCastTypeLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_bwhut")
 theme_override_font_sizes/font_size = 32
-text = "SpellCastType"
+text = "cast type: channel"
 
 [node name="SpellCastSpeedLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_bwhut")
 theme_override_font_sizes/font_size = 32
-text = "SpellCastSpeed"
+text = "speed: slow"

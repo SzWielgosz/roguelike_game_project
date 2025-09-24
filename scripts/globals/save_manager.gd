@@ -26,7 +26,7 @@ func get_slot_path(slot: int):
 
 
 func save_to_slot(slot: int):
-	var path = get_slot_path(current_save_slot)
+	var path = get_slot_path(slot)
 	save_to_path(path)
 
 
@@ -64,6 +64,8 @@ func save_game():
 	save_data.player_bombs = PlayerStats.player_bombs
 	save_data.player_coins = PlayerStats.player_coins
 	save_data.rng_seed = GameStats.random_number_generator.seed
+	save_data.treasure_collected = PlayerStats.treasure_collected
+	
 	
 	var clean_shop_table = {}
 	for key in ShopStats.shop_table.keys():
@@ -138,6 +140,7 @@ func apply_loaded_save():
 	PlayerStats.player_health = save_data.player_health
 	PlayerStats.player_bombs = save_data.player_bombs
 	PlayerStats.player_coins = save_data.player_coins
+	PlayerStats.treasure_collected = save_data.treasure_collected
 	
 	for idx in save_data.player_spell_slots.keys():
 		if save_data.player_spell_slots[idx] == null:
@@ -151,6 +154,7 @@ func apply_loaded_save():
 			print("Utworzono instancje spella: ", instance)
 			get_tree().current_scene.add_child(instance)
 			PlayerStats.equip_spell(instance, Vector2(0, 0), idx)
+			
 
 	for key in save_data.shop_table.keys():
 		if ShopStats.shop_table.has(key):
@@ -168,6 +172,7 @@ func apply_loaded_save():
 
 
 func load_game_from_slot(slot: int):
+	print("Loading slot: ", slot)
 	var path = get_slot_path(slot)
 	current_save_slot = slot
 	load_from_path(path)
@@ -179,18 +184,16 @@ func load_autosave():
 
 func load_from_path(path):
 	if not ResourceLoader.exists(path):
-		print("Save doesn't exist: ", path)
+		save_data = null
 		return
 	
 	save_data = ResourceLoader.load(path)
-	print("save_data loaded: ",  save_data)
 	return save_data
 
 
 func get_total_time_played_from_slot(slot: int):
 	var path = get_slot_path(slot)
 	if not ResourceLoader.exists(path):
-		print("Save doesn't exist: ", path)
 		return
 	
 	var tmp = ResourceLoader.load(path)

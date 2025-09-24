@@ -144,11 +144,11 @@ position = Vector2(144, 76)
 entity = ExtResource("4_xoh2o")
 
 [node name="MobSpawner5" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
-position = Vector2(-111, 0)
+position = Vector2(-121, -2)
 entity = ExtResource("4_xoh2o")
 
 [node name="MobSpawner6" parent="NavigationRegion2D/SpawnPoints" instance=ExtResource("3_2uywl")]
-position = Vector2(114, 0)
+position = Vector2(121, -2)
 entity = ExtResource("4_xoh2o")
 
 [node name="Statics" type="Node2D" parent="NavigationRegion2D"]

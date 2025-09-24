@@ -5,6 +5,8 @@ extends Node2D
 var player_inside: bool = false
 var mobs_left: Array = []
 
+func _ready():
+	$Player.global_position = $Marker2D.global_position
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):

@@ -17,8 +17,8 @@ pickup_area = NodePath("Area2D")
 scroll_name = "lesser_fireball_scroll"
 spell_name = "lesser_fireball"
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
+[node name="Area2D" type="Area2D" parent="." groups=["spell_scroll"]]
+collision_layer = 4096
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -76,25 +76,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_sav4q")
 theme_override_font_sizes/font_size = 32
-text = "SpellName"
+text = "lesser fireball"
 
 [node name="SpellDamageLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_sav4q")
 theme_override_font_sizes/font_size = 32
-text = "SpellDamage"
+text = "damage: low"
 
 [node name="SpellCastTypeLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_sav4q")
 theme_override_font_sizes/font_size = 32
-text = "SpellCastType"
+text = "cast type: instant"
 
 [node name="SpellCastSpeedLabel" type="Label" parent="Control/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_sav4q")
 theme_override_font_sizes/font_size = 32
-text = "SpellCastSpeed"
+text = "speed: fast"

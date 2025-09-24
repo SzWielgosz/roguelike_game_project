@@ -41,6 +41,7 @@ func pause():
 
 
 func return_to_lobby():
+	PlayerStats.clear_slots()
 	get_tree().change_scene_to_file("res://scenes/rooms/lobby.tscn")
 
 

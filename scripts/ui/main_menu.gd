@@ -24,6 +24,7 @@ extends CanvasLayer
 
 
 func _ready():
+	print(SaveManager.current_save_slot)
 	var video_settings = ConfigFileHandler.load_video_settings()
 	var keybinding_settings = ConfigFileHandler.apply_keybindings_to_input_map()
 	fullscreen_setting.button_pressed = video_settings.fullscreen
@@ -133,6 +134,7 @@ func _on_first_slot_pressed():
 	if SaveManager.get_save_data():
 		SaveManager.apply_loaded_save()
 	else:
+		PlayerStats.get_start_spell()
 		get_tree().change_scene_to_file("res://scenes/rooms/lobby.tscn")
 
 
@@ -141,6 +143,7 @@ func _on_second_slot_pressed():
 	if SaveManager.get_save_data():
 		SaveManager.apply_loaded_save()
 	else:
+		PlayerStats.get_start_spell()
 		get_tree().change_scene_to_file("res://scenes/rooms/lobby.tscn")
 
 
@@ -149,6 +152,7 @@ func _on_third_slot_pressed():
 	if SaveManager.get_save_data():
 		SaveManager.apply_loaded_save()
 	else:
+		PlayerStats.get_start_spell()
 		get_tree().change_scene_to_file("res://scenes/rooms/lobby.tscn")
 
 

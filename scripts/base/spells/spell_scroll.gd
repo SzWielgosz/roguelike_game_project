@@ -23,7 +23,9 @@ func _ready():
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
 	pickup_area.body_entered.connect(_on_pickup_area_body_entered)
 	pickup_area.body_exited.connect(_on_pickup_area_body_exited)
+	pickup_area.set_collision_layer_value(13, true)
 	$Control/NinePatchRect/VBoxContainer/SpellNameLabel.text = self.name
+
 
 func cast_spell():
 	if spell_scene and !is_on_cooldown:
@@ -46,6 +48,7 @@ func drop(at_position: Vector2, parent_node: Node):
 	parent_node.add_child(self)
 	pickup_area.monitoring = true
 	ui.visible = false
+	self.get_node("Sprite2D").visible = true
 
 func _on_spell_cast():
 	cooldown_timer.start()

@@ -7,12 +7,13 @@ var coin_collector = preload("res://scenes/characters/coin_collector.tscn")
 var room_layouts = [
 	preload("res://scenes/rooms/room_24x16/layouts/layout1.tscn"), 
 	preload("res://scenes/rooms/room_24x16/layouts/layout2.tscn"),
-	preload("res://scenes/rooms/room_24x16/layouts/layout3.tscn"),
+	#preload("res://scenes/rooms/room_24x16/layouts/layout3.tscn"),
 	preload("res://scenes/rooms/room_24x16/layouts/layout4.tscn"),
 	preload("res://scenes/rooms/room_24x16/layouts/layout5.tscn")
 ]
 var bosses = [
-	preload("res://scenes/characters/mobs/slime_boss/slime_boss.tscn")
+	preload("res://scenes/characters/mobs/slime_boss/slime_boss.tscn"),
+	preload("res://scenes/characters/mobs/goblin_boss/goblin_boss.tscn")
 ]
 var end_room_layout = preload("res://scenes/rooms/room_24x16/end_room_layout.tscn")
 var load_dungeon: bool = false
@@ -21,7 +22,7 @@ enum RoomType { REGULAR, TREASURE, START, END, SHOP }
 @onready var Player = $"../Player"
 @onready var minimap = $"../Minimap/MarginContainer/SubViewportCointainer/SubViewport/Node2D"
 var tile_size: int = 16
-var rooms_to_generate: int = 6
+var rooms_to_generate: int = 8
 var room_dict: Dictionary = {}
 var create_minimap_dict: Dictionary = {}
 var queue: Array = []
@@ -202,7 +203,8 @@ func find_end_room():
 			max_x = room.global_position.x
 	end_room.get_node("RoomArea").type = RoomType.END
 	var end_room_layout_instance = end_room_layout.instantiate()
-	end_room_layout_instance.get_node("NavigationRegion2D").get_node("SpawnPoints").get_child(0).entity = bosses[0]
+	var boss_idx = GameStats.random_number_generator.randi_range(0, bosses.size() - 1)
+	end_room_layout_instance.get_node("NavigationRegion2D").get_node("SpawnPoints").get_child(0).entity = bosses[boss_idx]
 	end_room.get_node("RoomLayout").add_child(end_room_layout_instance)
 
 
@@ -236,6 +238,9 @@ func create_treasure_room():
 			selected_room.get_node("RoomArea").type = RoomType.TREASURE
 			room_not_selected = false
 
+	if PlayerStats.treasure_collected:
+		return
+
 	var treasure = null
 
 	treasure = TreasureStats.drop_table
@@ -245,7 +250,6 @@ func create_treasure_room():
 	
 	var total_chance = 0.0
 	for item in treasure:
-		print(item)
 		total_chance += treasure[item]["chance"]
 	
 	var normalized_treasure = {}
@@ -254,7 +258,7 @@ func create_treasure_room():
 		normalized_treasure[item] = treasure[item].duplicate()
 		normalized_treasure[item]["chance"] = normalized_chance
 	
-	var pick = randf() * total_chance
+	var pick =  GameStats.random_number_generator.randf() * total_chance
 	var current = 0.0
 	
 	for item in treasure:

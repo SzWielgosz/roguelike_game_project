@@ -13,7 +13,7 @@ func _process(delta):
 	GameStats.time_played += delta
 	GameStats.total_time_played += delta
 	
-	if GameStats.dungeon_number >= 2:
+	if GameStats.dungeon_number >= 3:
 		get_tree().change_scene_to_file("res://scenes/rooms/boss_room.tscn")
 
 

@@ -19,6 +19,7 @@ signal spawn_stairs
 
 
 func _ready():
+	$".".set_collision_mask_value(13, true)
 	timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 0.1
@@ -39,6 +40,8 @@ func _on_timer_timeout():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		if type == RoomType.END and room_cleared:
+			spawn_stairs.emit()
 		$"../Icon".visible = true
 		if type == RoomType.REGULAR or type == RoomType.END:
 			if not room_visited:
@@ -84,9 +87,12 @@ func _on_body_exited(body):
 			if not doors_opened:
 				GameStats.player_clearing_room = false
 				open_all_doors()
-	if body.is_in_group("spell_scroll"):
-		treasure_collected = true
 
 
 func _on_spawn_timer_timeout():
 	spawning = false
+
+
+func _on_area_exited(area):
+	if area.is_in_group("spell_scroll"):
+		PlayerStats.treasure_collected = true

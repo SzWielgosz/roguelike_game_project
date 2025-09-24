@@ -139,5 +139,3 @@ entity = ExtResource("4_ayvfj")
 position = Vector2(28, 0)
 script = ExtResource("4_5srym")
 entity = ExtResource("6_0ukl2")
-
-[connection signal="bake_finished" from="NavigationRegion2D" to="NavigationRegion2D" method="_on_bake_finished"]

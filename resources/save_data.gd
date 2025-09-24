@@ -19,3 +19,4 @@ class_name SaveData
 @export var player_coins: int
 @export var shop_table: Dictionary
 @export var dungeon_rooms: Dictionary
+@export var treasure_collected: bool
